@@ -1,0 +1,2094 @@
+{
+  "commit": "67b8c3257695d5ede09d262798bf28a0e58d4740",
+  "errors": [],
+  "items": [
+    {
+      "framework": "AIGF",
+      "id": "mi-1",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-1_ai-data-leakage-prevention-and-detection.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity"
+        ],
+        "iso-42001_references": [
+          "A-5-2",
+          "A-6-2-6",
+          "A-7-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-20",
+          "ac-4",
+          "au-13",
+          "ca-3",
+          "ca-7",
+          "ir-4",
+          "ir-9",
+          "mp-6",
+          "sa-9",
+          "sc-28",
+          "sc-7",
+          "sc-8",
+          "si-20",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1"
+        ],
+        "related_mitigations": [
+          "mi-14",
+          "mi-2",
+          "mi-4"
+        ]
+      },
+      "title": "AI Data Leakage Prevention and Detection"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-2",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-2_data-filtering-from-external-knowledge-bases.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t3-4"
+        ],
+        "iso-42001_references": [
+          "A-7-2",
+          "A-7-3",
+          "A-7-4",
+          "A-7-6"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-22",
+          "ac-4",
+          "mp-6",
+          "pt-2",
+          "si-12",
+          "si-15",
+          "si-19",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-9"
+        ],
+        "related_mitigations": [
+          "mi-1",
+          "mi-16",
+          "mi-6"
+        ]
+      },
+      "title": "Data Filtering From External Knowledge Bases"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-3",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-3_user-app-model-firewalling-filtering.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-7"
+        ],
+        "iso-42001_references": [
+          "A-6-1-3",
+          "A-6-2-2",
+          "A-9-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-4",
+          "sc-5",
+          "sc-7",
+          "si-10",
+          "si-15",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-10",
+          "ri-18",
+          "ri-20",
+          "ri-7"
+        ],
+        "related_mitigations": [
+          "mi-15",
+          "mi-17",
+          "mi-8"
+        ]
+      },
+      "title": "User/App/Model Firewalling/Filtering"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-4",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-4_ai-system-observability.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-recordkeeping",
+          "t6-1",
+          "t6-3",
+          "t6-5",
+          "t7-adoption",
+          "t7-nature",
+          "t7-performance"
+        ],
+        "iso-42001_references": [
+          "A-6-2-6",
+          "A-6-2-8"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-2",
+          "au-11",
+          "au-12",
+          "au-2",
+          "au-3",
+          "au-6",
+          "ca-7",
+          "ir-4",
+          "ir-5",
+          "ra-10",
+          "si-4",
+          "si-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-14",
+          "ri-18",
+          "ri-19",
+          "ri-24",
+          "ri-25",
+          "ri-26",
+          "ri-27",
+          "ri-28",
+          "ri-29",
+          "ri-5",
+          "ri-6",
+          "ri-7"
+        ],
+        "related_mitigations": [
+          "mi-1",
+          "mi-11",
+          "mi-21",
+          "mi-9"
+        ]
+      },
+      "title": "AI System Observability"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-5",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-5_system-acceptance-testing.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a15",
+          "c3-s2-a9"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-6",
+          "t4-1"
+        ],
+        "iso-42001_references": [
+          "A-6-2-4",
+          "A-6-2-5"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ca-2",
+          "ca-6",
+          "cm-4",
+          "sa-11",
+          "sa-4",
+          "si-2",
+          "si-6"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-14",
+          "ri-16",
+          "ri-22",
+          "ri-4",
+          "ri-5",
+          "ri-6"
+        ],
+        "related_mitigations": [
+          "mi-10",
+          "mi-11",
+          "mi-15"
+        ]
+      },
+      "title": "System Acceptance Testing"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-6",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-6_data-quality-classification-sensitivity.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a10"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-4",
+          "t3-6",
+          "t4-4"
+        ],
+        "iso-42001_references": [
+          "A-4-3",
+          "A-7-2",
+          "A-7-4"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-1",
+          "ac-16",
+          "ac-4",
+          "at-2",
+          "at-3",
+          "ca-7",
+          "cm-13",
+          "pm-11",
+          "pm-22",
+          "pm-23",
+          "ra-2",
+          "si-10",
+          "si-12",
+          "si-18",
+          "si-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-16",
+          "ri-19",
+          "ri-2",
+          "ri-22",
+          "ri-23",
+          "ri-4",
+          "ri-9"
+        ],
+        "related_mitigations": [
+          "mi-12",
+          "mi-14",
+          "mi-2"
+        ]
+      },
+      "title": "Data Quality & Classification/Sensitivity"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-7",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-7_legal-and-contractual-frameworks-for-ai-systems.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t4-1",
+          "t4-7",
+          "t7-third-party"
+        ],
+        "iso-42001_references": [
+          "A-10-2",
+          "A-10-3",
+          "A-2-3",
+          "A-8-5"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-20",
+          "ca-3",
+          "ir-6",
+          "pm-30",
+          "ps-7",
+          "sa-4",
+          "sa-9",
+          "sr-2",
+          "sr-3",
+          "sr-5",
+          "sr-8"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-20",
+          "ri-22",
+          "ri-23",
+          "ri-8"
+        ],
+        "related_mitigations": [
+          "mi-1",
+          "mi-10",
+          "mi-6"
+        ]
+      },
+      "title": "Legal and Contractual Frameworks for AI Systems"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-8",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-8_quality-of-service-qos-and-ddos-prevention-for-ai-systems.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-reliability",
+          "t4-6",
+          "t7-performance"
+        ],
+        "iso-42001_references": [
+          "A-4-5",
+          "A-6-2-6"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ca-7",
+          "ir-4",
+          "sc-5",
+          "sc-6",
+          "sc-7",
+          "si-10",
+          "si-13",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-7"
+        ],
+        "related_mitigations": [
+          "mi-17",
+          "mi-4",
+          "mi-9"
+        ]
+      },
+      "title": "Quality of Service (QoS) and DDoS Prevention for AI Systems"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-9",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-9_ai-system-alerting-and-denial-of-wallet-dow-spend-monitoring.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-reliability",
+          "t6-5",
+          "t7-performance"
+        ],
+        "iso-42001_references": [
+          "A-4-2",
+          "A-6-2-6"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-2",
+          "ca-7",
+          "ir-4",
+          "sc-5",
+          "sc-6",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-7"
+        ],
+        "related_mitigations": [
+          "mi-3",
+          "mi-4",
+          "mi-8"
+        ]
+      },
+      "title": "AI System Alerting and Denial of Wallet (DoW) / Spend Monitoring"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-10",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-10_ai-model-version-pinning.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t3-6"
+        ],
+        "iso-42001_references": [
+          "A-4-4",
+          "A-6-2-3",
+          "A-6-2-5",
+          "A-6-2-6"
+        ],
+        "nist-sp-800-53r5_references": [
+          "au-2",
+          "cm-2",
+          "cm-3",
+          "cm-4",
+          "cm-8",
+          "sa-10",
+          "sa-22",
+          "sa-4",
+          "sr-4",
+          "sr-8"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-5",
+          "ri-6"
+        ],
+        "related_mitigations": [
+          "mi-4",
+          "mi-5"
+        ]
+      },
+      "title": "AI Model Version Pinning"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-11",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-11_human-feedback-loop-for-ai-systems.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a14",
+          "c9-s1-a72"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-6",
+          "t3-7",
+          "t6-3"
+        ],
+        "iso-42001_references": [
+          "A-3-3",
+          "A-6-2-6",
+          "A-8-2",
+          "A-8-3"
+        ],
+        "nist-sp-800-53r5_references": [
+          "at-2",
+          "ca-2",
+          "ca-7",
+          "ir-6",
+          "pm-26",
+          "ra-5",
+          "si-2",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-14",
+          "ri-16",
+          "ri-18",
+          "ri-20",
+          "ri-5",
+          "ri-6"
+        ],
+        "related_mitigations": [
+          "mi-15",
+          "mi-4",
+          "mi-5"
+        ]
+      },
+      "title": "Human Feedback Loop for AI Systems"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-12",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-12_role-based-access-control-for-ai-data.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-4",
+          "t3-7"
+        ],
+        "iso-42001_references": [
+          "A-3-2",
+          "A-7-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-1",
+          "ac-16",
+          "ac-2",
+          "ac-3",
+          "ac-5",
+          "ac-6",
+          "au-2",
+          "au-6",
+          "cm-12",
+          "ia-2",
+          "ia-4",
+          "ia-5"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-8",
+          "ri-9"
+        ],
+        "related_mitigations": [
+          "mi-14",
+          "mi-16",
+          "mi-6"
+        ]
+      },
+      "title": "Role-Based Access Control for AI Data"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-13",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-13_providing-citations-and-source-traceability-for-ai-generated-information.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a13",
+          "c9-s4-a86"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-recordkeeping",
+          "t5-1",
+          "t6-3",
+          "t6-4"
+        ],
+        "iso-42001_references": [
+          "A-6-1-2",
+          "A-6-2-7",
+          "A-8-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-16",
+          "at-2",
+          "au-10",
+          "sa-8",
+          "si-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-17",
+          "ri-20",
+          "ri-22",
+          "ri-4"
+        ],
+        "related_mitigations": [
+          "mi-16",
+          "mi-4",
+          "mi-6"
+        ]
+      },
+      "title": "Providing Citations and Source Traceability for AI-Generated Information"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-14",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-14_encryption-of-ai-data-at-rest.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity"
+        ],
+        "iso-42001_references": [
+          "A-7-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-19",
+          "cm-3",
+          "cp-9",
+          "sa-9",
+          "sc-12",
+          "sc-13",
+          "sc-28"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-2",
+          "ri-22"
+        ],
+        "related_mitigations": [
+          "mi-1",
+          "mi-12",
+          "mi-6"
+        ]
+      },
+      "title": "Encryption of AI Data at Rest"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-15",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-15_using-large-language-models-for-automated-evaluation-llm-as-a-judge-.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t3-6"
+        ],
+        "iso-42001_references": [
+          "A-6-2-4",
+          "A-6-2-6"
+        ],
+        "nist-sp-800-53r5_references": [
+          "au-6",
+          "ca-2",
+          "ca-7",
+          "ra-10",
+          "sa-11",
+          "si-15",
+          "si-4",
+          "si-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-14",
+          "ri-16",
+          "ri-19",
+          "ri-4",
+          "ri-5",
+          "ri-6"
+        ],
+        "related_mitigations": [
+          "mi-11",
+          "mi-3",
+          "mi-5"
+        ]
+      },
+      "title": "Using Large Language Models for Automated Evaluation (LLM-as-a-Judge)"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-16",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-16_preserving-source-data-access-controls-in-ai-systems.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-4"
+        ],
+        "iso-42001_references": [
+          "A-7-2",
+          "A-7-3",
+          "A-9-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-16",
+          "ac-21",
+          "ac-3",
+          "ac-4",
+          "ac-6",
+          "au-2",
+          "au-6",
+          "ca-7",
+          "ca-8",
+          "si-4",
+          "si-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-2",
+          "ri-22"
+        ],
+        "related_mitigations": [
+          "mi-12",
+          "mi-2",
+          "mi-4"
+        ]
+      },
+      "title": "Preserving Source Data Access Controls in AI Systems"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-17",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-17_ai-firewall-implementation-and-management.md",
+      "references": {
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity"
+        ],
+        "iso-42001_references": [
+          "A-6-1-3",
+          "A-6-2-2",
+          "A-9-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-4",
+          "sc-5",
+          "sc-7",
+          "si-10",
+          "si-15",
+          "si-3",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-10",
+          "ri-18",
+          "ri-20",
+          "ri-7"
+        ],
+        "related_mitigations": [
+          "mi-15",
+          "mi-3",
+          "mi-8"
+        ]
+      },
+      "title": "AI Firewall Implementation and Management"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-18",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-18_agent-authority-least-privilege-framework.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00012",
+          "ATR-2026-00040",
+          "ATR-2026-00098"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-5",
+          "t3-7"
+        ],
+        "iso-42001_references": [
+          "A-6-2-6",
+          "A-9-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-2",
+          "ac-3",
+          "ac-5",
+          "ac-6",
+          "cm-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-18",
+          "ri-24"
+        ],
+        "related_mitigations": [
+          "mi-1",
+          "mi-12",
+          "mi-19",
+          "mi-20",
+          "mi-22",
+          "mi-3"
+        ]
+      },
+      "title": "Agent Authority Least Privilege Framework"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-19",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-19_tool-chain-validation-and-sanitization.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00011",
+          "ATR-2026-00012",
+          "ATR-2026-00013"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-5",
+          "t4-4"
+        ],
+        "nist-sp-800-53r5_references": [
+          "sc-4",
+          "si-10",
+          "si-15"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-10",
+          "ri-24",
+          "ri-25"
+        ],
+        "related_mitigations": [
+          "mi-18",
+          "mi-3"
+        ]
+      },
+      "title": "Tool Chain Validation and Sanitization"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-20",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-20_mcp-server-security-governance.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00010"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t4-4"
+        ],
+        "nist-sp-800-53r5_references": [
+          "sa-9",
+          "sc-8",
+          "si-4",
+          "sr-3",
+          "sr-4",
+          "sr-5"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-1",
+          "ri-26",
+          "ri-8"
+        ],
+        "related_mitigations": [
+          "mi-4",
+          "mi-7"
+        ]
+      },
+      "title": "MCP Server Security Governance"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-21",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-21_agent-decision-audit-and-explainability.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a12",
+          "c3-s2-a13",
+          "c3-s3-a26",
+          "c9-s1-a72",
+          "c9-s4-a86"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-recordkeeping",
+          "t3-7",
+          "t6-1",
+          "t6-3",
+          "t6-4",
+          "t6-5"
+        ],
+        "iso-42001_references": [
+          "A-6-2-6",
+          "A-8-3"
+        ],
+        "nist-sp-800-53r5_references": [
+          "au-2",
+          "au-3",
+          "au-6",
+          "ca-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-22",
+          "ri-24",
+          "ri-25"
+        ],
+        "related_mitigations": [
+          "mi-11",
+          "mi-4"
+        ]
+      },
+      "title": "Agent Decision Audit and Explainability"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-22",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-22_multi-agent-isolation-and-segmentation.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00030",
+          "ATR-2026-00076"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-5"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-4",
+          "sc-3",
+          "sc-32",
+          "sc-7"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-24",
+          "ri-27",
+          "ri-28"
+        ],
+        "related_mitigations": [
+          "mi-12",
+          "mi-18"
+        ]
+      },
+      "title": "Multi-Agent Isolation and Segmentation"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-23",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-23_agentic-system-credential-protection-framework.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00113"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-5"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-3",
+          "au-6",
+          "ia-5",
+          "sc-28"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-24",
+          "ri-26",
+          "ri-29"
+        ],
+        "related_mitigations": [
+          "mi-12",
+          "mi-14",
+          "mi-18"
+        ]
+      },
+      "title": "Agentic System Credential Protection Framework"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-24",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-24_human-in-the-loop-action-approval-gate.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a14"
+        ],
+        "iso-42001_references": [
+          "A-6-2-6",
+          "A-9-2"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ac-3",
+          "ac-5",
+          "ac-6",
+          "au-10",
+          "si-4"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-18",
+          "ri-22",
+          "ri-24"
+        ],
+        "related_mitigations": [
+          "mi-11",
+          "mi-18",
+          "mi-21"
+        ]
+      },
+      "title": "Human-in-the-Loop Action Approval Gate"
+    },
+    {
+      "framework": "AIGF",
+      "id": "mi-25",
+      "kind": "mitigation",
+      "path": "docs/_mitigations/mi-25_skill-plugin-integrity-and-governance.md",
+      "references": {
+        "nist-sp-800-53r5_references": [
+          "cm-7",
+          "si-7",
+          "sr-3",
+          "sr-4",
+          "sr-5"
+        ]
+      },
+      "relations": {
+        "mitigates": [
+          "ri-30",
+          "ri-8",
+          "ri-9"
+        ],
+        "related_mitigations": [
+          "mi-15",
+          "mi-18",
+          "mi-19",
+          "mi-20"
+        ]
+      },
+      "title": "Skill/Plugin Integrity and Governance"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-1",
+      "kind": "risk",
+      "path": "docs/_risks/ri-1_information-leaked-to-hosted-model.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-gn-2300-21-003",
+          "ciro-idpc-rule-3800",
+          "csa-sn-11-326",
+          "csa-sn-11-332",
+          "csa-sn-11-348",
+          "csa-sn-33-321",
+          "iosco-fr-02-2026",
+          "ni-31-103-s11-1",
+          "ni-31-103-s11-5",
+          "ni-31-103cp",
+          "osfi-b13-d3",
+          "pipeda",
+          "qc-p39-s12-1",
+          "qc-p39-s3-3-s17"
+        ],
+        "eu-ai-act_references": [
+          "c3-s2-a10",
+          "c3-s2-a13",
+          "c5-s2-a53"
+        ],
+        "ffiec-itbooklets_references": [
+          "ots-2",
+          "sec-2",
+          "sec-3"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-4"
+        ],
+        "nist-ai-600-1_references": [
+          "2-4",
+          "2-9"
+        ],
+        "owasp-llm_references": [
+          "llm02-2026"
+        ],
+        "uk-regulations_references": [
+          "boe-fca-pra-critical-third-parties-2024",
+          "fca-fg16-5-cloud",
+          "fca-sysc",
+          "ico-ai-data-protection-toolkit",
+          "ico-guidance-ai-data-protection",
+          "pra-ss2-21-outsourcing",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-2",
+          "ri-23"
+        ]
+      },
+      "title": "Information Leaked To Hosted Model"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-2",
+      "kind": "risk",
+      "path": "docs/_risks/ri-2_information-leaked-to-vector-store.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-gn-2300-21-003",
+          "ciro-idpc-rule-3800",
+          "csa-sn-11-326",
+          "csa-sn-11-332",
+          "csa-sn-11-348",
+          "csa-sn-33-321",
+          "iosco-fr-02-2026",
+          "ni-31-103-s11-1",
+          "ni-31-103-s11-5",
+          "ni-31-103cp",
+          "osfi-b-10",
+          "osfi-b13-d3",
+          "osfi-e23-2027",
+          "pipeda",
+          "qc-p39-s3-3-s17"
+        ],
+        "eu-ai-act_references": [
+          "c3-s2-a10",
+          "c3-s2-a15",
+          "c3-s3-a16"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "sec-3",
+          "sec-4"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-4"
+        ],
+        "nist-ai-600-1_references": [
+          "2-4",
+          "2-9"
+        ],
+        "owasp-llm_references": [
+          "llm02-2026",
+          "llm09-2026"
+        ],
+        "uk-regulations_references": [
+          "boe-fca-pra-critical-third-parties-2024",
+          "fca-fg16-5-cloud",
+          "fca-sysc",
+          "ico-ai-data-protection-toolkit",
+          "ico-guidance-ai-data-protection",
+          "pra-ss2-21-outsourcing",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-1",
+          "ri-9"
+        ]
+      },
+      "title": "Information Leaked to Vector Store"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-4",
+      "kind": "risk",
+      "path": "docs/_risks/ri-4_hallucination-and-inaccurate-outputs.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a13",
+          "c3-s2-a15",
+          "c3-s2-a9"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3",
+          "mgt-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-model-risk",
+          "t3-6"
+        ],
+        "nist-ai-600-1_references": [
+          "2-2",
+          "2-8"
+        ],
+        "owasp-llm_references": [
+          "llm07-2026"
+        ],
+        "owasp-ml_references": [
+          "ml09-2023"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-14",
+          "ri-19",
+          "ri-6"
+        ]
+      },
+      "title": "Hallucination and Inaccurate Outputs"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-5",
+      "kind": "risk",
+      "path": "docs/_risks/ri-5_foundation-model-versioning.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a15",
+          "c3-s2-a9",
+          "c5-s2-a53"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-7",
+          "ots-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-model-risk",
+          "t3-6"
+        ],
+        "nist-ai-600-1_references": [
+          "2-8"
+        ],
+        "owasp-llm_references": [
+          "llm07-2026"
+        ],
+        "owasp-ml_references": [
+          "ml07-2023"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-7",
+          "ri-8"
+        ]
+      },
+      "title": "Foundation Model Versioning"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-6",
+      "kind": "risk",
+      "path": "docs/_risks/ri-6_non-deterministic-behaviour.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a14",
+          "c3-s2-a15",
+          "c3-s2-a9"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-market-risks",
+          "t2-model-risk",
+          "t3-5",
+          "t3-6"
+        ],
+        "owasp-llm_references": [
+          "llm07-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-14",
+          "ri-4"
+        ]
+      },
+      "title": "Non-Deterministic Behaviour"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-7",
+      "kind": "risk",
+      "path": "docs/_risks/ri-7_availability-of-foundational-model.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a15",
+          "c3-s3-a26",
+          "c5-s2-a53"
+        ],
+        "ffiec-itbooklets_references": [
+          "aio-6",
+          "bcm-4",
+          "bcm-5",
+          "ots-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-outsourcing",
+          "t2-reliability",
+          "t4-5",
+          "t4-6"
+        ],
+        "owasp-llm_references": [
+          "llm06-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-5",
+          "ri-8"
+        ]
+      },
+      "title": "Availability of Foundational Model"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-8",
+      "kind": "risk",
+      "path": "docs/_risks/ri-8_tampering-with-the-foundational-model.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a15",
+          "c3-s3-a16",
+          "c5-s2-a53"
+        ],
+        "ffiec-itbooklets_references": [
+          "dam-3",
+          "dam-6",
+          "ots-2",
+          "sec-3"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t4-4"
+        ],
+        "nist-ai-600-1_references": [
+          "2-12"
+        ],
+        "owasp-llm_references": [
+          "llm04-2026"
+        ],
+        "owasp-ml_references": [
+          "ml05-2023",
+          "ml06-2023",
+          "ml10-2023"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-7",
+          "ri-9"
+        ]
+      },
+      "title": "Tampering With the Foundational Model"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-9",
+      "kind": "risk",
+      "path": "docs/_risks/ri-9_data-poisoning.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a10",
+          "c3-s2-a15",
+          "c5-s2-a53"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3",
+          "sec-3"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-4",
+          "t4-4"
+        ],
+        "nist-ai-600-1_references": [
+          "2-12",
+          "2-8"
+        ],
+        "owasp-llm_references": [
+          "llm04-2026",
+          "llm05-2026",
+          "llm10-2026"
+        ],
+        "owasp-ml_references": [
+          "ml02-2023",
+          "ml10-2023"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-19",
+          "ri-8"
+        ]
+      },
+      "title": "Data Poisoning"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-10",
+      "kind": "risk",
+      "path": "docs/_risks/ri-10_prompt-injection.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00010",
+          "ATR-2026-00011"
+        ],
+        "eu-ai-act_references": [
+          "c2-a5",
+          "c3-s2-a14",
+          "c3-s2-a15"
+        ],
+        "ffiec-itbooklets_references": [
+          "dam-4",
+          "dam-5",
+          "sec-3"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-5"
+        ],
+        "owasp-asi_references": [
+          "asi01-2026"
+        ],
+        "owasp-llm_references": [
+          "llm01-2026",
+          "llm03-2026",
+          "llm05-2026",
+          "llm06-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-18",
+          "ri-20"
+        ]
+      },
+      "title": "Prompt Injection"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-14",
+      "kind": "risk",
+      "path": "docs/_risks/ri-14_inadequate-system-alignment.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c2-a5",
+          "c3-s2-a14",
+          "c3-s2-a9"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3",
+          "dam-5"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-advice",
+          "t3-5",
+          "t3-6"
+        ],
+        "nist-sp-800-53r5_references": [
+          "ca-6",
+          "ra-3",
+          "sa-11"
+        ],
+        "owasp-asi_references": [
+          "asi10-2026"
+        ],
+        "owasp-llm_references": [
+          "llm08-2026"
+        ],
+        "owasp-ml_references": [
+          "ml08-2023"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-4",
+          "ri-6"
+        ]
+      },
+      "title": "Inadequate System Alignment"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-16",
+      "kind": "risk",
+      "path": "docs/_risks/ri-16_bias-and-discrimination.md",
+      "references": {
+        "canada-regulations_references": [
+          "chra-s3-s5",
+          "csa-sn-11-348",
+          "iosco-fr-02-2026",
+          "ni-81-107",
+          "on-hrc-s1",
+          "osfi-e23-2027-p3-2",
+          "qc-amf-ai-guideline"
+        ],
+        "eu-ai-act_references": [
+          "c2-a5",
+          "c3-s2-a10",
+          "c3-s2-a14",
+          "c3-s2-a9",
+          "c3-s3-a27"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3",
+          "mgt-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-advice",
+          "t3-6",
+          "t4-3"
+        ],
+        "nist-ai-600-1_references": [
+          "2-6"
+        ],
+        "uk-regulations_references": [
+          "consumer-credit-act-1974",
+          "equality-act-2010",
+          "fca-ai-approach-2024",
+          "fca-prin",
+          "fca-prin-2a",
+          "ico-ai-data-protection-toolkit",
+          "ico-guidance-ai-data-protection",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-19",
+          "ri-22"
+        ]
+      },
+      "title": "Bias and Discrimination"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-17",
+      "kind": "risk",
+      "path": "docs/_risks/ri-17_lack-of-explainability.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-idpc-rule-3900",
+          "ciro-rules-phase-4",
+          "csa-ciro-sn-31-368",
+          "csa-sn-11-348",
+          "csa-sn-31-342",
+          "iosco-fr-02-2026",
+          "ni-31-103-s13-2-1",
+          "ni-31-103-s13-3",
+          "ni-31-103-s14-2",
+          "ni-81-102",
+          "osfi-e23-2027",
+          "qc-amf-ai-guideline",
+          "qc-p39-s12-1"
+        ],
+        "eu-ai-act_references": [
+          "c3-s2-a13",
+          "c3-s2-a14",
+          "c4-a50",
+          "c9-s4-a86"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3",
+          "mgt-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-disclosure",
+          "t3-7",
+          "t4-2",
+          "t5-1",
+          "t6-4"
+        ],
+        "owasp-asi_references": [
+          "asi09-2026"
+        ],
+        "uk-regulations_references": [
+          "fca-ai-approach-2024",
+          "fca-cobs-9",
+          "fca-cobs-9a",
+          "fca-prin-2a",
+          "ico-ai-data-protection-toolkit",
+          "ico-guidance-ai-data-protection",
+          "pra-ss1-23-mrm",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-16",
+          "ri-18",
+          "ri-22"
+        ]
+      },
+      "title": "Lack of Explainability"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-18",
+      "kind": "risk",
+      "path": "docs/_risks/ri-18_model-overreach-expanded-use.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-acr-2026",
+          "ciro-gn-2300-21-003",
+          "ciro-rules-phase-4",
+          "csa-sn-11-348",
+          "csa-sn-31-342",
+          "ni-31-103-s11-1",
+          "ni-31-103cp",
+          "ni-33-109-f5",
+          "ni-81-102",
+          "ni-81-106",
+          "osfi-b-10",
+          "osfi-e23-2027-p3-6"
+        ],
+        "eu-ai-act_references": [
+          "c3-s1-a6",
+          "c3-s2-a14",
+          "c3-s3-a26"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "mgt-1",
+          "mgt-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-advice",
+          "t3-5",
+          "t3-7",
+          "t4-9"
+        ],
+        "owasp-llm_references": [
+          "llm03-2026"
+        ],
+        "uk-regulations_references": [
+          "fca-ai-approach-2024",
+          "fca-cobs-9",
+          "fca-cobs-9a",
+          "fca-prin",
+          "fca-prin-2a",
+          "fca-smcr",
+          "fca-sysc",
+          "pra-ai-mrm-roundtable-2025",
+          "pra-ss1-23-mrm"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-17",
+          "ri-22"
+        ]
+      },
+      "title": "Model Overreach / Expanded Use"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-19",
+      "kind": "risk",
+      "path": "docs/_risks/ri-19_data-quality-and-drift.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-acr-2026",
+          "ciro-gn-2300-21-003",
+          "ciro-idpc-rule-3800",
+          "csa-sn-11-348",
+          "iosco-fr-02-2026",
+          "ni-31-103-s11-5",
+          "ni-31-103cp",
+          "osfi-b13-d2",
+          "osfi-e23-2027-p3-2",
+          "osfi-e23-2027-p3-6",
+          "pipeda-schedule1",
+          "qc-amf-ai-guideline"
+        ],
+        "eu-ai-act_references": [
+          "c3-s2-a10",
+          "c3-s2-a15",
+          "c3-s2-a9"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "dam-3",
+          "dam-7"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-model-risk",
+          "t3-4",
+          "t3-6"
+        ],
+        "nist-ai-600-1_references": [
+          "2-8"
+        ],
+        "uk-regulations_references": [
+          "boe-fca-ai-survey-2024",
+          "fca-ai-approach-2024",
+          "fca-prin-2a",
+          "fca-sysc",
+          "ico-ai-data-protection-toolkit",
+          "ico-guidance-ai-data-protection",
+          "pra-ai-mrm-roundtable-2025",
+          "pra-ss1-23-mrm",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-16",
+          "ri-4",
+          "ri-9"
+        ]
+      },
+      "title": "Data Quality and Drift"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-20",
+      "kind": "risk",
+      "path": "docs/_risks/ri-20_reputational-risk.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-acr-2026",
+          "csa-ciro-sn-31-363",
+          "csa-sn-11-348",
+          "iosco-fr-02-2026",
+          "ni-31-103-s13-4",
+          "ni-81-102",
+          "ni-81-107",
+          "osfi-e23-2027"
+        ],
+        "eu-ai-act_references": [
+          "c2-a5",
+          "c3-s2-a14",
+          "c3-s2-a9"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-4",
+          "bcm-3",
+          "mgt-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-disclosure",
+          "t5-4"
+        ],
+        "owasp-llm_references": [
+          "llm07-2026"
+        ],
+        "uk-regulations_references": [
+          "boe-fca-ai-survey-2024",
+          "equality-act-2010",
+          "fca-ai-approach-2024",
+          "fca-cobs-4",
+          "fca-prin",
+          "fca-prin-2a",
+          "fca-smcr",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-16",
+          "ri-4"
+        ]
+      },
+      "title": "Reputational Risk"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-22",
+      "kind": "risk",
+      "path": "docs/_risks/ri-22_regulatory-compliance-and-oversight.md",
+      "references": {
+        "canada-regulations_references": [
+          "ciro-acr-2026",
+          "ciro-gn-2300-21-003",
+          "ciro-idpc-rule-3100-3600",
+          "ciro-idpc-rule-3800",
+          "ciro-idpc-rule-3900",
+          "ciro-rules-phase-4",
+          "csa-ciro-sn-31-363",
+          "csa-ciro-sn-31-368",
+          "csa-sn-11-348",
+          "csa-sn-31-342",
+          "iosco-fr-02-2026",
+          "ni-31-103-s11-1",
+          "ni-31-103-s13-2",
+          "ni-31-103-s13-2-1",
+          "ni-31-103-s13-3",
+          "ni-31-103-s13-4",
+          "ni-31-103cp",
+          "ni-33-109-f5",
+          "ni-81-102",
+          "ni-81-106",
+          "ni-81-107",
+          "osfi-b-10",
+          "osfi-e23-2027",
+          "pipeda",
+          "qc-amf-ai-guideline",
+          "qc-p39-s12-1",
+          "qc-p39-s3-3-s17"
+        ],
+        "eu-ai-act_references": [
+          "c3-s2-a10",
+          "c3-s2-a8",
+          "c3-s3-a16",
+          "c3-s3-a21",
+          "c3-s3-a27"
+        ],
+        "ffiec-itbooklets_references": [
+          "aud-3",
+          "aud-4",
+          "mgt-1",
+          "mgt-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-governance",
+          "t3-1",
+          "t3-2",
+          "t3-3",
+          "t4-7",
+          "t5-2",
+          "t6-6"
+        ],
+        "nist-ai-600-1_references": [
+          "2-9"
+        ],
+        "uk-regulations_references": [
+          "boe-fca-ai-survey-2024",
+          "boe-fca-pra-critical-third-parties-2024",
+          "consumer-credit-act-1974",
+          "equality-act-2010",
+          "fca-ai-approach-2024",
+          "fca-cobs-4",
+          "fca-cobs-9",
+          "fca-cobs-9a",
+          "fca-fg16-5-cloud",
+          "fca-mifidpru",
+          "fca-prin",
+          "fca-prin-2a",
+          "fca-smcr",
+          "fca-sysc",
+          "ico-ai-data-protection-toolkit",
+          "ico-guidance-ai-data-protection",
+          "pra-ai-mrm-roundtable-2025",
+          "pra-ss1-23-mrm",
+          "pra-ss2-21-outsourcing",
+          "uk-gdpr-dpa-2018"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-16",
+          "ri-17",
+          "ri-18"
+        ]
+      },
+      "title": "Regulatory Compliance and Oversight"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-23",
+      "kind": "risk",
+      "path": "docs/_risks/ri-23_intellectual-property-ip-and-copyright.md",
+      "references": {
+        "eu-ai-act_references": [
+          "c3-s2-a10",
+          "c3-s2-a11",
+          "c5-s2-a53"
+        ],
+        "ffiec-itbooklets_references": [
+          "dam-6",
+          "mgt-1",
+          "mgt-2",
+          "ots-2"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-4",
+          "t4-4"
+        ],
+        "nist-ai-600-1_references": [
+          "2-10"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-1",
+          "ri-22"
+        ]
+      },
+      "title": "Intellectual Property (IP) and Copyright"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-24",
+      "kind": "risk",
+      "path": "docs/_risks/ri-24_agent-action-authorization-bypass.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00012",
+          "ATR-2026-00040",
+          "ATR-2026-00098",
+          "ATR-2026-00118"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-5",
+          "t3-7"
+        ],
+        "owasp-asi_references": [
+          "asi02-2026",
+          "asi03-2026"
+        ],
+        "owasp-llm_references": [
+          "llm03-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-18",
+          "ri-22"
+        ]
+      },
+      "title": "Agent Action Authorization Bypass"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-25",
+      "kind": "risk",
+      "path": "docs/_risks/ri-25_tool-chain-manipulation-and-injection.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00010",
+          "ATR-2026-00011",
+          "ATR-2026-00012",
+          "ATR-2026-00013"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-5",
+          "t3-7"
+        ],
+        "owasp-asi_references": [
+          "asi02-2026",
+          "asi05-2026"
+        ],
+        "owasp-llm_references": [
+          "llm01-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-24",
+          "ri-4"
+        ]
+      },
+      "title": "Tool Chain Manipulation and Injection"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-26",
+      "kind": "risk",
+      "path": "docs/_risks/ri-26_mcp-server-supply-chain-compromise.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00010"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-5",
+          "t4-4"
+        ],
+        "owasp-asi_references": [
+          "asi04-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-1",
+          "ri-8",
+          "ri-9"
+        ]
+      },
+      "title": "MCP Server Supply Chain Compromise"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-27",
+      "kind": "risk",
+      "path": "docs/_risks/ri-27_agent-state-persistence-poisoning.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00075"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-5",
+          "t6-5"
+        ],
+        "owasp-asi_references": [
+          "asi06-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-24",
+          "ri-9"
+        ]
+      },
+      "title": "Agent State Persistence Poisoning"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-28",
+      "kind": "risk",
+      "path": "docs/_risks/ri-28_multi-agent-trust-boundary-violations.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00030",
+          "ATR-2026-00076"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t3-5",
+          "t3-7",
+          "t6-5"
+        ],
+        "owasp-asi_references": [
+          "asi07-2026",
+          "asi08-2026",
+          "asi10-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-20",
+          "ri-24",
+          "ri-27"
+        ]
+      },
+      "title": "Multi-Agent Trust Boundary Violations"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-29",
+      "kind": "risk",
+      "path": "docs/_risks/ri-29_agent-mediated-credential-discovery-and-harvesting.md",
+      "references": {
+        "atr_references": [
+          "ATR-2026-00113"
+        ],
+        "iosco-supervisory-toolkit_references": [
+          "t2-cybersecurity",
+          "t3-5",
+          "t6-5"
+        ],
+        "owasp-asi_references": [
+          "asi03-2026"
+        ],
+        "owasp-llm_references": [
+          "llm01-2026",
+          "llm03-2026"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-24",
+          "ri-25",
+          "ri-26"
+        ]
+      },
+      "title": "Agent-Mediated Credential Discovery and Harvesting"
+    },
+    {
+      "framework": "AIGF",
+      "id": "ri-30",
+      "kind": "risk",
+      "path": "docs/_risks/ri-30_skill-plugin-supply-chain-compromise.md",
+      "references": {
+        "owasp-asi_references": [
+          "asi04-2026"
+        ],
+        "owasp-llm_references": [
+          "llm03-2025",
+          "llm06-2025"
+        ]
+      },
+      "relations": {
+        "related_risks": [
+          "ri-10",
+          "ri-25",
+          "ri-26",
+          "ri-27",
+          "ri-29",
+          "ri-8",
+          "ri-9"
+        ]
+      },
+      "title": "Skill/Plugin Supply Chain Compromise"
+    }
+  ],
+  "source": "aigf"
+}

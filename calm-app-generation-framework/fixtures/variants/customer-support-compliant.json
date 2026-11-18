@@ -1,0 +1,285 @@
+{
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "metadata": {
+    "id": "customer-support-compliant-v2",
+    "name": "Customer Support Agent - Compliant Version",
+    "description": "Improved customer support agent architecture with security controls (authorization, audit, credentials, network boundary)"
+  },
+  "nodes": [
+    {
+      "unique-id": "user",
+      "node-type": "actor",
+      "name": "Customer",
+      "description": "End customer interacting with the support agent",
+      "metadata": {
+        "authentication": "required"
+      }
+    },
+    {
+      "unique-id": "support-agent",
+      "node-type": "ai-agent",
+      "name": "Support Agent",
+      "description": "Semi-autonomous customer-support AI agent with security controls",
+      "metadata": {
+        "autonomy_level": "semi_autonomous",
+        "has_external_action": true,
+        "can_perform_high_impact_action": true,
+        "accesses_sensitive_data": true,
+        "has_external_connectivity": true,
+        "has_tool_access": true,
+        "uses_credentials": true,
+        "acceptance_testing": true,
+        "test_evidence": "sat-report-v2",
+        "sat_signoff": "approved",
+        "capabilities": ["tool_invocation", "api_calling", "data_access"],
+        "controls": ["input_validation", "output_filtering", "rate_limiting"]
+      }
+    },
+    {
+      "unique-id": "customer-data",
+      "node-type": "datastore",
+      "name": "Customer Data",
+      "description": "Datastore holding customer PII and order history",
+      "metadata": {
+        "data_classification": "confidential",
+        "contains_pii": true,
+        "access_control_type": "rbac",
+        "encryption": "enabled",
+        "controls": ["encryption_at_rest", "encryption_in_transit", "access_logging"]
+      }
+    },
+    {
+      "unique-id": "rbac-system",
+      "node-type": "authorization-service",
+      "name": "RBAC System",
+      "description": "Role-based access control service for data access",
+      "metadata": {
+        "authorization_model": "rbac",
+        "controls": ["policy_versioning", "audit_logging"]
+      }
+    },
+    {
+      "unique-id": "api-gateway",
+      "node-type": "api-gateway",
+      "name": "API Gateway",
+      "description": "Mediates and controls all external connectivity",
+      "metadata": {
+        "filtering_enabled": true,
+        "rate_limiting_enabled": true,
+        "authentication_enforcement": true,
+        "network_segmentation": "enabled",
+        "egress_control": "enabled",
+        "vpc_configuration": "private_subnet",
+        "approved_destinations": ["refund-api", "internet"],
+        "destination_allowlist": ["refund-api"],
+        "controls": ["waf_enabled", "ddos_protection", "request_logging", "egress_filtering"]
+      }
+    },
+    {
+      "unique-id": "internet",
+      "node-type": "external-system",
+      "name": "Internet",
+      "description": "Public internet reached via the API gateway",
+      "metadata": {
+        "trust_level": "untrusted",
+        "requires_authentication": false,
+        "encryption_support": false
+      }
+    },
+    {
+      "unique-id": "authz-service",
+      "node-type": "authorization-service",
+      "name": "Authorization Service",
+      "description": "Policy-engine authorization for high-impact actions",
+      "metadata": {
+        "authorization_model": "policy_engine",
+        "controls": ["policy_versioning", "audit_logging", "mfa_enforcement"]
+      }
+    },
+    {
+      "unique-id": "refund-api",
+      "node-type": "external-system",
+      "name": "Refund API",
+      "description": "External refund processing API (high-impact)",
+      "metadata": {
+        "high_impact_capability": true,
+        "trust_level": "trusted",
+        "requires_authentication": true,
+        "encryption_support": true,
+        "controls": ["rate_limiting", "request_logging", "api_key_rotation"]
+      }
+    },
+    {
+      "unique-id": "audit-service",
+      "node-type": "audit-service",
+      "name": "Audit Service",
+      "description": "Immutable audit log of agent decisions and actions",
+      "metadata": {
+        "retention_period": "7_years",
+        "immutable": true,
+        "controls": ["encryption_at_rest", "tamper_detection", "audit_of_audits"]
+      }
+    },
+    {
+      "unique-id": "secret-manager",
+      "node-type": "credential-store",
+      "name": "Secret Manager",
+      "description": "Encrypted credential store with rotation",
+      "metadata": {
+        "encryption": "enabled",
+        "rotation_enabled": true,
+        "access_control": "fine_grained",
+        "controls": ["mfa_for_access", "access_logging", "key_rotation"]
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "unique-id": "r1",
+      "description": "Customer interacts with support agent",
+      "relationship-type": {
+        "interacts": {
+          "actor": "user",
+          "nodes": ["support-agent"]
+        }
+      }
+    },
+    {
+      "unique-id": "r2",
+      "description": "Agent accesses customer data",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "support-agent"},
+          "destination": {"node": "customer-data"}
+        }
+      },
+      "metadata": {
+        "governance_type": "can-access",
+        "controls": ["authenticated_access", "audit_logging"]
+      }
+    },
+    {
+      "unique-id": "r2a",
+      "description": "Agent authorized by RBAC system",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "support-agent"},
+          "destination": {"node": "rbac-system"}
+        }
+      },
+      "metadata": {
+        "governance_type": "authorized-by",
+        "controls": ["rbac_enforcement"]
+      }
+    },
+    {
+      "unique-id": "r3",
+      "description": "Agent communicates through API gateway",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "support-agent"},
+          "destination": {"node": "api-gateway"}
+        }
+      },
+      "metadata": {"governance_type": "communicates-through"}
+    },
+    {
+      "unique-id": "r3a",
+      "description": "Gateway accesses the internet",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "api-gateway"},
+          "destination": {"node": "internet"}
+        }
+      },
+      "metadata": {
+        "governance_type": "can-access",
+        "controls": ["filtering", "rate_limiting"]
+      }
+    },
+    {
+      "unique-id": "r4",
+      "description": "Gateway invokes the refund API",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "api-gateway"},
+          "destination": {"node": "refund-api"}
+        }
+      },
+      "metadata": {
+        "governance_type": "invokes",
+        "controls": ["rate_limiting", "request_validation"]
+      }
+    },
+    {
+      "unique-id": "r4a",
+      "description": "Agent authorized by authorization service",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "support-agent"},
+          "destination": {"node": "authz-service"}
+        }
+      },
+      "metadata": {
+        "governance_type": "authorized-by",
+        "controls": ["mfa_required", "policy_enforcement"]
+      }
+    },
+    {
+      "unique-id": "r5",
+      "description": "Agent actions audited by audit service",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "support-agent"},
+          "destination": {"node": "audit-service"}
+        }
+      },
+      "metadata": {
+        "governance_type": "audited-by",
+        "controls": ["action_logging", "decision_logging"]
+      }
+    },
+    {
+      "unique-id": "r5a",
+      "description": "Authorization decisions audited by audit service",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "authz-service"},
+          "destination": {"node": "audit-service"}
+        }
+      },
+      "metadata": {
+        "governance_type": "audited-by",
+        "controls": ["decision_logging"]
+      }
+    },
+    {
+      "unique-id": "r6",
+      "description": "Agent uses credentials from secret manager",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "support-agent"},
+          "destination": {"node": "secret-manager"}
+        }
+      },
+      "metadata": {
+        "governance_type": "uses",
+        "controls": ["authenticated_access", "access_logging"]
+      }
+    },
+    {
+      "unique-id": "r6a",
+      "description": "Authorization service uses credentials from secret manager",
+      "relationship-type": {
+        "connects": {
+          "source": {"node": "authz-service"},
+          "destination": {"node": "secret-manager"}
+        }
+      },
+      "metadata": {
+        "governance_type": "uses",
+        "controls": ["authenticated_access", "access_logging"]
+      }
+    }
+  ]
+}

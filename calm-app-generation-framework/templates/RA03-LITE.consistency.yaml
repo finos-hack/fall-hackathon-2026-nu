@@ -1,0 +1,12 @@
+# Option -> attribute consistency for RA03-LITE (read by calm_generation.attributes.consistency_errors).
+# The published template (p.json) is reused for every application; the option choices (c.json) pick the variant.
+# An attribute that describes the same design decision as an option must agree with the chosen option:
+# when the attribute is empty it is derived from the option, when it is set and disagrees the form is rejected.
+ra_id: RA03-LITE
+rules:
+  - option: opt-approval-path
+    choice: payment-via-human-approval-service
+    requires: {PAYMENT_AGENT_PAYMENT_APPROVAL_PATH: via-human-approval}
+  - option: opt-approval-path
+    choice: direct-to-payment-api
+    requires: {PAYMENT_AGENT_PAYMENT_APPROVAL_PATH: direct}

@@ -1,0 +1,351 @@
+# Risk_Rules_Catalog: one rule per AIGF risk used by the Invoice-Lite app. Dimension triggers are Spectral rules over
+# CALM metadata (vocabulary in controls.catalog.yaml). Severity is NOT stored here: it is computed from
+# likelihood x impact through governance-execution-framework/config/scoring_profile.yaml ("illustrative, not approved policy").
+catalog: risks
+version: 2
+label: illustrative, not approved policy
+items:
+- risk_id: AIGF-RI-018
+  title: Model Overreach / Expanded Use
+  version: 1
+  type: risk
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: ri-18
+    path: docs/_risks/ri-18_*.md
+  references: []
+  dimension: Autonomy
+  likelihood: 4
+  impact: 4
+  confirmation:
+    likelihood: 4
+    impact: 4
+    by: seed-import
+    role: seed
+    at: '2026-01-01T00:00:00+00:00'
+    note: seed value accepted at import; not an approved policy judgement
+  mandatory_trigger: true
+  rule_codes:
+  - risk-agent-autonomous-execution
+  remediation: Require human approval or restrict agent autonomy to supervised.
+  spectral_rules:
+    risk-agent-autonomous-execution:
+      description: Agent runs with autonomy=autonomous
+      message: Agent at {{path}} is autonomous (AIGF ri-18)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: autonomy
+        function: pattern
+        functionOptions:
+          notMatch: ^autonomous$
+- risk_id: AIGF-RI-024
+  title: Agent Action Authorization Bypass
+  version: 2
+  type: risk
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: APPROVED
+    to: APPROVED
+    by: cyber-remediation-build
+    role: governance_admin
+    rationale: added risk-production-change-without-approval (cyber remediation)
+    at: '2026-11-18T12:46:10.271281+00:00'
+    version: 2
+  source:
+    framework: AIGF
+    id: ri-24
+    path: docs/_risks/ri-24_*.md
+  references: []
+  dimension: Privilege & Capability
+  likelihood: 3
+  impact: 5
+  confirmation:
+    likelihood: 3
+    impact: 5
+    by: seed-import
+    role: seed
+    at: '2026-01-01T00:00:00+00:00'
+    note: seed value accepted at import; not an approved policy judgement
+  mandatory_trigger: true
+  rule_codes:
+  - risk-payment-bypasses-approval
+  - risk-production-change-without-approval
+  remediation: Route every payment through the Human Approval Service and remove the
+    direct Payment API path.
+  spectral_rules:
+    risk-payment-bypasses-approval:
+      description: A payment-executing agent can reach the Payment API without approval
+      message: Agent at {{path}} reaches the Payment API directly (AIGF ri-24)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent' && @.metadata.can_execute_payment==true)].metadata
+      then:
+        field: payment_approval_path
+        function: pattern
+        functionOptions:
+          notMatch: ^direct$
+    risk-production-change-without-approval:
+      description: A production-changing agent acts without human approval
+      message: Agent at {{path}} changes production directly (AIGF ri-24)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent' && @.metadata.action_capability=='production-change')].metadata
+      then:
+        field: action_approval_path
+        function: pattern
+        functionOptions:
+          notMatch: ^direct$
+- risk_id: AIGF-RI-010
+  title: Prompt Injection
+  version: 1
+  type: risk
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: ri-10
+    path: docs/_risks/ri-10_*.md
+  references: []
+  dimension: Connectivity
+  likelihood: 3
+  impact: 3
+  confirmation:
+    likelihood: 3
+    impact: 3
+    by: seed-import
+    role: seed
+    at: '2026-01-01T00:00:00+00:00'
+    note: seed value accepted at import; not an approved policy judgement
+  mandatory_trigger: false
+  rule_codes:
+  - risk-untrusted-input-unfiltered
+  remediation: Enable input filtering on agents that read untrusted documents.
+  spectral_rules:
+    risk-untrusted-input-unfiltered:
+      description: Agent reads untrusted input without filtering
+      message: Agent at {{path}} has no input filtering (AIGF ri-10)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: input_filtering
+        function: pattern
+        functionOptions:
+          match: ^enabled$
+- risk_id: AIGF-RI-005
+  title: Foundation Model Versioning
+  version: 1
+  type: risk
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: ri-5
+    path: docs/_risks/ri-5_*.md
+  references: []
+  dimension: Operational Criticality
+  likelihood: 2
+  impact: 3
+  confirmation:
+    likelihood: 2
+    impact: 3
+    by: seed-import
+    role: seed
+    at: '2026-01-01T00:00:00+00:00'
+    note: seed value accepted at import; not an approved policy judgement
+  mandatory_trigger: false
+  rule_codes:
+  - risk-model-version-floating
+  remediation: Pin the foundation model to an explicit version.
+  spectral_rules:
+    risk-model-version-floating:
+      description: Foundation model version is not pinned
+      message: Model at {{path}} is not version-pinned (AIGF ri-5)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:llm')].metadata
+      then:
+        field: model_version
+        function: pattern
+        functionOptions:
+          match: ^pinned$
+- risk_id: AIGF-RI-001
+  title: Information Leaked To Hosted Model
+  version: 1
+  type: risk
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: ri-1
+    path: docs/_risks/ri-1_*.md
+  references: []
+  dimension: Data Exposure
+  likelihood: 3
+  impact: 4
+  confirmation:
+    likelihood: 3
+    impact: 4
+    by: seed-import
+    role: seed
+    at: '2026-01-01T00:00:00+00:00'
+    note: seed value accepted at import; not an approved policy judgement
+  mandatory_trigger: false
+  rule_codes:
+  - risk-sensitive-data-to-model
+  remediation: Filter sensitive data before it reaches the hosted model.
+  spectral_rules:
+    risk-sensitive-data-to-model:
+      description: Sensitive data may reach the hosted model unfiltered
+      message: Model at {{path}} has no sensitive-data filtering (AIGF ri-1)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:llm')].metadata
+      then:
+        field: sensitive_data_filtering
+        function: pattern
+        functionOptions:
+          match: ^enabled$
+- risk_id: AIGF-RI-022
+  title: Regulatory Compliance and Oversight
+  version: 1
+  type: risk
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: ri-22
+    path: docs/_risks/ri-22_*.md
+  references: []
+  dimension: Human Oversight
+  likelihood: 3
+  impact: 4
+  confirmation:
+    likelihood: 3
+    impact: 4
+    by: seed-import
+    role: seed
+    at: '2026-01-01T00:00:00+00:00'
+    note: seed value accepted at import; not an approved policy judgement
+  mandatory_trigger: false
+  rule_codes:
+  - risk-no-audit-trail
+  remediation: Add an Audit Service so agent decisions can be reviewed.
+  spectral_rules:
+    risk-no-audit-trail:
+      description: No audit trail exists for agent decisions
+      message: No node with metadata.role 'audit' found (AIGF ri-22)
+      severity: error
+      given: $
+      then:
+        field: nodes
+        function: schema
+        functionOptions:
+          schema:
+            type: array
+            contains:
+              type: object
+              required:
+              - metadata
+              properties:
+                metadata:
+                  type: object
+                  required:
+                  - role
+                  properties:
+                    role:
+                      const: audit

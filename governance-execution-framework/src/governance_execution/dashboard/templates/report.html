@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Assessment {{ s.trace_id[:12] }}{% endblock %}{% block body %}
+<div class="page-head"><h1>Assessment: {{ s.app_id or s.trace_id }}</h1>
+{% if not export %}<div class="page-actions"><a class="btn" href="/assessments">&lsaquo; All assessments</a>
+  <button class="btn" type="button" onclick="fetch('/api/replay/{{ s.trace_id }}',{method:'POST'}).then(r=>r.json()).then(j=>alert(j.identical ? 'Replay identical to the original' : 'Replay differs: ' + JSON.stringify(j.differences)))">Replay</button>
+  <a class="btn" href="/assessments/{{ s.trace_id }}/export">Export</a></div>{% endif %}
+<p class="muted">Trace <code>{{ s.trace_id }}</code> · mode {{ s.mode }} · executor <b>{{ s.executor }}</b> {{ s.executor_note or "" }} · {{ s.time }}</p></div>
+{% if not export %}<nav class="tabs" aria-label="Assessment views"><a class="tab on" href="/assessments/{{ s.trace_id }}">Report</a>
+<a class="tab" href="/assessments/{{ s.trace_id }}/flow">Flow</a><a class="tab" href="/assessments/{{ s.trace_id }}/architecture">Architecture</a>
+<a class="tab" href="/assessments/{{ s.trace_id }}/risk-matrix">Risk matrix</a><a class="tab" href="/assessments/{{ s.trace_id }}/decider">Decider</a>
+<a class="tab" href="/assessments/{{ s.trace_id }}/trace">Traceability</a><a class="tab" href="/assessments/{{ s.trace_id }}/execution">Execution timeline</a></nav>{% endif %}
+<div class="report">
+{% include "_report_body.html" %}
+{% if export %}<section><h2>Flow</h2><pre class="mermaid">{{ flow }}</pre></section>{% if arch %}<section><h2>Architecture</h2><pre class="mermaid">{{ arch }}</pre></section>{% endif %}{% endif %}
+{% if not export %}<details class="section"><summary>Artifacts (JSON) <span class="muted">({{ kinds.values()|map("length")|sum }})</span></summary><div class="body"><ul class="plain">{% for k, ids in kinds.items() %}{% for i in ids %}<li><a href="/artifacts/{{ s.trace_id }}/{{ k }}/{{ i }}">{{ k }}/{{ i }}</a></li>{% endfor %}{% endfor %}</ul></div></details>{% endif %}
+</div>
+{% endblock %}

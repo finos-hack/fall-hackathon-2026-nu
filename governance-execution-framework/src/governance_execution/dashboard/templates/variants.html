@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block body %}<div class="page-head"><h1>Variant comparison</h1><p class="muted">Latest non-replay assessment per application.</p></div>
+<table><tr><th>App</th><th>CALM</th><th>Gap_Level</th><th>Risk level</th><th>Approval tier</th><th>Failed controls</th><th>Triggered risks</th><th>Assessment status</th><th>Decision</th></tr>
+{% for r in rows %}<tr><td><a href="/assessments/{{ r.s.trace_id }}">{{ r.s.app_id }}</a></td><td>{{ r.calm }}</td><td>{{ r.gap or "" }}</td><td>{{ r.profile or "" }}</td><td>{{ r.tier or "" }}</td>
+<td>{{ r.failed|join(", ") }}</td><td>{{ r.risks|join(", ") }}</td><td><span class="status {{ r.s.status }}">{{ r.s.status }}</span></td><td>{% if r.s.decision %}<span class="decision {{ r.s.decision }}">{{ r.s.decision }}</span>{% else %}<span class="muted">no decision</span>{% endif %}</td></tr>{% endfor %}</table>{% endblock %}

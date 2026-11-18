@@ -1,0 +1,39 @@
+{
+  "py_pglite": "0.5.3",
+  "python": "3.12.12",
+  "stock_inmemory": {
+    "first_start_s": 1.6,
+    "first_version": "PostgreSQL 17.4 on x86_64-pc-linux-gnu, compiled by emcc (Em",
+    "first_rows": [
+      [
+        1,
+        "persist-me"
+      ]
+    ],
+    "json_roundtrip": "2",
+    "second_start_s": 1.62,
+    "second_version": "PostgreSQL 17.4 on x86_64-pc-linux-gnu, compiled by emcc (Em",
+    "second_rows": "ERR UndefinedTable",
+    "persisted": false
+  },
+  "custom_datadir": {
+    "first_start_s": 13.21,
+    "first_version": "PostgreSQL 17.4 on x86_64-pc-linux-gnu, compiled by emcc (Em",
+    "first_rows": [
+      [
+        1,
+        "persist-me"
+      ]
+    ],
+    "json_roundtrip": "2",
+    "second_start_s": 5.22,
+    "second_version": "PostgreSQL 17.4 on x86_64-pc-linux-gnu, compiled by emcc (Em",
+    "second_rows": [
+      [
+        1,
+        "persist-me"
+      ]
+    ],
+    "persisted": true
+  }
+}

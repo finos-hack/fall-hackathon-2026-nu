@@ -1,0 +1,160 @@
+{
+  "$id": "https://agip.example/patterns/P16-controlled-remediation.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "A remediation tool applies only allow-listed actions to a tagged host fleet.",
+  "metadata": {
+    "approved_by": "architecture-review",
+    "pattern-id": "P16",
+    "related_controls": [
+      "AIGF-MI-018"
+    ],
+    "related_risks": [
+      "AIGF-RI-024"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Tool that applies remediation actions to hosts."
+            },
+            "metadata": {
+              "properties": {
+                "input_validation": {
+                  "enum": [
+                    "enforced",
+                    "none"
+                  ]
+                },
+                "remediation_scope": {
+                  "enum": [
+                    "allow-listed",
+                    "any"
+                  ]
+                }
+              },
+              "required": [
+                "input_validation",
+                "remediation_scope"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Remediation Tool"
+            },
+            "node-type": {
+              "const": "ai:tool"
+            },
+            "unique-id": {
+              "const": "remediation-tool"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Hosts that remediation actions are applied to."
+            },
+            "metadata": {
+              "properties": {
+                "environment": {
+                  "enum": [
+                    "production",
+                    "non-production"
+                  ]
+                },
+                "host_tagging": {
+                  "enum": [
+                    "enforced",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "environment",
+                "host_tagging"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Host Fleet"
+            },
+            "node-type": {
+              "const": "system"
+            },
+            "unique-id": {
+              "const": "host-fleet"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Remediation tool applies actions to the hosts"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "host-fleet"
+                  },
+                  "source": {
+                    "node": "remediation-tool"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "tool-changes-hosts"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P16 Controlled Remediation",
+  "type": "object"
+}

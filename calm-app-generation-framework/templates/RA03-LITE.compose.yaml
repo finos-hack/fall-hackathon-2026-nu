@@ -1,0 +1,103 @@
+# Composition spec for RA03-LITE (Invoice-to-Payment Lite). Input to calm_generation.composer.
+# Output: templates/RA03-LITE.json (one CALM 1.2 pattern for `calm generate`).
+ra_id: RA03-LITE
+version: 2
+title: RA03-LITE Invoice-to-Payment Lite
+description: Invoices arrive through a gateway, an agent extracts and checks them, and a payment agent pays approved invoices through a payment tool.
+patterns: [P02, P03, P07, P08, P11, P12, P13, P14]
+
+components:
+  - id: api-gateway
+    from: [P02/api-gateway]
+    name: API Gateway
+    description: Entry point for supplier invoice submissions.
+  - id: invoice-processing-service
+    from: [P03/app-service]
+    name: Invoice Processing Service
+    description: Receives invoices and hands them to the invoice agent.
+    bind: {role: invoice-processing, exposure: internal, mediation: gateway, criticality: high}
+  - id: invoice-intelligence-agent
+    from: [P12/agent, P14/agent]
+    name: Invoice Intelligence Agent
+    description: Extracts invoice data, matches it to records and proposes payments.
+    bind: {privilege: read-only, permitted_tools: invoice-db-read, credential_storage: vault, observability: enabled,
+           acceptance_testing: completed, input_filtering: enabled, decision_impact: medium}
+  - id: payment-agent
+    from: [P12/agent, P13/agent, P14/agent]
+    name: Payment Agent
+    description: Executes approved supplier payments through the payment tool.
+    bind: {permitted_tools: payment-tool, credential_storage: vault, observability: enabled, acceptance_testing: completed,
+           input_filtering: enabled, can_execute_payment: true, decision_impact: financial}
+  - id: foundation-model
+    from: [P11/foundation-model]
+    name: Foundation Model
+    description: Language model used by both agents.
+    bind: {guardrails: enabled, sensitive_data_filtering: enabled}
+  - id: payment-tool
+    from: [P12/tool]
+    name: Payment Tool
+    description: Tool that submits payment instructions.
+    bind: {input_validation: enforced, mcp_server: governed}
+  - id: payment-api
+    from: [P07/external-system]
+    name: Payment API
+    description: External payment rail (simulated).
+    bind: {role: payment-api, mediation: gateway}
+  - id: human-approval-service
+    from: [P13/human-approval]
+    name: Human Approval Service
+    description: Finance approver reviews payments before release.
+  - id: invoice-db
+    from: [P08/data-store]
+    name: Invoice DB
+    description: Invoices, suppliers and payment history.
+    bind: {access_control: rbac, encryption_at_rest: enabled}
+  - id: audit-service
+    from: [P14/audit-service]
+    name: Audit Service
+    description: Records every agent decision and payment.
+    option: opt-audit
+
+relationships:
+  - {id: r-gateway-to-invoice-service, from: P03/caller-calls-service, map: {caller: api-gateway, app-service: invoice-processing-service},
+     description: Gateway forwards invoices to the processing service}
+  - {id: r-service-to-invoice-agent, connects: [invoice-processing-service, invoice-intelligence-agent],
+     description: Service hands invoices to the invoice agent}
+  - {id: r-invoice-agent-to-model, from: P11/consumer-calls-model, map: {model-consumer: invoice-intelligence-agent, foundation-model: foundation-model}}
+  - {id: r-payment-agent-to-model, from: P11/consumer-calls-model, map: {model-consumer: payment-agent, foundation-model: foundation-model}}
+  - {id: r-invoice-agent-to-db, from: P08/consumer-reads-store, map: {data-consumer: invoice-intelligence-agent, data-store: invoice-db}}
+  - {id: r-invoice-agent-to-payment-agent, connects: [invoice-intelligence-agent, payment-agent],
+     description: Invoice agent proposes payments to the payment agent}
+  - {id: r-payment-agent-uses-tool, from: P12/agent-uses-tool, map: {agent: payment-agent, tool: payment-tool}}
+  # opt-approval-path
+  - {id: r-payment-agent-requests-approval, from: P13/agent-requests-approval, map: {agent: payment-agent, human-approval: human-approval-service},
+     option: opt-approval-path}
+  - {id: r-tool-calls-payment-api, from: P07/caller-calls-external, map: {caller: payment-tool, external-system: payment-api},
+     option: opt-approval-path, description: Payment tool calls the Payment API directly}
+  - {id: r-approval-releases-payment, from: P07/caller-calls-external, map: {caller: human-approval-service, external-system: payment-api},
+     option: opt-approval-path, description: Approved payments are released to the Payment API}
+  - {id: r-payment-api-notifies-approval, connects: [payment-api, human-approval-service],
+     option: opt-approval-path, description: Payment API reports executed payments to the approval service after the fact}
+  # opt-audit
+  - {id: r-payment-agent-audited, from: P14/agent-is-audited, map: {agent: payment-agent, audit-service: audit-service}, option: opt-audit}
+  - {id: r-invoice-agent-audited, from: P14/agent-is-audited, map: {agent: invoice-intelligence-agent, audit-service: audit-service}, option: opt-audit}
+
+options:
+  - id: opt-approval-path
+    type: oneOf
+    description: How do payments reach the Payment API?
+    choices:
+      - description: Payment via Human Approval Service
+        relationships: [r-payment-agent-requests-approval, r-approval-releases-payment]
+      - description: Direct to Payment API
+        relationships: [r-tool-calls-payment-api, r-payment-api-notifies-approval]
+  - id: opt-audit
+    type: anyOf
+    description: Is an audit service present?
+    choices:
+      - description: Audit service present
+        nodes: [audit-service]
+        relationships: [r-payment-agent-audited, r-invoice-agent-audited]
+      - description: No audit service   # selected instead of an empty choice: calm 1.60.1 validate crashes on empty options
+        nodes: []
+        relationships: []

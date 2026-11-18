@@ -1,0 +1,17 @@
+version: 1
+note: "Decider scores are not calibrated probabilities. Decider output is advisory: it never sets a severity or a decision."
+decider: {base_url_env: DECIDER_URL, model_env: DECIDER_MODEL, timeout_env: DECIDER_TIMEOUT_S}
+tasks:
+  classify_attribute:
+    type: choice
+    min_confidence: 0.80
+    min_top2_margin: 0.20
+    on_fail: ABSTAIN            # recorded as UNKNOWN; or HUMAN_REVIEW
+  attribute_is_sensitive:
+    type: noul
+    accept_high: 0.9
+    accept_low: 0.1
+    on_fail: ABSTAIN
+state_fields: [element_id, element_type, attribute_name, raw_value, description]
+state_max_chars: 4000
+truncation_order: [description, raw_value, attribute_name]

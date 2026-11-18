@@ -1,0 +1,314 @@
+{
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "nodes": [
+    {
+      "description": "Entry point for supplier invoice submissions.",
+      "metadata": {
+        "exposure": "external",
+        "mediation": "gateway",
+        "role": "api-gateway"
+      },
+      "name": "API Gateway",
+      "node-type": "service",
+      "unique-id": "api-gateway"
+    },
+    {
+      "description": "Receives invoices and hands them to the invoice agent.",
+      "metadata": {
+        "criticality": "high",
+        "exposure": "internal",
+        "mediation": "gateway",
+        "role": "invoice-processing"
+      },
+      "name": "Invoice Processing Service",
+      "node-type": "service",
+      "unique-id": "invoice-processing-service"
+    },
+    {
+      "description": "Extracts invoice data, matches it to records and proposes payments.",
+      "metadata": {
+        "acceptance_testing": "completed",
+        "autonomy": "semi-autonomous",
+        "credential_storage": "vault",
+        "decision_impact": "medium",
+        "input_filtering": "enabled",
+        "observability": "enabled",
+        "permitted_tools": "invoice-db-read",
+        "privilege": "read-only"
+      },
+      "name": "Invoice Intelligence Agent",
+      "node-type": "ai:agent",
+      "unique-id": "invoice-intelligence-agent"
+    },
+    {
+      "description": "Executes approved supplier payments through the payment tool.",
+      "metadata": {
+        "acceptance_testing": "completed",
+        "autonomy": "supervised",
+        "can_execute_payment": true,
+        "credential_storage": "vault",
+        "decision_impact": "financial",
+        "input_filtering": "enabled",
+        "observability": "enabled",
+        "payment_approval_path": "via-human-approval",
+        "payment_limit": 25000,
+        "permitted_tools": "payment-tool",
+        "privilege": "restricted-write"
+      },
+      "name": "Payment Agent",
+      "node-type": "ai:agent",
+      "unique-id": "payment-agent"
+    },
+    {
+      "description": "Language model used by both agents.",
+      "metadata": {
+        "guardrails": "enabled",
+        "model_version": "pinned",
+        "sensitive_data_filtering": "enabled"
+      },
+      "name": "Foundation Model",
+      "node-type": "ai:llm",
+      "unique-id": "foundation-model"
+    },
+    {
+      "description": "Tool that submits payment instructions.",
+      "metadata": {
+        "input_validation": "enforced",
+        "mcp_server": "governed"
+      },
+      "name": "Payment Tool",
+      "node-type": "ai:tool",
+      "unique-id": "payment-tool"
+    },
+    {
+      "description": "External payment rail (simulated).",
+      "metadata": {
+        "exposure": "external",
+        "mediation": "gateway",
+        "role": "payment-api"
+      },
+      "name": "Payment API",
+      "node-type": "service",
+      "unique-id": "payment-api"
+    },
+    {
+      "description": "Finance approver reviews payments before release.",
+      "metadata": {
+        "role": "human-approval"
+      },
+      "name": "Human Approval Service",
+      "node-type": "service",
+      "unique-id": "human-approval-service"
+    },
+    {
+      "description": "Invoices, suppliers and payment history.",
+      "metadata": {
+        "access_control": "rbac",
+        "data_classification": "supplier-financial",
+        "encryption_at_rest": "enabled"
+      },
+      "name": "Invoice DB",
+      "node-type": "database",
+      "unique-id": "invoice-db"
+    },
+    {
+      "description": "Records every agent decision and payment.",
+      "metadata": {
+        "role": "audit"
+      },
+      "name": "Audit Service",
+      "node-type": "service",
+      "unique-id": "audit-service"
+    }
+  ],
+  "relationships": [
+    {
+      "description": "How do payments reach the Payment API?",
+      "relationship-type": {
+        "options": [
+          {
+            "description": "Payment via Human Approval Service",
+            "nodes": [],
+            "relationships": [
+              "r-payment-agent-requests-approval",
+              "r-approval-releases-payment"
+            ]
+          }
+        ]
+      },
+      "unique-id": "opt-approval-path"
+    },
+    {
+      "description": "Is an audit service present?",
+      "relationship-type": {
+        "options": [
+          {
+            "description": "Audit service present",
+            "nodes": [
+              "audit-service"
+            ],
+            "relationships": [
+              "r-payment-agent-audited",
+              "r-invoice-agent-audited"
+            ]
+          }
+        ]
+      },
+      "unique-id": "opt-audit"
+    },
+    {
+      "description": "Gateway forwards invoices to the processing service",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "invoice-processing-service"
+          },
+          "source": {
+            "node": "api-gateway"
+          }
+        }
+      },
+      "unique-id": "r-gateway-to-invoice-service"
+    },
+    {
+      "description": "Service hands invoices to the invoice agent",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "invoice-intelligence-agent"
+          },
+          "source": {
+            "node": "invoice-processing-service"
+          }
+        }
+      },
+      "unique-id": "r-service-to-invoice-agent"
+    },
+    {
+      "description": "Consumer sends prompts to the model",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "foundation-model"
+          },
+          "source": {
+            "node": "invoice-intelligence-agent"
+          }
+        }
+      },
+      "unique-id": "r-invoice-agent-to-model"
+    },
+    {
+      "description": "Consumer sends prompts to the model",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "foundation-model"
+          },
+          "source": {
+            "node": "payment-agent"
+          }
+        }
+      },
+      "unique-id": "r-payment-agent-to-model"
+    },
+    {
+      "description": "Consumer reads and writes records",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "invoice-db"
+          },
+          "source": {
+            "node": "invoice-intelligence-agent"
+          }
+        }
+      },
+      "unique-id": "r-invoice-agent-to-db"
+    },
+    {
+      "description": "Invoice agent proposes payments to the payment agent",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "payment-agent"
+          },
+          "source": {
+            "node": "invoice-intelligence-agent"
+          }
+        }
+      },
+      "unique-id": "r-invoice-agent-to-payment-agent"
+    },
+    {
+      "description": "Agent invokes the tool",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "payment-tool"
+          },
+          "source": {
+            "node": "payment-agent"
+          }
+        }
+      },
+      "unique-id": "r-payment-agent-uses-tool"
+    },
+    {
+      "description": "Agent submits actions for approval",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "human-approval-service"
+          },
+          "source": {
+            "node": "payment-agent"
+          }
+        }
+      },
+      "unique-id": "r-payment-agent-requests-approval"
+    },
+    {
+      "description": "Approved payments are released to the Payment API",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "payment-api"
+          },
+          "source": {
+            "node": "human-approval-service"
+          }
+        }
+      },
+      "unique-id": "r-approval-releases-payment"
+    },
+    {
+      "description": "Agent decisions are recorded",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "audit-service"
+          },
+          "source": {
+            "node": "payment-agent"
+          }
+        }
+      },
+      "unique-id": "r-payment-agent-audited"
+    },
+    {
+      "description": "Agent decisions are recorded",
+      "relationship-type": {
+        "connects": {
+          "destination": {
+            "node": "audit-service"
+          },
+          "source": {
+            "node": "invoice-intelligence-agent"
+          }
+        }
+      },
+      "unique-id": "r-invoice-agent-audited"
+    }
+  ]
+}

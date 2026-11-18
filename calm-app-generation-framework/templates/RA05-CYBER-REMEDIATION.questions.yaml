@@ -1,0 +1,42 @@
+# Requirement questions for RA05-CYBER-REMEDIATION (read by calm_generation.questions).
+# Answers set template attributes (set) or option choices (options); the template file is reused for every application.
+ra_id: RA05-CYBER-REMEDIATION
+questions:
+  - id: remediation_approval
+    label: How is a remediation action released to the production hosts?
+    help: Decides whether the security analyst's approval step sits between the agent and the remediation tool.
+    answers:
+      human-approval: {label: "A security analyst approves every action in the Human Approval Service before it is applied", options: {opt-approval-path: actions-require-human-approval}}
+      direct: {label: "The agent applies actions directly; the analyst is only told afterwards", options: {opt-approval-path: actions-are-applied-directly}}
+
+  - id: agent_autonomy
+    label: How independently may the remediation agent investigate and act?
+    answers:
+      supervised: {label: "Only under supervision (an analyst watches each step)", set: {REMEDIATION_AGENT_AUTONOMY: supervised}}
+      semi-autonomous: {label: "On its own within set limits, escalating exceptions to an analyst", set: {REMEDIATION_AGENT_AUTONOMY: semi-autonomous}}
+      autonomous: {label: "Fully on its own", set: {REMEDIATION_AGENT_AUTONOMY: autonomous}}
+
+  - id: alert_data
+    label: How sensitive is the alert data the agent reads?
+    answers:
+      internal: {label: "Internal use only", set: {ALERT_STORE_DATA_CLASSIFICATION: internal}}
+      confidential: {label: "Confidential (host names, user accounts, network details)", set: {ALERT_STORE_DATA_CLASSIFICATION: confidential}}
+      restricted: {label: "Restricted (regulated or highly sensitive data)", set: {ALERT_STORE_DATA_CLASSIFICATION: restricted}}
+
+  - id: model_version
+    label: May the AI model version change without a review?
+    answers:
+      pinned: {label: "No; use a fixed (pinned) model version that is reviewed before any change", set: {FOUNDATION_MODEL_MODEL_VERSION: pinned}}
+      floating: {label: "Yes; always use the provider's latest version", set: {FOUNDATION_MODEL_MODEL_VERSION: floating}}
+
+  - id: tool_server
+    label: Is the remediation tool provided through a governed tool (MCP) server?
+    answers:
+      governed: {label: "Yes, a governed server with an approved tool list", set: {REMEDIATION_TOOL_MCP_SERVER: governed}}
+      ungoverned: {label: "No, an unvetted or third-party server", set: {REMEDIATION_TOOL_MCP_SERVER: ungoverned}}
+
+  - id: audit_trail
+    label: Must agent decisions and remediation actions be recorded in an audit trail?
+    answers:
+      audit: {label: "Yes, record every agent decision and action", options: {opt-audit: [audit-service-present]}}
+      no-audit: {label: "No audit trail is needed", options: {opt-audit: [no-audit-service]}}

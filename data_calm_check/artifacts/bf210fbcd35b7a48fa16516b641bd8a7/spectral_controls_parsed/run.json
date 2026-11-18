@@ -1,0 +1,1 @@
+{"error":null,"parsed_artifact_id":null,"raw_artifact_id":null,"results":[{"code":"ctl-production-change-requires-approval","message":"Agent at #/nodes/1/metadata/action_approval_path changes production without the human approval path (AIGF mi-24)","path":["nodes","1","metadata","action_approval_path"],"severity":0}],"status":"OK","version":"6.17.1"}

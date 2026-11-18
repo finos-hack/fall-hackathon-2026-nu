@@ -1,0 +1,17 @@
+{
+ "answers": [
+  {
+   "choice": "confidential",
+   "confidence": 0.91,
+   "id": "invoice-db.data_classification",
+   "probabilities": {
+    "confidential": 0.88,
+    "internal": 0.04,
+    "public": 0.04,
+    "restricted": 0.04
+   }
+  }
+ ],
+ "model": "recorded-seed",
+ "usage": {}
+}

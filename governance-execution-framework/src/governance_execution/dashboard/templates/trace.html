@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}
+<div class="page-head"><h1>Traceability explorer</h1><div class="page-actions"><a class="btn" href="/assessments/{{ s.trace_id }}">&lsaquo; Report</a></div></div>
+<h2>{{ node.kind }}: {{ node.label }}</h2>
+<div class="lanes"><div><h3>Leads to</h3><ul>{% for n, l in outgoing %}<li>{{ l }} -> <a href="?node={{ n.id|urlencode }}">{{ n.kind }}: {{ n.label }}</a></li>{% else %}<li class="muted">none</li>{% endfor %}</ul></div>
+<div><h3>Comes from</h3><ul>{% for n, l in incoming %}<li><a href="?node={{ n.id|urlencode }}">{{ n.kind }}: {{ n.label }}</a> -> {{ l }}</li>{% else %}<li class="muted">none</li>{% endfor %}</ul></div></div>
+<h3>All nodes</h3><ul>{% for n in all_nodes %}<li><a href="?node={{ n.id|urlencode }}">{{ n.kind }}: {{ n.label }}</a></li>{% endfor %}</ul>
+{% endblock %}

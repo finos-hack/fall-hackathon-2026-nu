@@ -1,0 +1,1 @@
+{"exit_code":1,"results":[{"code":"ctl-audit-service-present","message":"No node with metadata.role 'audit' found (AIGF mi-21)","path":["nodes"],"range":{"end":{"character":2704,"line":0},"start":{"character":73,"line":0}},"severity":0}],"ruleset":"controls.spectral.yaml","stderr":"","tool":"spectral","version":"6.17.1"}

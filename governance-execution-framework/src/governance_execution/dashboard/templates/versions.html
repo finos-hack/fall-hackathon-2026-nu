@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}<div class="page-head"><h1>Versions</h1><p class="muted">Every versioned input each assessment ran with.</p></div>
+<table><tr><th>Assessment</th><th>Rulesets</th><th>Catalogs</th><th>Profiles</th><th>Tools</th><th>Prompts / models</th></tr>
+{% for s, v in rows %}<tr><td><a href="/assessments/{{ s.trace_id }}">{{ s.app_id or s.trace_id[:12] }}</a><br><span class="muted">{{ s.mode }}, {{ s.executor }}</span></td>
+<td>{% for k, r in (v.rulesets or {}).items() %}{{ k }} v{{ r.version }} <span class="muted">{{ r.sha256[:12] }}</span><br>{% endfor %}</td>
+<td>controls v{{ v.catalogs.controls }}, risks v{{ v.catalogs.risks }}</td>
+<td>scoring v{{ v.scoring_profile }}, gap v{{ v.gap_rule }}, gates v{{ v.gates }}, matrix v{{ v.decision_matrix }}, taxonomy v{{ v.taxonomy }}, decider policy v{{ v.decider_policy }}</td>
+<td>calm {{ v.calm_cli }}<br>spectral {{ v.spectral_cli or "" }}</td>
+<td>{% for k, p in (v.prompts or {}).items() %}{{ k }} {{ p }} {% endfor %}<br>model {{ v.model.provider }} {{ v.model.model or "" }}; decider {{ v.decider.provider }}</td></tr>{% endfor %}</table>{% endblock %}

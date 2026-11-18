@@ -1,0 +1,8 @@
+version: 1
+label: "illustrative, not approved policy"
+# Roles allowed to record a Risk_Acceptance, with the highest inherent/residual severity each may accept.
+# Mandatory gates (gates.yaml) can never be overridden by an acceptance, whatever the role.
+risk_acceptance:
+  risk_owner: {max_severity: High}
+  ciso: {max_severity: Critical}
+  risk_approver: {max_severity: High}   # HumanTask role for RISK_ACCEPTANCE (shared roles config)

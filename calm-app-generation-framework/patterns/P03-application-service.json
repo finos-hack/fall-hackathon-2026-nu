@@ -1,0 +1,149 @@
+{
+  "$id": "https://agip.example/patterns/P03-application-service.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "Internal business application service.",
+  "metadata": {
+    "approved_by": "architecture-review",
+    "pattern-id": "P03",
+    "related_controls": [
+      "CCC.VPC"
+    ],
+    "related_risks": [],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Runs business logic."
+            },
+            "metadata": {
+              "properties": {
+                "criticality": {
+                  "enum": [
+                    "low",
+                    "medium",
+                    "high",
+                    "critical"
+                  ]
+                },
+                "exposure": {
+                  "enum": [
+                    "internal",
+                    "external"
+                  ]
+                },
+                "mediation": {
+                  "enum": [
+                    "gateway",
+                    "none"
+                  ]
+                },
+                "role": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "criticality",
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Application Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "app-service"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Caller (connection point)"
+            },
+            "name": {
+              "const": "Caller"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "caller"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Caller invokes the service"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "app-service"
+                  },
+                  "source": {
+                    "node": "caller"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "caller-calls-service"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P03 Application Service",
+  "type": "object"
+}

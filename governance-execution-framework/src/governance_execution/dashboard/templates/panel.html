@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block body %}<div class="page-head"><h1>{{ "Risk matrix" if panel == "matrix" else "Decider calls" }}</h1><div class="page-actions"><a class="btn" href="/assessments/{{ s.trace_id }}">&lsaquo; Report</a></div></div>
+<div class="report">
+{% if panel == "matrix" %}{% if matrix %}{% include "_matrix.html" %}{% else %}<p>No risk profile (assessment blocked).</p>{% endif %}{% else %}{% include "_decider.html" %}{% endif %}
+</div>{% endblock %}

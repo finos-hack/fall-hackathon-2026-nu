@@ -1,0 +1,802 @@
+{
+  "$id": "https://agip.example/templates/RA05-CYBER-REMEDIATION.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "An AI agent investigates security alerts read from an alert store, uses a hosted language model for analysis, and applies remediation actions to production hosts through a remediation tool. Each remediation either needs approval by a security analyst in the human approval service before it is applied, or the agent applies it directly. Every agent decision can be recorded in an audit trail.",
+  "metadata": {
+    "composer-version": 1,
+    "ra-id": "RA05-CYBER-REMEDIATION",
+    "ra-version": 1,
+    "source-patterns": [
+      {
+        "id": "P08",
+        "sha256": "72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93",
+        "version": 1
+      },
+      {
+        "id": "P11",
+        "sha256": "573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980",
+        "version": 1
+      },
+      {
+        "id": "P12",
+        "sha256": "c363838a8f8c4fa381dc77ad6fca3d0dd48297fb7a605019b3adab7c42f46470",
+        "version": 1
+      },
+      {
+        "id": "P14",
+        "sha256": "10b44f611b7a12a3f4ed9776223ac84ca89ab291b2d1296e916a480b4cb95935",
+        "version": 1
+      },
+      {
+        "id": "P15",
+        "sha256": "0e65ebeba0c88e7a66591bc9c8f12881312f975e76263c05afdd315127450f7a",
+        "version": 1
+      },
+      {
+        "id": "P16",
+        "sha256": "79053f5908acf9a2a2c233bd80335a40d284494648f5120a81def9906dcf1526",
+        "version": 1
+      }
+    ]
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 7,
+      "minItems": 6,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Structured persistent data store for security alerts."
+            },
+            "metadata": {
+              "properties": {
+                "access_control": {
+                  "const": "rbac"
+                },
+                "data_classification": {
+                  "type": "string"
+                },
+                "encryption_at_rest": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "access_control",
+                "data_classification",
+                "encryption_at_rest"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Alert Store"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "alert-store"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent that investigates security alerts and applies remediation actions."
+            },
+            "metadata": {
+              "properties": {
+                "acceptance_testing": {
+                  "const": "completed"
+                },
+                "action_approval_path": {
+                  "enum": [
+                    "via-human-approval",
+                    "direct"
+                  ]
+                },
+                "action_capability": {
+                  "const": "production-change"
+                },
+                "autonomy": {
+                  "enum": [
+                    "supervised",
+                    "semi-autonomous",
+                    "autonomous"
+                  ]
+                },
+                "credential_storage": {
+                  "const": "vault"
+                },
+                "decision_impact": {
+                  "const": "high"
+                },
+                "input_filtering": {
+                  "const": "enabled"
+                },
+                "observability": {
+                  "const": "enabled"
+                },
+                "permitted_tools": {
+                  "const": "remediation-tool"
+                },
+                "privilege": {
+                  "const": "restricted-write"
+                }
+              },
+              "required": [
+                "acceptance_testing",
+                "action_approval_path",
+                "action_capability",
+                "autonomy",
+                "credential_storage",
+                "decision_impact",
+                "input_filtering",
+                "observability",
+                "permitted_tools",
+                "privilege"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Remediation Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "remediation-agent"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Hosted language model used for analysis."
+            },
+            "metadata": {
+              "properties": {
+                "guardrails": {
+                  "const": "enabled"
+                },
+                "model_version": {
+                  "enum": [
+                    "pinned",
+                    "floating"
+                  ]
+                },
+                "sensitive_data_filtering": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "guardrails",
+                "model_version",
+                "sensitive_data_filtering"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Foundation Model"
+            },
+            "node-type": {
+              "const": "ai:llm"
+            },
+            "unique-id": {
+              "const": "foundation-model"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Tool that applies remediation actions to production hosts."
+            },
+            "metadata": {
+              "properties": {
+                "input_validation": {
+                  "const": "enforced"
+                },
+                "mcp_server": {
+                  "enum": [
+                    "governed",
+                    "ungoverned"
+                  ]
+                },
+                "remediation_scope": {
+                  "const": "allow-listed"
+                }
+              },
+              "required": [
+                "input_validation",
+                "mcp_server",
+                "remediation_scope"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Remediation Tool"
+            },
+            "node-type": {
+              "const": "ai:tool"
+            },
+            "unique-id": {
+              "const": "remediation-tool"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Production hosts that can receive remediation actions."
+            },
+            "metadata": {
+              "properties": {
+                "environment": {
+                  "const": "production"
+                },
+                "host_tagging": {
+                  "const": "enforced"
+                }
+              },
+              "required": [
+                "environment",
+                "host_tagging"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Host Fleet"
+            },
+            "node-type": {
+              "const": "system"
+            },
+            "unique-id": {
+              "const": "host-fleet"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Security analyst reviews remediation actions before they are applied."
+            },
+            "metadata": {
+              "properties": {
+                "role": {
+                  "const": "human-approval"
+                }
+              },
+              "required": [
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Human Approval Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "human-approval-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+              "properties": {
+                "description": {
+                  "const": "Records every agent decision and remediation action."
+                },
+                "metadata": {
+                  "properties": {
+                    "role": {
+                      "const": "audit"
+                    }
+                  },
+                  "required": [
+                    "role"
+                  ],
+                  "type": "object"
+                },
+                "name": {
+                  "const": "Audit Service"
+                },
+                "node-type": {
+                  "const": "service"
+                },
+                "unique-id": {
+                  "const": "audit-service"
+                }
+              },
+              "required": [
+                "description",
+                "metadata",
+                "name",
+                "node-type",
+                "unique-id"
+              ],
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 9,
+      "minItems": 8,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "How are remediation actions approved?"
+            },
+            "relationship-type": {
+              "properties": {
+                "options": {
+                  "prefixItems": [
+                    {
+                      "oneOf": [
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "Actions require human approval"
+                            },
+                            "nodes": {
+                              "const": []
+                            },
+                            "relationships": {
+                              "const": [
+                                "r-agent-requests-approval",
+                                "r-approval-releases-tool"
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "Actions are applied directly"
+                            },
+                            "nodes": {
+                              "const": []
+                            },
+                            "relationships": {
+                              "const": [
+                                "r-direct-tool-use",
+                                "r-tool-reports-to-analyst"
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "unique-id": {
+              "const": "opt-approval-path"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Is an audit service present?"
+            },
+            "relationship-type": {
+              "properties": {
+                "options": {
+                  "prefixItems": [
+                    {
+                      "anyOf": [
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "Audit service present"
+                            },
+                            "nodes": {
+                              "const": [
+                                "audit-service"
+                              ]
+                            },
+                            "relationships": {
+                              "const": [
+                                "r-agent-is-audited"
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "No audit service"
+                            },
+                            "nodes": {
+                              "const": []
+                            },
+                            "relationships": {
+                              "const": []
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "unique-id": {
+              "const": "opt-audit"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent reads security alerts from the alert store"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "alert-store"
+                  },
+                  "source": {
+                    "node": "remediation-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-alert-store-to-agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent uses the foundation model for analysis"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "foundation-model"
+                  },
+                  "source": {
+                    "node": "remediation-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-to-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent uses the remediation tool to apply actions"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "remediation-tool"
+                  },
+                  "source": {
+                    "node": "remediation-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-uses-tool"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Remediation tool applies actions to the host fleet"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "host-fleet"
+                  },
+                  "source": {
+                    "node": "remediation-tool"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-tool-changes-hosts"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Agent requests approval from the human approval service"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "human-approval-service"
+                      },
+                      "source": {
+                        "node": "remediation-agent"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-agent-requests-approval"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            },
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Agent directly uses the remediation tool without approval"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "remediation-tool"
+                      },
+                      "source": {
+                        "node": "remediation-agent"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-direct-tool-use"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Approved actions are released to the remediation tool"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "remediation-tool"
+                      },
+                      "source": {
+                        "node": "human-approval-service"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-approval-releases-tool"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            },
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Remediation tool reports applied actions to the analyst after the fact"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "human-approval-service"
+                      },
+                      "source": {
+                        "node": "remediation-tool"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-tool-reports-to-analyst"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Agent decisions are recorded in the audit service"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "audit-service"
+                      },
+                      "source": {
+                        "node": "remediation-agent"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-agent-is-audited"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "Cyber Remediation Agent",
+  "type": "object"
+}

@@ -1,0 +1,35 @@
+﻿{% extends "base.html" %}{% from "_ui.html" import badge %}{% block title %}Task {{ t.task_id }} - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Task {{ t.task_id }}</h1><div class="page-actions"><a class="btn" href="/review">&lsaquo; Review queue</a></div>
+<p class="muted">{{ t.task_type }} Â· {{ t.framework }} Â· {{ badge(t.status) }}</p></div>
+{% if message %}<div class="status-box {{ 'good' if ok else 'bad' }}"><b>{{ "Done" if ok else "Error" }}:</b> {{ message }}</div>{% endif %}
+<div class="cols-2">
+  <div>
+    <div class="card"><h2>Details</h2>
+      <dl class="kv"><dt>Role / actor</dt><dd>{{ t.role }} / {{ t.actor or "-" }}</dd><dt>Allowed roles</dt><dd>{{ allowed|join(", ") }}</dd>
+      <dt>Priority</dt><dd>{{ t.priority }}</dd><dt>Created / due</dt><dd>{{ t.created }} / {{ t.due or "-" }}</dd>
+      <dt>Trace</dt><dd>{% if t.trace_id %}<a href="/assessments/{{ t.trace_id }}">{{ t.trace_id }}</a>{% else %}-{% endif %}</dd>
+      <dt>Required evidence</dt><dd>{{ t.required_evidence|join(", ") or "-" }}</dd>
+      <dt>Subjects</dt><dd>{% for r, l in links %}{% if l %}<a class="chip link" href="{{ l }}">{{ r }}</a>{% else %}<span class="chip">{{ r }}</span>{% endif %}{% endfor %}</dd>
+      <dt>Lineage</dt><dd>{% for l in lineage %}<a class="chip link" href="{{ l }}">{{ l }}</a>{% else %}<span class="muted">none</span>{% endfor %}</dd></dl></div>
+    <div class="card"><h2>History</h2><ul class="plain">{% for o in outcomes %}<li><span class="muted">{{ o.timestamp.strftime("%Y-%m-%d %H:%M") if o.timestamp.strftime is defined else o.timestamp }}</span> {{ o.actor }} ({{ o.role }}) <b>{{ o.action }}</b>: {{ o.previous_state }} &rarr; {{ o.resulting_state }}. {{ o.rationale }}</li>{% else %}<li class="muted">No actions yet.</li>{% endfor %}</ul></div>
+    <details class="section"><summary>Context</summary><div class="body"><pre>{{ t.context|tojson(indent=2) }}</pre></div></details>
+  </div>
+  <div>
+    <form method="post" action="/api/review/{{ t.task_id }}/act" class="card"><h2>Act on this task</h2>
+      <div class="form-grid narrow">
+        <label class="label" for="actor">Actor</label><div class="control"><input id="actor" name="actor" required></div>
+        <label class="label" for="role">Role</label><div class="control"><input id="role" name="role" required placeholder="{{ allowed|first }}"></div>
+        <label class="label" for="action">Action</label><div class="control"><select id="action" name="action">{% for a in actions %}<option>{{ a }}</option>{% endfor %}</select></div>
+        <label class="label" for="rationale">Rationale</label><div class="control"><textarea id="rationale" name="rationale" rows="2" required></textarea></div>
+        <label class="label" for="value">Value</label><div class="control">{% if t.context.allowed_values %}<select id="value" name="value"><option value="">(none)</option>{% for v in t.context.allowed_values %}<option>{{ v }}</option>{% endfor %}</select>{% else %}<input id="value" name="value">{% endif %}<span class="help">For a classification review: the chosen value</span></div>
+      </div>
+      <div class="actionbar"><span class="spacer"></span><button class="btn primary" type="submit">Submit</button></div>
+    </form>
+    {% if t.trace_id %}<form method="post" action="/api/assessments/{{ t.trace_id }}/resume" class="card"><h2>Resume the assessment</h2>
+      <p class="muted">After the review is COMPLETED or REJECTED.</p>
+      <div class="actionbar top"><select name="mode" aria-label="mode"><option>no-llm</option><option>replay</option><option>normal</option></select>
+      <select name="cli" aria-label="tools"><option>real</option><option>replay</option></select><span class="spacer"></span><button class="btn" type="submit">Resume</button></div></form>{% endif %}
+    <p class="muted">Recording an outcome never executes a side effect. Role and self-approval checks are enforced server-side.</p>
+  </div>
+</div>
+{% endblock %}

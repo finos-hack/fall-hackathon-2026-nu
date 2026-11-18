@@ -1,0 +1,36 @@
+{% extends "base.html" %}{% from "_ui.html" import badge %}{% block title %}Build Reference Architecture - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Build Reference Architecture</h1>
+  <div class="page-actions"><a class="btn" href="/architectures/new">Start over</a></div>
+  <p class="muted">Review the spec, Preview to check it, Save as DRAFT, then Approve to publish it for Generate CALM.</p></div>
+<ol class="steps"><li class="done">1. Describe</li><li class="{{ 'done' if saved else 'on' }}">2. Review and save</li><li class="{{ 'on' if saved and saved.state in ('DRAFT', 'IN_REVIEW') else ('done' if saved else '') }}">3. Approve and publish</li></ol>
+{% if generated %}<div class="status-box{% if not generated.ok %} bad{% endif %}"><b>Agent</b> ({{ model }}): {{ generated.rounds }} round(s), {% if generated.ok %}composes and validates.{% else %}{{ generated.error or "not composable yet" }}.{% endif %}
+  <details class="inline"><summary class="muted">rounds</summary><ul>{% for l in generated.log %}<li>Round {{ l.round }}: {% if l.errors %}{{ l.errors[:3]|join("; ") }}{% else %}accepted{% endif %}</li>{% endfor %}</ul></details></div>{% endif %}
+{% if pv and pv.errors %}<div class="status-box bad"><b>Not composable</b><ul>{% for e in pv.errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% elif pv %}<div class="status-box good"><b>{{ pv.spec.ra_id }} v{{ pv.version }}</b> composes from {{ pv.spec.patterns|join(", ") }}:
+  {{ pv.template.properties.nodes.prefixItems|length }} nodes, {{ pv.template.properties.relationships.prefixItems|length }} relationships, {{ pv.form.options|length }} options, {{ pv.questions|length }} questions; calm validate passed.
+  {% for w in pv.warnings %}<br><span class="muted">{{ w }}</span>{% endfor %}
+  {% if saved %}<div class="row-actions"><b>Saved</b> ({{ saved.action }}) {{ badge("PENDING HUMAN REVIEW" if saved.state in ("DRAFT", "IN_REVIEW") else saved.state) }}
+  {% if saved.state in ("DRAFT", "IN_REVIEW") %}<form method="post" action="/catalogs/ras/{{ saved.ra_id }}/approve"><button class="btn primary" type="submit">Approve and publish</button></form>{% endif %}
+  <a href="/catalogs/templates?focus={{ saved.ra_id }}">open in catalog</a></div>{% endif %}</div>{% endif %}
+<form method="post" action="/architectures/new" class="editor">
+  <div class="card">
+    <div class="card-head"><h2>Compose spec</h2>
+      <div class="actions"><button class="btn" type="submit" name="action" value="preview">Preview</button>
+      <button class="btn primary" type="submit" name="action" value="save">Save as DRAFT</button></div></div>
+    <textarea name="compose" rows="24" spellcheck="false">{{ compose }}</textarea>
+  </div>
+  <details class="section"><summary>Requirement questions <span class="muted">(asked by Generate CALM{% if pv and pv.questions %}, {{ pv.questions|length }}{% endif %})</span></summary><div class="body">
+    <textarea name="questions" rows="16" spellcheck="false">{{ questions }}</textarea></div></details>
+  <details class="section"><summary>Consistency rules <span class="muted">(attributes that follow an option)</span></summary><div class="body">
+    <textarea name="consistency" rows="6" spellcheck="false">{{ consistency }}</textarea></div></details>
+</form>
+{% if pv and not pv.errors %}<details class="section"><summary>What Generate CALM will ask for</summary><div class="body scroll-x">
+<table class="compact clean"><tr><th>Field</th><th>Node.field</th><th>Values</th></tr>{% for a in pv.form.attributes %}<tr><td>{{ a.name }}</td><td><code>{{ a.target.node }}.{{ a.target.field }}</code></td><td>{{ a.allowed|join(", ") if a.allowed else a.type }}</td></tr>{% endfor %}
+{% for o in pv.form.options %}<tr><td>{{ o.unique_id }}</td><td>option ({{ o.type }})</td><td>{{ o.choices.keys()|join(", ") }}</td></tr>{% endfor %}</table></div></details>{% endif %}
+<details class="section"><summary>Spec format</summary><div class="body"><pre>ra_id, version, title, description, patterns: [P..]
+components:     - id, from: [P12/agent, P14/agent], name, description, bind: {field: value}, option: opt-id (optional)
+relationships:  - {id, from: P12/agent-uses-tool, map: {agent: comp, tool: comp}, option: opt-id}
+                - {id, connects: [comp, comp], description}
+options:        - {id, type: oneOf|anyOf, description, choices: [{description, nodes: [..], relationships: [..]}]}</pre>
+<p class="muted">Published patterns: {% for p in patterns if p.state in ("APPROVED", "PUBLISHED") %}<code>{{ p.id }}</code> {{ p.title }}{% if not loop.last %}, {% endif %}{% endfor %}</p></div></details>
+{% endblock %}

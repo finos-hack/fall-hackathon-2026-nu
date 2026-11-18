@@ -1,0 +1,8 @@
+{
+ "args0": "spectral.cmd",
+ "output": null,
+ "rc": 1,
+ "stderr": "",
+ "stdout": "[\n\t{\n\t\t\"code\": \"ctl-audit-service-present\",\n\t\t\"path\": [\n\t\t\t\"nodes\"\n\t\t],\n\t\t\"message\": \"No node with metadata.role 'audit' found (AIGF mi-21)\",\n\t\t\"severity\": 0,\n\t\t\"range\": {\n\t\t\t\"start\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 73\n\t\t\t},\n\t\t\t\"end\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 2704\n\t\t\t}\n\t\t},\n\t\t\"source\": \"c:/Users/User1/AppData/Local/Temp/agip-spectral-qewuuj67/app.json\"\n\t}\n]",
+ "sub": "lint"
+}

@@ -1,0 +1,26 @@
+{
+  "P02-api-gateway.json": {
+    "content_hash": "b4db56380f2bbde278fcf84954902d4306136a964ea7e20471be3c888929abfb",
+    "inputs_hash": null,
+    "updated": "2026-11-18T15:43:01.789195+00:00",
+    "version": 2
+  },
+  "P15-high-impact-action-approval.json": {
+    "content_hash": "417a07350d2f52f0fa3cd47d7d6d4274982b988e9623a3b981980f6aef8d0d06",
+    "inputs_hash": null,
+    "updated": "2026-11-18T12:33:10.013749+00:00",
+    "version": 1
+  },
+  "P16-controlled-remediation.json": {
+    "content_hash": "0a71a9327194563b4d1b99b8312532f97c324690e76a32e0f2c6d6bb0e5fe611",
+    "inputs_hash": null,
+    "updated": "2026-11-18T12:33:10.347326+00:00",
+    "version": 1
+  },
+  "P17-new-pattern.json": {
+    "content_hash": "5835668e040acfa4dbe5e8450ad478a81183a916e03d49fc51492dbc425d89fe",
+    "inputs_hash": null,
+    "updated": "2026-11-18T13:06:39.603161+00:00",
+    "version": 1
+  }
+}

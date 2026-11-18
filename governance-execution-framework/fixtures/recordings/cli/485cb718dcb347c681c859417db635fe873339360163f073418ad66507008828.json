@@ -1,0 +1,8 @@
+{
+ "args0": "spectral.cmd",
+ "output": null,
+ "rc": 0,
+ "stderr": "",
+ "stdout": "[]No results with a severity of 'error' found!\n",
+ "sub": "lint"
+}

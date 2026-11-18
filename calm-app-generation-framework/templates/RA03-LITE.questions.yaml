@@ -1,0 +1,63 @@
+# Requirement questions for RA03-LITE (read by calm_generation.questions).
+# Each question is answered in business terms; each answer sets template attributes (``set``) and/or option
+# choices (``options``) of the published template, so the same template file is reused for every application.
+# A user who is unsure can describe the case instead; the Strands Decider then picks one of the answers below.
+ra_id: RA03-LITE
+questions:
+  - id: payment_authorisation
+    label: How must a payment be authorised before money is released?
+    help: Decides whether the Human Approval Service sits between the payment agent and the Payment API.
+    answers:
+      human-approval:
+        label: A person approves every payment in the Human Approval Service before it is released
+        options: {opt-approval-path: payment-via-human-approval-service}
+      direct:
+        label: The payment agent pays directly; payments are only reported afterwards
+        options: {opt-approval-path: direct-to-payment-api}
+
+  - id: payment_agent_autonomy
+    label: How independently may the payment agent act?
+    answers:
+      supervised: {label: "Only under supervision (a person watches or confirms its actions)", set: {PAYMENT_AGENT_AUTONOMY: supervised}}
+      semi-autonomous: {label: "On its own within set limits, escalating exceptions to a person", set: {PAYMENT_AGENT_AUTONOMY: semi-autonomous}}
+      autonomous: {label: "Fully on its own", set: {PAYMENT_AGENT_AUTONOMY: autonomous}}
+
+  - id: payment_agent_access
+    label: What may the payment agent change in other systems?
+    answers:
+      read-only: {label: "Nothing; it only reads", set: {PAYMENT_AGENT_PRIVILEGE: read-only}}
+      restricted-write: {label: "It may only submit payment instructions through the payment tool", set: {PAYMENT_AGENT_PRIVILEGE: restricted-write}}
+      unrestricted-write: {label: "It may write to any connected system", set: {PAYMENT_AGENT_PRIVILEGE: unrestricted-write}}
+
+  - id: payment_limit
+    label: What is the largest single payment the agent may make?
+    help: Amount in the payment currency; the pattern allows 1 to 100,000.
+    type: number
+    attribute: PAYMENT_AGENT_PAYMENT_LIMIT
+
+  - id: invoice_agent_autonomy
+    label: How independently may the invoice agent (extracts and checks invoices) act?
+    answers:
+      supervised: {label: "Only under supervision (a person reviews its results)", set: {INVOICE_INTELLIGENCE_AGENT_AUTONOMY: supervised}}
+      semi-autonomous: {label: "On its own within set limits, escalating exceptions to a person", set: {INVOICE_INTELLIGENCE_AGENT_AUTONOMY: semi-autonomous}}
+      autonomous: {label: "Fully on its own", set: {INVOICE_INTELLIGENCE_AGENT_AUTONOMY: autonomous}}
+
+  - id: invoice_data
+    label: How sensitive is the invoice and supplier data?
+    answers:
+      public: {label: "Public", set: {INVOICE_DB_DATA_CLASSIFICATION: public}}
+      internal: {label: "Internal use only", set: {INVOICE_DB_DATA_CLASSIFICATION: internal}}
+      confidential: {label: "Confidential (supplier bank details, amounts)", set: {INVOICE_DB_DATA_CLASSIFICATION: confidential}}
+      restricted: {label: "Restricted (regulated or highly sensitive data)", set: {INVOICE_DB_DATA_CLASSIFICATION: restricted}}
+
+  - id: model_version
+    label: May the AI model version change without a review?
+    answers:
+      pinned: {label: "No; use a fixed (pinned) model version that is reviewed before any change", set: {FOUNDATION_MODEL_MODEL_VERSION: pinned}}
+      floating: {label: "Yes; always use the provider's latest version", set: {FOUNDATION_MODEL_MODEL_VERSION: floating}}
+
+  - id: audit_trail
+    label: Must agent decisions and payments be recorded in an audit trail?
+    answers:
+      audit: {label: "Yes, record every agent decision and payment", options: {opt-audit: [audit-service-present]}}
+      no-audit: {label: "No audit trail is needed", options: {opt-audit: [no-audit-service]}}

@@ -1,0 +1,72 @@
+version: 1
+# Deterministic mapping of raw App_Model metadata values to normalized values, per Dimension.
+# A raw value that matches no entry stays UNMAPPED (never guessed). Matching is case-insensitive on the raw string.
+dimensions:
+  - Autonomy
+  - Data Exposure
+  - Privilege & Capability
+  - Connectivity
+  - Decision Impact
+  - Human Oversight
+  - Operational Criticality
+attributes:
+  autonomy:
+    dimension: Autonomy
+    element_types: ["ai:agent"]
+    values:
+      supervised: supervised
+      semi-autonomous: semi-autonomous
+      autonomous: autonomous
+      human-in-the-loop: supervised
+  privilege:
+    dimension: Privilege & Capability
+    element_types: ["ai:agent"]
+    values:
+      read-only: read-only
+      restricted-write: restricted-write
+      unrestricted-write: unrestricted-write
+  data_classification:
+    dimension: Data Exposure
+    element_types: [database]
+    values: {public: public, internal: internal, confidential: confidential, restricted: restricted}
+  exposure:
+    dimension: Connectivity
+    element_types: [service]
+    values: {internal: internal, external: external}
+  decision_impact:
+    dimension: Decision Impact
+    element_types: ["ai:agent"]
+    values: {low: low, medium: medium, high: high, financial: high}
+  payment_approval_path:
+    dimension: Human Oversight
+    element_types: ["ai:agent"]
+    values: {via-human-approval: human-approved, direct: unapproved}
+  permitted_tools:
+    dimension: Privilege & Capability
+    element_types: ["ai:agent"]
+    verbatim: true            # per-agent list attribute, recorded as given (no mapping)
+  criticality:
+    dimension: Operational Criticality
+    element_types: [service, "ai:agent"]
+    values: {low: low, medium: medium, high: high, critical: critical}
+  # cyber remediation patterns (P15 high-impact action approval, P16 controlled remediation)
+  action_capability:
+    dimension: Privilege & Capability
+    element_types: ["ai:agent"]
+    values: {read-only: read-only, reversible-write: reversible-write, business-write: business-write, production-change: production-change}
+  action_approval_path:
+    dimension: Human Oversight
+    element_types: ["ai:agent"]
+    values: {via-human-approval: human-approved, direct: unapproved}
+  remediation_scope:
+    dimension: Privilege & Capability
+    element_types: ["ai:tool"]
+    values: {allow-listed: allow-listed, any: any}
+  host_tagging:
+    dimension: Privilege & Capability
+    element_types: [system]
+    values: {enforced: enforced, none: none}
+  environment:
+    dimension: Operational Criticality
+    element_types: [system]
+    values: {production: production, non-production: non-production}

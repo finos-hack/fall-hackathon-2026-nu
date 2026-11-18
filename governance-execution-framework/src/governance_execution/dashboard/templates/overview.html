@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Overview - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Overview</h1>
+  <p class="muted">Catalogs feed the reference architectures; Generate CALM instantiates them and the governance assessment checks the result.</p>
+</div>
+<div class="overview-grid">
+  <a class="card kpi" href="/catalogs/controls"><span class="kpi-label">Controls</span><b>{{ m.controls }}</b><span class="kpi-sub">in the Controls Catalog</span></a>
+  <a class="card kpi k-risk" href="/catalogs/risks"><span class="kpi-label">Risks</span><b>{{ m.risks }}</b><span class="kpi-sub">in the Risk Profile Catalog</span></a>
+  <a class="card kpi k-arch" href="/catalogs/patterns"><span class="kpi-label">Patterns</span><b>{{ m.patterns }}</b><span class="kpi-sub">reusable CALM building blocks</span></a>
+  <a class="card kpi k-arch" href="/catalogs/templates"><span class="kpi-label">Reference Architectures</span><b>{{ m.ras }}</b><span class="kpi-sub">RA templates composed from patterns</span></a>
+  <a class="card kpi k-assess" href="/assessments"><span class="kpi-label">Control Gaps Assessment</span><b>{{ m.gap_runs }}</b><span class="kpi-sub">assessments, {{ m.gap_failing }} with failed controls</span></a>
+  <a class="card kpi k-assess" href="/assessments"><span class="kpi-label">Risk Assessment</span><b>{{ m.risk_runs }}</b><span class="kpi-sub">assessments, {{ m.risks_triggered }} risks triggered in total</span></a>
+</div>
+{% endblock %}

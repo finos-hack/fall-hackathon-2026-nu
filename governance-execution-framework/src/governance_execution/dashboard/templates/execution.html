@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block body %}<div class="page-head"><h1>Execution timeline</h1><div class="page-actions"><a class="btn" href="/assessments/{{ s.trace_id }}">&lsaquo; Report</a><a class="btn" href="/assessments/{{ s.trace_id }}/trace">Traceability</a></div></div>
+<table><tr><td>Status / decision</td><td>{{ s.status }} / {{ s.decision or "none" }}</td></tr><tr><td>Executor</td><td>{{ s.executor }} <span class="muted">{{ s.executor_note or "" }}</span></td></tr>
+<tr><td>Started / finished</td><td>{{ x.started or "not stored" }} / {{ x.finished or "not stored" }}</td></tr>
+<tr><td>Catalogs</td><td>{{ x.versions.catalogs }}</td></tr><tr><td>Rulesets</td><td>{% for k, r in (x.versions.rulesets or {}).items() %}{{ k }} v{{ r.version }} {% endfor %}</td></tr>
+<tr><td>CALM model hash</td><td>{{ x.calm_sha or "" }}</td></tr><tr><td>Decider outcomes</td><td>{{ x.decider_outcomes or "none" }}</td></tr><tr><td>Error</td><td>{{ x.error or "none" }}</td></tr></table>
+<h3>Steps</h3><table><tr><th>#</th><th>Step</th><th>Unit</th><th>Status</th><th>Duration</th><th>Inputs / outputs</th><th>Error</th></tr>
+{% for st in x.steps %}<tr><td>{{ loop.index }}</td><td>{{ st.step }}</td><td>{{ st.unit or "" }}{% if st.parallel_group %} <span class="muted">({{ st.parallel_group }})</span>{% endif %}</td><td>{{ st.status }}</td><td>{{ st.duration_ms ~ " ms" if st.duration_ms is defined else "not stored" }}</td>
+<td>{% for o in st.outputs or [] %}{% set p = o.split(":") %}<a href="/artifacts/{{ s.trace_id }}/{{ p[0] }}/{{ p[1] }}">{{ o }}</a> {% endfor %}</td><td>{{ st.error or "" }}</td></tr>{% else %}<tr><td colspan="7">No steps recorded.</td></tr>{% endfor %}</table>
+<h3>Human tasks for this trace</h3><ul>{% for t in x.tasks %}<li><a href="/review/{{ t.task_id }}">{{ t.task_id }}</a> {{ t.task_type }} {{ t.status }}</li>{% else %}<li class="muted">none</li>{% endfor %}</ul>{% endblock %}

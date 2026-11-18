@@ -1,0 +1,8 @@
+{
+ "args0": "calm",
+ "output": null,
+ "rc": 0,
+ "stderr": "",
+ "stdout": "1.60.1\n",
+ "sub": "--version"
+}

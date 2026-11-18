@@ -1,0 +1,778 @@
+# Control_Rules_Catalog. One definition per control (merged from catalogs/seed/registry.yaml and seed/rules/*.yaml).
+# Catalog-only fields (severity, mandatory, remediation) live here and join to Spectral results by Rule_Code.
+# Spectral rule bodies are defined once, under `spectral_rules` of the item that owns the Rule_Code.
+# Severity labels are "illustrative, not approved policy"; Spectral passes are design-level evidence only.
+#
+# CALM metadata vocabulary used by the rules (set by the RA03-LITE template, calm-app-generation-framework):
+#   ai:agent   autonomy (supervised|semi-autonomous|autonomous), privilege (read-only|restricted-write|unrestricted-write),
+#              can_execute_payment (bool), payment_approval_path (via-human-approval|direct),
+#              credential_storage (vault|inline), observability (enabled|none), acceptance_testing (completed|none),
+#              input_filtering (enabled|none)
+#   ai:llm     model_version (pinned|floating), guardrails (enabled|none), sensitive_data_filtering (enabled|none)
+#   ai:tool    input_validation (enforced|none), mcp_server (governed|ungoverned)
+#   service    role (api-gateway|invoice-processing|human-approval|audit|payment-api), exposure (internal|external),
+#              mediation (gateway|none)
+#   database   data_classification, access_control (rbac|none), encryption_at_rest (enabled|none)
+#
+# Merge decisions (also in docs/deliberate-changes.md):
+#   - Registry severity wins over the rule-file severity; it is kept as registry_severity. The enforced severity is per
+#     configuration (below), so a missing audit service can be a minor gap while a missing approval gate is critical.
+#   - seed rule EXTERNAL-CONNECTIVITY-CONTROL-001 had no registry entry and duplicated AIGF mi-17; it is merged into
+#     AIGF-MI-017 (one definition).
+#   - AIGF-MI-024 (human-in-the-loop approval gate) is new for the MVP; the draft repo had no control for it.
+catalog: controls
+version: 2
+label: illustrative, not approved policy
+items:
+- control_id: AIGF-MI-024
+  title: Human-in-the-Loop Action Approval Gate
+  version: 2
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: APPROVED
+    to: APPROVED
+    by: cyber-remediation-build
+    role: governance_admin
+    rationale: added CFG-HITL-PRODUCTION for production-changing agents (cyber remediation)
+    at: '2026-11-18T12:46:10.209131+00:00'
+    version: 2
+  source:
+    framework: AIGF
+    id: mi-24
+    path: docs/_mitigations/mi-24_*.md
+  references:
+  - framework: NIST
+    id: AC-6
+  registry_id: null
+  registry_severity: null
+  applicability:
+    facts:
+    - agent_can_perform_high_impact_action
+  configurations:
+  - id: CFG-HITL-PAYMENT
+    mandatory: true
+    severity: critical
+    rule_codes:
+    - ctl-payment-requires-human-approval
+    remediation: Route every Payment Agent call to the Payment API through the Human
+      Approval Service.
+  - id: CFG-HITL-PRODUCTION
+    mandatory: true
+    severity: critical
+    rule_codes:
+    - ctl-production-change-requires-approval
+    remediation: Route every production-changing action of the agent through the Human
+      Approval Service.
+  spectral_rules:
+    ctl-payment-requires-human-approval:
+      description: Payment-executing agents must route payments through human approval
+      message: Payment agent at {{path}} does not use the human approval path (AIGF
+        mi-24)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent' && @.metadata.can_execute_payment==true)].metadata
+      then:
+        field: payment_approval_path
+        function: pattern
+        functionOptions:
+          match: ^via-human-approval$
+    ctl-production-change-requires-approval:
+      description: Production-changing agents act only after human approval
+      message: Agent at {{path}} changes production without the human approval path
+        (AIGF mi-24)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent' && @.metadata.action_capability=='production-change')].metadata
+      then:
+        field: action_approval_path
+        function: pattern
+        functionOptions:
+          match: ^via-human-approval$
+- control_id: AIGF-MI-018
+  title: Agent Authority Least Privilege Framework
+  version: 2
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: APPROVED
+    to: APPROVED
+    by: cyber-remediation-build
+    role: governance_admin
+    rationale: added CFG-REMEDIATION-SCOPE for production-changing agents (cyber remediation)
+    at: '2026-11-18T12:46:10.209131+00:00'
+    version: 2
+  source:
+    framework: AIGF
+    id: mi-18
+    path: docs/_mitigations/mi-18_*.md
+  references:
+  - framework: NIST
+    id: AC-6
+  - framework: NIST
+    id: AC-3
+  registry_id: AGENT-ACTION-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_has_external_action
+    - agent_can_perform_high_impact_action
+  configurations:
+  - id: CFG-LEAST-PRIVILEGE
+    mandatory: false
+    severity: high
+    rule_codes:
+    - ctl-agent-least-privilege
+    remediation: Restrict each agent to read-only or restricted-write privilege; remove
+      unrestricted write access to downstream APIs.
+  - id: CFG-REMEDIATION-SCOPE
+    mandatory: false
+    severity: high
+    rule_codes:
+    - ctl-remediation-allow-listed
+    - ctl-hosts-tagged
+    remediation: Limit the remediation tool to the allow-listed actions and apply
+      them only to tagged hosts.
+  spectral_rules:
+    ctl-agent-least-privilege:
+      description: Agents must not hold unrestricted write privilege
+      message: Agent at {{path}} has unrestricted write privilege (AIGF mi-18)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: privilege
+        function: pattern
+        functionOptions:
+          match: ^(read-only|restricted-write)$
+    ctl-remediation-allow-listed:
+      description: Remediation tools run only allow-listed actions
+      message: Remediation tool at {{path}} is not limited to allow-listed actions
+        (AIGF mi-18)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:tool' && @.metadata.remediation_scope)].metadata
+      then:
+        field: remediation_scope
+        function: pattern
+        functionOptions:
+          match: ^allow-listed$
+    ctl-hosts-tagged:
+      description: Remediation targets only tagged hosts
+      message: Host fleet at {{path}} does not enforce remediation tagging (AIGF mi-18)
+      severity: error
+      given: $.nodes[?(@['node-type']=='system' && @.metadata.host_tagging)].metadata
+      then:
+        field: host_tagging
+        function: pattern
+        functionOptions:
+          match: ^enforced$
+- control_id: AIGF-MI-021
+  title: Agent Decision Audit and Explainability
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-21
+    path: docs/_mitigations/mi-21_*.md
+  references:
+  - framework: NIST
+    id: AU-2
+  - framework: NIST
+    id: AU-3
+  - framework: NIST
+    id: AU-6
+  - framework: ISO42001
+    id: A-8-3
+  registry_id: AUDIT-EXPLAINABILITY-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_present
+  configurations:
+  - id: CFG-AUDIT-SERVICE
+    mandatory: false
+    severity: medium
+    rule_codes:
+    - ctl-audit-service-present
+    remediation: Add an Audit Service node and connect agent decisions to it.
+  spectral_rules:
+    ctl-audit-service-present:
+      description: The architecture must contain an audit service
+      message: No node with metadata.role 'audit' found (AIGF mi-21)
+      severity: error
+      given: $
+      then:
+        field: nodes
+        function: schema
+        functionOptions:
+          schema:
+            type: array
+            contains:
+              type: object
+              required:
+              - metadata
+              properties:
+                metadata:
+                  type: object
+                  required:
+                  - role
+                  properties:
+                    role:
+                      const: audit
+- control_id: AIGF-MI-020
+  title: MCP Server Security Governance
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-20
+    path: docs/_mitigations/mi-20_*.md
+  references:
+  - framework: NIST
+    id: SA-9
+  - framework: NIST
+    id: SR-3
+  registry_id: MCP-SERVER-SECURITY-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_has_external_action
+  configurations:
+  - id: CFG-MCP-GOVERNED
+    mandatory: false
+    severity: high
+    rule_codes:
+    - ctl-tool-server-governed
+    remediation: Register every tool server in the governed tool registry and mark
+      it governed.
+  spectral_rules:
+    ctl-tool-server-governed:
+      description: Tool servers must be governed
+      message: Tool at {{path}} uses an ungoverned server (AIGF mi-20)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:tool')].metadata
+      then:
+        field: mcp_server
+        function: pattern
+        functionOptions:
+          notMatch: ^ungoverned$
+- control_id: AIGF-MI-023
+  title: Agentic System Credential Protection Framework
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-23
+    path: docs/_mitigations/mi-23_*.md
+  references:
+  - framework: NIST
+    id: IA-5
+  - framework: NIST
+    id: SC-28
+  - framework: NIST
+    id: AC-3
+  registry_id: CREDENTIAL-PROTECTION-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_uses_credentials
+  configurations:
+  - id: CFG-CREDENTIAL-VAULT
+    mandatory: false
+    severity: high
+    rule_codes:
+    - ctl-no-inline-credentials
+    remediation: Store agent credentials in a secrets vault and reference them at
+      runtime; remove inline credentials.
+  spectral_rules:
+    ctl-no-inline-credentials:
+      description: Agent credentials must not be stored inline
+      message: Agent at {{path}} stores credentials inline (AIGF mi-23)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: credential_storage
+        function: pattern
+        functionOptions:
+          notMatch: ^inline$
+- control_id: AIGF-MI-012
+  title: Role-Based Access Control for AI Data
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-12
+    path: docs/_mitigations/mi-12_*.md
+  references:
+  - framework: NIST
+    id: AC-3
+  - framework: NIST
+    id: AC-6
+  - framework: ISO42001
+    id: A-3-2
+  registry_id: SENSITIVE-DATA-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_accesses_sensitive_data
+  configurations:
+  - id: CFG-DATA-RBAC
+    mandatory: false
+    severity: high
+    rule_codes:
+    - ctl-data-access-rbac
+    remediation: Enforce role-based access control on every datastore the agents can
+      read.
+  spectral_rules:
+    ctl-data-access-rbac:
+      description: Datastores must enforce role-based access control
+      message: Datastore at {{path}} has no RBAC (AIGF mi-12)
+      severity: error
+      given: $.nodes[?(@['node-type']=='database')].metadata
+      then:
+        field: access_control
+        function: pattern
+        functionOptions:
+          match: ^rbac$
+- control_id: AIGF-MI-019
+  title: Tool Chain Validation and Sanitization
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-19
+    path: docs/_mitigations/mi-19_*.md
+  references:
+  - framework: NIST
+    id: SI-10
+  - framework: NIST
+    id: SI-15
+  registry_id: TOOL-CHAIN-VALIDATION-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_has_external_action
+    - agent_has_tool_access
+  configurations:
+  - id: CFG-TOOL-INPUT-VALIDATION
+    mandatory: false
+    severity: medium
+    rule_codes:
+    - ctl-tool-input-validation
+    remediation: Validate and sanitise inputs and outputs of every tool call.
+  spectral_rules:
+    ctl-tool-input-validation:
+      description: Tools must validate inputs
+      message: Tool at {{path}} does not enforce input validation (AIGF mi-19)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:tool')].metadata
+      then:
+        field: input_validation
+        function: pattern
+        functionOptions:
+          match: ^enforced$
+- control_id: CCC.KMS
+  title: Encryption of Data at Rest
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: CCC
+    id: CCC.Core.CN02
+    path: catalogs/core/core/controls.yaml
+  source_change:
+    from: CCC.KMS
+    to: CCC.Core.CN02
+    by: seed-import
+    at: '2026-01-01T00:00:00+00:00'
+    rationale: re-sourced from hand-written CCC.KMS to ingested CCC.Core.CN02 (task
+      21.5); control_id and Rule_Codes unchanged
+  references:
+  - framework: NIST
+    id: SC-28
+  registry_id: ENCRYPTION-AT-REST-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_accesses_sensitive_data
+  configurations:
+  - id: CFG-ENCRYPT-AT-REST
+    mandatory: false
+    severity: high
+    rule_codes:
+    - ctl-data-encrypted-at-rest
+    remediation: Enable encryption at rest with a managed key on every datastore.
+  spectral_rules:
+    ctl-data-encrypted-at-rest:
+      description: Datastores must be encrypted at rest
+      message: Datastore at {{path}} is not encrypted at rest (CCC.KMS)
+      severity: error
+      given: $.nodes[?(@['node-type']=='database')].metadata
+      then:
+        field: encryption_at_rest
+        function: pattern
+        functionOptions:
+          match: ^enabled$
+- control_id: CCC.VPC
+  title: External Connectivity Control
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: CCC
+    id: CCC.Core.CN05
+    path: catalogs/core/core/controls.yaml
+  source_change:
+    from: CCC.VPC
+    to: CCC.Core.CN05
+    by: seed-import
+    at: '2026-01-01T00:00:00+00:00'
+    rationale: re-sourced from hand-written CCC.VPC to ingested CCC.Core.CN05 (task
+      21.5); control_id and Rule_Codes unchanged
+  references:
+  - framework: CCC
+    id: CCC.Core.CN03
+  - framework: NIST
+    id: SC-7
+  registry_id: EXTERNAL-CONNECTIVITY-001
+  registry_severity: high
+  applicability:
+    facts:
+    - agent_has_external_connectivity
+  configurations:
+  - id: CFG-EXTERNAL-MEDIATION
+    mandatory: false
+    severity: medium
+    rule_codes:
+    - ctl-external-service-mediated
+    remediation: Expose external-facing services only through the API gateway.
+  spectral_rules:
+    ctl-external-service-mediated:
+      description: External-facing services must be mediated by a gateway
+      message: External service at {{path}} is not mediated by a gateway (CCC.VPC)
+      severity: error
+      given: $.nodes[?(@['node-type']=='service' && @.metadata.exposure=='external')].metadata
+      then:
+        field: mediation
+        function: pattern
+        functionOptions:
+          match: ^gateway$
+- control_id: AIGF-MI-017
+  title: AI Firewall Implementation and Management
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-17
+    path: docs/_mitigations/mi-17_*.md
+  references:
+  - framework: NIST
+    id: SC-7
+  - framework: NIST
+    id: AC-4
+  - framework: CCC
+    id: CCC.Core.CN05
+  registry_id: EXTERNAL-CONNECTIVITY-GOVERNANCE-001
+  registry_severity: critical
+  applicability:
+    facts:
+    - agent_has_external_connectivity
+  configurations:
+  - id: CFG-MODEL-GUARDRAILS
+    mandatory: false
+    severity: medium
+    rule_codes:
+    - ctl-model-guardrails-enabled
+    remediation: Place guardrails (AI firewall) in front of every foundation model.
+  spectral_rules:
+    ctl-model-guardrails-enabled:
+      description: Foundation models must sit behind guardrails
+      message: Model at {{path}} has no guardrails (AIGF mi-17)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:llm')].metadata
+      then:
+        field: guardrails
+        function: pattern
+        functionOptions:
+          match: ^enabled$
+- control_id: AIGF-MI-004
+  title: AI System Observability
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-4
+    path: docs/_mitigations/mi-4_*.md
+  references:
+  - framework: NIST
+    id: AU-12
+  - framework: NIST
+    id: SI-4
+  registry_id: OBSERVABILITY-001
+  registry_severity: high
+  applicability:
+    facts:
+    - agent_present
+  configurations:
+  - id: CFG-AGENT-OBSERVABILITY
+    mandatory: false
+    severity: low
+    rule_codes:
+    - ctl-agent-observability
+    remediation: Enable tracing and metrics on every agent.
+  spectral_rules:
+    ctl-agent-observability:
+      description: Agents must emit observability data
+      message: Agent at {{path}} has no observability (AIGF mi-4)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: observability
+        function: pattern
+        functionOptions:
+          match: ^enabled$
+- control_id: AIGF-MI-005
+  title: System Acceptance Testing
+  version: 1
+  type: control
+  status: APPROVED
+  approved_by: seed-import
+  approved_at: '2026-01-01T00:00:00+00:00'
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: seed-import
+    role: seed
+    rationale: seed import
+    at: '2026-01-01T00:00:00+00:00'
+    version: 1
+  source:
+    framework: AIGF
+    id: mi-5
+    path: docs/_mitigations/mi-5_*.md
+  references:
+  - framework: NIST
+    id: CA-2
+  - framework: NIST
+    id: SA-11
+  - framework: NIST
+    id: SI-6
+  registry_id: ACCEPTANCE-TESTING-001
+  registry_severity: high
+  applicability:
+    facts:
+    - agent_present
+  configurations:
+  - id: CFG-ACCEPTANCE-TESTS
+    mandatory: false
+    severity: low
+    rule_codes:
+    - ctl-agent-acceptance-tested
+    remediation: Complete acceptance testing for every agent before release.
+  spectral_rules:
+    ctl-agent-acceptance-tested:
+      description: Agents must have completed acceptance testing
+      message: Agent at {{path}} has not completed acceptance testing (AIGF mi-5)
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: acceptance_testing
+        function: pattern
+        functionOptions:
+          match: ^completed$

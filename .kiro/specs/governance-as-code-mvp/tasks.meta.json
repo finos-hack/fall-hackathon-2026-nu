@@ -1,0 +1,1434 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "0.1 Scaffold `ai-governance-intelligence-platform` (existing `.git` only): `pyproject.toml` (uv, pytest, hypothesis, fastapi, jinja2, pyyaml, pydantic, opentelemetry), directory layout from the design, empty `config/`, `catalogs/`, `rulesets/`, `fixtures/`, and a documented Git Bash install-and-test command": [
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794731921283
+      },
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732065303
+      }
+    ],
+    "0.2 Copy (never move) the listed draft modules, rule files, VOCABULARY, examples, scripts, `rule-authoring/` and dependent tests into `legacy/`, `catalogs/` seed, `fixtures/variants/`, `scripts/`, `tests/legacy/` per the reuse map; fix imports only; do not copy `src/agent`, `demo*.py`, `agent_runtime.py`, AgentCore files, `uv.lock`, `evaluator.py`": [
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732071997
+      },
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732197318
+      }
+    ],
+    "0.3 Write `docs/REUSE.md` (file, source path, draft commit hash, new role); run copied tests and list failures with reasons as a deliberate-change list (kept for `spike-notes.md`)": [
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732203295
+      },
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732578788
+      }
+    ],
+    "0.4 Add consistency test that fails if any code path uses `risk_tier.py` output or summed Dimension values to set a severity, and that no `calm-guard`/draft-repo dependency exists": [
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732204649
+      },
+      {
+        "executionId": "330f73e6-9c59-4028-9d32-4d633f8f6d08",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794732578572
+      }
+    ],
+    "CP0. Checkpoint after step 0 - Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "731dd9cb-17c8-43ce-9455-a6e7c0e5e53b",
+        "chatSessionId": "sess_0210587f-ae38-4f82-bcd7-d211f4089034",
+        "timestamp": 1794743096889
+      }
+    ],
+    "1.1 CALM spike script + notes: CLI version; `calm validate -a` / `-p ... -f json` shapes for valid, warning-only, invalid (VALID = `hasErrors` false); `calm generate` twice byte-identity and placeholder forms; validate draft examples for `ai:*` node types and custom verbs; record the metadata/`connects` fallback if rejected": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743136126
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743305791
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743346113
+      },
+      {
+        "executionId": "09ce13ec-fd68-4481-8ee6-6e51720e8bc8",
+        "chatSessionId": "sess_e1b04b15-b26e-4a71-bed6-39664df71010",
+        "timestamp": 1794744857994
+      },
+      {
+        "executionId": "09ce13ec-fd68-4481-8ee6-6e51720e8bc8",
+        "chatSessionId": "sess_e1b04b15-b26e-4a71-bed6-39664df71010",
+        "timestamp": 1794745597322
+      }
+    ],
+    "1.2 Spectral spike: version and `spectral lint <file> -r <ruleset> -f json` output on a CALM JSON file (exit-code behaviour, result fields)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743136462
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743306196
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743346479
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745738780
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745760608
+      },
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747028362
+      }
+    ],
+    "1.3 Decider spike: one `POST /v1/systemone` and `GET /health` at `localhost:8000`; record request, response, client latency; record fallback if down": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743136793
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743306927
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743346306
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745738919
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745761686
+      },
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747029381
+      }
+    ],
+    "1.4 py-pglite spike: TCP mode on Windows port 5433, persistence across restart; record YAML-seed/SQLite contingency": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743137835
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743307595
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743346681
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745739119
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745762512
+      },
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747030476
+      }
+    ],
+    "1.5 Bedrock spike: model access from configured region via Strands; record contingency (`provider: none/replay`)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743138177
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743308268
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743346881
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745739260
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745763523
+      },
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747031638
+      }
+    ],
+    "1.6 Fluxnova spike (hard 30-minute limit): Docker `finos/fluxnova-bpm-platform:latest` on 8080; confirm `/engine-rest` paths for deployment, external-task fetch-and-lock, complete, failure, user tasks; record pass/fail": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743139644
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743309024
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743353191
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745739409
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745764720
+      },
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747033416
+      }
+    ],
+    "1.7 Assemble `docs/spike-notes.md` from fragments plus the deliberate-change list from 0.3; state chosen contingencies and the Executor decision (Fluxnova vs Direct_Adapter)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743140723
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743309755
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745739567
+      },
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747034623
+      }
+    ],
+    "2.1 `shared/src/agip_shared/contracts.py`: AgentTask, AgentResult, Artifact, Fact, FactSet, SpectralRun, ControlGapAssessment, RiskProfile, Decision, DeciderResult, Extraction_Record (Pydantic; artifact IDs only)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743141907
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743310351
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745739749
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747087021
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747109360
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747352103
+      }
+    ],
+    "2.2 `shared/src/agip_shared/hashing.py` (canonical JSON, SHA-256, Input_Hash) and `shared/src/agip_shared/paths.py` (`resolve_within(data_dir, p)`; reject `..`, absolute, symlink escapes)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743142106
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743310998
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740061
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747087337
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747109023
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747354711
+      }
+    ],
+    "2.4 `governance-execution-framework/src/governance_execution/store/` (py-pglite TCP 5433, `schema.sql`, immutable artifact files at `data/artifacts/<trace>/<kind>/<id>.json` with SHA-256, YAML seed + file export fallback, SQLite last resort per spike)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743143335
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743311450
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740166
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747087602
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747369786
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747897778
+      }
+    ],
+    "2.5 `governance-execution-framework/src/governance_execution/adapters/calm.py` CALM_Adapter: `generate`, `validate(pattern?, arch)` returning VALID/INVALID/ERROR with errors (`code,severity,message,path`) and warnings; list args, temp dir, timeout, records version/exit code/duration; flags from spike notes": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743144195
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743311788
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740280
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747087894
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747370318
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747901651
+      }
+    ],
+    "2.6 `governance-execution-framework/src/governance_execution/adapters/spectral.py` Spectral_Adapter: `lint(app, ruleset) -> SpectralRun(OK|ERROR, results, version)`; parses JSON per spike (not exit code); list args, temp dir, timeout; keeps raw + parsed": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743145195
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743312008
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740395
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747088148
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747371038
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747902494
+      }
+    ],
+    "2.7 `governance-execution-framework/src/governance_execution/obs/otel.py`: one trace per assessment (console/file), span per stage, Trace_ID on artifacts, secret scrubbing; `versions` recorder for all versioned inputs": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743146227
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743312182
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740501
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747088480
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747370740
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747903111
+      }
+    ],
+    "3.1 `rule-authoring-framework/src/rule_authoring/sources_aigf.py`: read `ri-*.md`/`mi-*.md` frontmatter -> native ID, title, references; report path+field and skip malformed files; deterministic": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743146455
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743312369
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740620
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747088751
+      },
+      {
+        "executionId": "4f93fdb6-023d-4c78-882a-e0f2bbaf9891",
+        "chatSessionId": "sess_450dbf01-58e3-4ee4-a72d-35cf1be8f09a",
+        "timestamp": 1794747965766
+      },
+      {
+        "executionId": "4f93fdb6-023d-4c78-882a-e0f2bbaf9891",
+        "chatSessionId": "sess_450dbf01-58e3-4ee4-a72d-35cf1be8f09a",
+        "timestamp": 1794748201794
+      }
+    ],
+    "3.2 `rule-authoring-framework/src/rule_authoring/sources_ccc.py`: read controls/threats/capabilities YAML for `core/core` and `ai-ml/multi-agent-refarch` (use only 1-2 CCC controls in the MVP); same error handling": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743147933
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743312839
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740762
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747089007
+      },
+      {
+        "executionId": "4f93fdb6-023d-4c78-882a-e0f2bbaf9891",
+        "chatSessionId": "sess_450dbf01-58e3-4ee4-a72d-35cf1be8f09a",
+        "timestamp": 1794747966033
+      },
+      {
+        "executionId": "4f93fdb6-023d-4c78-882a-e0f2bbaf9891",
+        "chatSessionId": "sess_450dbf01-58e3-4ee4-a72d-35cf1be8f09a",
+        "timestamp": 1794748202715
+      }
+    ],
+    "3.4 `shared/src/agip_shared/gateway/model_gateway.py` + `recorder.py` + `runtime_strands.py`: providers `bedrock|none|replay`; configurable provider/model/region; strips secrets and file paths; persists Extraction_Record (prompt version, model, input hash, output); Strands types only in the runtime adapter": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743149055
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743313518
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745740918
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747089266
+      }
+    ],
+    "3.5 `governance-execution-framework/src/governance_execution/units/rule_authoring.py` extract (wrapping `rule-authoring-framework/src/rule_authoring/extraction.py`): `rule-authoring-framework/prompts/extraction.v1.md`, schema-validate (triggers, likelihood, impact, remediation, candidate Spectral rule), store as DRAFT, reject invalid with reason; use recorded outputs by default": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743149898
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743313735
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741106
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747089537
+      }
+    ],
+    "3.7 Approval function (`rule-authoring-framework/src/rule_authoring/approval.py`) + CLI (`approve <id> --by`): DRAFT -> APPROVED with approver and timestamp; compile accepts APPROVED only": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743150991
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743313917
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741215
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747089837
+      }
+    ],
+    "3.8 Merge draft `rule-authoring-framework/catalogs/seed/registry.yaml` + `rule-authoring-framework/catalogs/seed/rules/*.yaml` into `rule-authoring-framework/catalogs/controls.catalog.yaml` and `rule-authoring-framework/catalogs/risks.catalog.yaml` (one definition each, non-empty remediation, source refs, likelihood/impact 1-5, mandatory flags); write `governance-execution-framework/config/scoring_profile.yaml`, `gap_rule.yaml`, `gates.yaml` (G1 CALM invalid, G2 payment authorization, G3 unevaluable), `decision_matrix.yaml`, `taxonomy.yaml` from the design; seed APPROVED recorded extractions": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743151346
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743314394
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741321
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747090097
+      }
+    ],
+    "3.9 `rule-authoring-framework/src/rule_authoring/consistency.py`: fail on duplicate or undefined Rule_Code and on conflicting definitions across sources, reporting both locations": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743152718
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743315130
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741445
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747090337
+      }
+    ],
+    "3.10 `rule-authoring-framework/src/rule_authoring/compile.py`: catalogs -> `rule-authoring-framework/rulesets/controls.spectral.yaml`/`risks.spectral.yaml` (APPROVED only, sorted keys, version, SHA-256, core functions first, Custom_Function list with reasons under `rule-authoring-framework/rulesets/functions/`, inexpressible rules reported by Rule_Code); CLI `compile`": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743153957
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743315712
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741564
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747090595
+      }
+    ],
+    "CP3. Checkpoint after step 3 - Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743154246
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743316329
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741701
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747090861
+      }
+    ],
+    "4.1 `calm-app-generation-framework/prompts/pattern-draft.v1.md` and pattern specs for P02, P03, P07, P08, P11, P12, P13, P14 (technology-neutral; reference CALM_AI_Assets as concepts only)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743154989
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743316714
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741810
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747091155
+      }
+    ],
+    "4.2 Author the eight CALM 1.2 pattern JSONs in `calm-app-generation-framework/patterns/` (recorded, human-approved), each with metadata listing related control rule IDs and risk rule IDs from the catalogs; each passes `calm validate`": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743155845
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743317154
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745741993
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747091499
+      }
+    ],
+    "4.3 Pattern_Library store: file + catalog DB record with version/status; publish only after validation passes and approval; reject invalid with each error": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743156142
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743317615
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745742096
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747091772
+      }
+    ],
+    "5.1 `calm-app-generation-framework/src/calm_generation/composer.py`: merge selected Patterns into ONE CALM 1.2 pattern (`const`, `options` relationships, placeholders); record RA ID/version/source pattern versions; pure; sorted, normalized output; no risk calculation or added controls": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743157247
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743317899
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745742196
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747092034
+      }
+    ],
+    "5.4 Compose `calm-app-generation-framework/templates/RA03-LITE.json` (API Gateway, Invoice Processing Service, Invoice Intelligence Agent and Payment Agent as `ai:agent` with tools/autonomy/privilege metadata, Foundation Model `ai:llm`, Payment Tool `ai:tool`, Payment API, Human Approval Service, Audit Service, Invoice DB); validate; publish to CALM_Catalog; report conflicts naming both Patterns": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743158699
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743318187
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745742310
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747092386
+      }
+    ],
+    "6.1 `calm-app-generation-framework/src/calm_generation/attributes.py`: `form_for(template)` YAML (fields, options), `validate(form, template)` (required, allowed, type, placeholder coverage; no Decider); refuse DRAFT templates": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743160008
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743318628
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745742752
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747092629
+      }
+    ],
+    "6.3 `calm-app-generation-framework/src/calm_generation/placeholders.py`: fill `[[ NAME ]]`, `[[ BOOLEAN_X ]]`, `[[ REF_X ]]`, `-1` numbers from attributes; fill record; leftovers reported with JSON path and no App_Model": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743160199
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743319119
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745743124
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747092889
+      }
+    ],
+    "6.5 `governance-execution-framework/src/governance_execution/units/calm_builder.py` instantiate flow: option-choices file (unique-id -> description), `calm generate` via CALM_Adapter, fill, set `$schema` to CALM 1.2, `calm validate -p`, Generation_Manifest, store App_Model; INVALID returns errors + correction guidance (V4)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743161145
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743319620
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745743346
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747093172
+      }
+    ],
+    "6.7 Write `governance-execution-framework/forms/ra03-lite.attributes.yaml` and filled `v1`-`v4` forms (V2 direct-to-Payment-API unrestricted write, V3 no audit service + autonomous Payment Agent, V4 invalid instance)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743161869
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743320330
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745743490
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747093448
+      }
+    ],
+    "CP6. Checkpoint after step 6 - Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743162979
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743320857
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745744020
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747093737
+      }
+    ],
+    "7.1 `governance-execution-framework/src/governance_execution/core/facts.py`: extract Facts for the seven Dimensions and per-agent Facts from App_Model metadata with provenance; deterministic Taxonomy mapping first; keep `UNMAPPED`; persist FactSet + taxonomy version + App_Model hash as an Artifact": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743164228
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743321342
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745744304
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747094136
+      }
+    ],
+    "7.3 `governance-execution-framework/src/governance_execution/core/acceptance.py` + `governance-execution-framework/config/decider_policy.yaml`: choice/score by confidence and top-2 margin, noul by 0.9/0.1 without confidence, ABSTAIN->UNKNOWN or HUMAN_REVIEW, missing/invalid -> not accepted": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743165723
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743321894
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745744540
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747094407
+      }
+    ],
+    "7.5 `governance-execution-framework/src/governance_execution/adapters/decider.py`: `POST /v1/systemone` (`noul|choice|score`), config for URL/model/timeout, client-side latency, state builder (fixed fields, 4000 chars, truncation order, no CALM/secrets/paths), Input_Hash cache, audit record, providers `http|fixture` (`fixture_missing`), never raises; call only for UNMAPPED with no deterministic check; labels may feed triggers only": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743166154
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743322114
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745744744
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747094719
+      }
+    ],
+    "8.1 `governance-execution-framework/src/governance_execution/core/spectral_runs.py`: run controls and risks rulesets in parallel via Spectral_Adapter; persist raw and parsed Artifacts": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743167388
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743322554
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745745199
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747095002
+      }
+    ],
+    "8.2 `governance-execution-framework/src/governance_execution/units/control_assessment.py`: Rule_Code join -> PASS/FAIL/ERROR/NOT_APPLICABLE (PASS labelled DESIGN evidence), `governance-execution-framework/src/governance_execution/core/gap.py` Gap_Level from `governance-execution-framework/config/gap_rule.yaml`, attach catalog remediation to FAIL": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743168385
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743323058
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745745301
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747095286
+      }
+    ],
+    "8.4 `governance-execution-framework/src/governance_execution/scoring.py` + `governance-execution-framework/src/governance_execution/units/risk_assessment.py`: triggered risks, severity = `severity_matrix[L][I]` per risk, profile level = worst, tier from `governance-execution-framework/src/governance_execution/risk_tier.py` kept separate, `INDETERMINATE` on unevaluable mandatory trigger": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743168577
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743323621
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745745400
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747095554
+      }
+    ],
+    "8.6 `governance-execution-framework/src/governance_execution/core/gates.py` + `governance-execution-framework/src/governance_execution/core/decision.py`: ordered gates then Decision_Matrix, design-only cap to APPROVED_WITH_CONDITIONS with the required condition, record every gate/cell evaluated; no LLM/Decider input": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743169964
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743324296
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745745508
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747095805
+      }
+    ],
+    "9.1 `governance-execution-framework/src/governance_execution/units/decision_remediation.py` Remediation_Agent: collect remediation of failed controls and triggered risks, Fix Prompt/Summary via ModelGateway (`governance-execution-framework/prompts/remediation.v1.md`), deterministic list when no-LLM or LLM unavailable; never edits CALM or the decision": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743171354
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743324579
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745745682
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747096162
+      }
+    ],
+    "9.3 Wrap the five Units (in `governance-execution-framework/src/governance_execution/units/`: Rule Authoring, CALM Builder, Control Assessment, Risk Assessment, Decision & Remediation) behind AgentTask/AgentResult with artifact IDs only; no Strands types in domain code": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743171617
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743324768
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745745890
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747096439
+      }
+    ],
+    "9.4 `governance-execution-framework/src/governance_execution/exec/coordinator.py`: `run(trace_id, app_artifact, mode normal|no-llm|replay)` invoking Units only via AgentTask; blocks on invalid CALM; Unit error recorded and no decision derived from missing results; writes versions artifact; new Trace_ID per re-run": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743172917
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743325529
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746006
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747096689
+      }
+    ],
+    "CP9. Checkpoint after step 9 - Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743174572
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743326236
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746141
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747096991
+      }
+    ],
+    "10.1 `governance-execution-framework/src/governance_execution/exec/direct_adapter.py`: run Coordinator steps with `threading` for the two Spectral lanes; Executor label (development-only when it is the fallback) stored on the assessment": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743175629
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743326677
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746355
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747097261
+      }
+    ],
+    "CP10. Checkpoint after step 10 - Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743176831
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743327153
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746443
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747097517
+      }
+    ],
+    "11.1 `governance-execution-framework/src/governance_execution/dashboard/app.py` (FastAPI + Jinja2 + vanilla JS, port 8001, Mermaid vendored in `governance-execution-framework/src/governance_execution/dashboard/static/`, reads persisted Artifacts only): base layout with labels \"illustrative, not approved policy\" / \"design-level evidence only\"; routes `/`, report, `/versions`, `/catalogs/{kind}`, `/variants`; show Executor; mount routers from `governance-execution-framework/src/governance_execution/dashboard/routers/pages.py` and `.../routers/api.py`": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743177933
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743327835
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746547
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747097831
+      }
+    ],
+    "11.2 `governance-execution-framework/src/governance_execution/dashboard/routers/pages.py`: flow (parallel lanes), architecture diagram coloured by worst finding, 5x5 risk matrix, control gap table, remediation/Fix Prompt, Decider panel (unavailable questions listed), UNMAPPED facts": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743178175
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743328374
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746701
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747098139
+      }
+    ],
+    "11.3 `governance-execution-framework/src/governance_execution/core/trace.py` + explorer route: graph decision -> gate/matrix cell -> control/risk -> Rule_Code + JSON path -> CALM element -> pattern/template version -> AIGF/CCC source ID, both directions": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743179397
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743328890
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745746826
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747098419
+      }
+    ],
+    "11.5 `governance-execution-framework/src/governance_execution/dashboard/routers/api.py`: `POST /api/upload` (<=1 MB, JSON/YAML, data only, immutable Artifact, same path as generated), `/api/assess`, `/api/rules/{id}/approve`, `GET /api/attributes-form/{template}`, `/api/instantiate`, `/api/replay/{trace}`; paths via `resolve_within`": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743180541
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743329349
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747001
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747098700
+      }
+    ],
+    "11.6 JSON Artifact downloads and Static_Export (self-contained HTML report)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743182001
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743330058
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747175
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747098997
+      }
+    ],
+    "12.1 Recorded LLM and Decider outputs and recordings (`rule-authoring-framework/fixtures/recordings/llm/`, `governance-execution-framework/fixtures/recordings/decider/`) for V1-V4 (variant inputs in `calm-app-generation-framework/fixtures/variants/`); expected results file (V1 APPROVED_WITH_CONDITIONS, V2 REJECTED by G2, V3 high profile + minor gaps + RESTRICTED, V4 blocked); tune catalog rules so these hold": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743183231
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743330689
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747401
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747099242
+      }
+    ],
+    "12.2 `governance-execution-framework/src/governance_execution/obs/replay.py`: replay from recordings with zero model calls, identical artifacts and decision, fail naming the missing record": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743184770
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743331195
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747495
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747099556
+      }
+    ],
+    "12.3 Golden E2E tests V1-V4 (instantiate -> assess via Direct_Adapter; CALM/Spectral stubbed on recorded outputs, real tools when present)": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743185585
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743331482
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747607
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747099852
+      }
+    ],
+    "12.4 Golden no-LLM (V1-V3 complete with deterministic remediation list), replay-identical (V1-V4), and most-favourable-Decider invariant tests": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743185842
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743332044
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747728
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747100158
+      }
+    ],
+    "13.1 `README.md`: purpose, architecture summary, Git Bash install/test command, tool prerequisites (calm, spectral, Docker optional), modes, ports, labels, link to `docs/REUSE.md` and `docs/spike-notes.md`": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743187503
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743332708
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745747895
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747100380
+      }
+    ],
+    "13.2 `scripts/demo.sh` (repo root) (Git Bash): compile rulesets, instantiate and assess V1-V4 on recorded outputs, print decisions, start the dashboard on 8001 and open it in the browser": [
+      {
+        "executionId": "37722a8f-dff6-42e9-a63f-e245d0714239",
+        "chatSessionId": "sess_5fdb9ab5-728a-47dd-8adb-66f1eee61c62",
+        "timestamp": 1794743189180
+      },
+      {
+        "executionId": "5ff09def-826c-448a-a87a-4d5ad13240f3",
+        "chatSessionId": "sess_0ceec586-5322-4487-a2cc-6b91f08195b4",
+        "timestamp": 1794743333409
+      },
+      {
+        "executionId": "98217002-974c-47f9-a4be-3ecf308a5f20",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794745748053
+      },
+      {
+        "executionId": "3c63a991-aa80-40a7-a674-3f3b5a21b848",
+        "chatSessionId": "sess_4d955e48-f505-42ea-ad78-e2255936563c",
+        "timestamp": 1794747100628
+      }
+    ],
+    "1. Tooling spike (each task writes its own fragment under `docs/spike/`)": [
+      {
+        "executionId": "dbef01fe-ae33-4b0a-99b3-74b4ed1c2589",
+        "chatSessionId": "sess_60d42cb5-354e-41ad-af88-a669e6c51c7b",
+        "timestamp": 1794747035001
+      }
+    ]
+  }
+}

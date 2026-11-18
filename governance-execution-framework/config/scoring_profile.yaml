@@ -1,0 +1,11 @@
+version: 1
+label: "illustrative, not approved policy"
+likelihood_scale: {1: Rare, 2: Unlikely, 3: Possible, 4: Likely, 5: Almost certain}
+impact_scale: {1: Negligible, 2: Minor, 3: Moderate, 4: Major, 5: Severe}
+severity_matrix:   # rows = likelihood 1..5, columns = impact 1..5
+  1: [Low,    Low,    Low,      Medium,   Medium]
+  2: [Low,    Low,    Medium,   Medium,   High]
+  3: [Low,    Medium, Medium,   High,     High]
+  4: [Medium, Medium, High,     High,     Critical]
+  5: [Medium, High,   High,     Critical, Critical]
+profile_level: worst_of_triggered

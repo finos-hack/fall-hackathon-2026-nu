@@ -1,0 +1,43 @@
+{% from "_ui.html" import icon %}<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}AIGP - Dashboard{% endblock %}</title>
+{% if export %}<style>{{ css|safe }}</style>{% else %}<link rel="stylesheet" href="/static/app.css?v={{ ASSET_V }}">{% endif %}
+</head><body class="{{ 'export' if export else 'app' }}">
+{% if not export %}
+{% set p = request.url.path %}
+{% set catalog = [("/catalogs/controls", "Controls Catalog", "shield", p == "/catalogs/controls"),
+                  ("/catalogs/risks", "Risk Profile Catalog", "alert", p == "/catalogs/risks"),
+                  ("/catalogs/patterns", "CALM Patterns Catalog", "layers", p in ("/catalogs/patterns", "/catalogs/templates"))] %}
+{% set build = [("/patterns/new", "Build Pattern", "layers", p.startswith("/patterns")),
+                ("/architectures/new", "Build Reference Architecture", "layers", p.startswith("/architectures")),
+                ("/applications/new", "Generate CALM", "layers", p.startswith("/applications"))] %}
+{% set groups = {"catalog": ("Catalog", "database", catalog, p.startswith("/catalogs")),
+                 "build": ("Architecture", "layers", build, p.startswith("/patterns") or p.startswith("/architectures") or p.startswith("/applications"))} %}
+{% set main = [("/", "Overview", "home", p in ("/", "/overview")), "catalog",
+               ("/source-registry", "Source Registry", "database", p.startswith("/source-registry") or p.startswith("/registry") or p.startswith("/lineage")),
+               ("/rules/new", "Generate Rules", "shield", p.startswith("/rules")), "build",
+               ("/assessments", "Assessments", "clipboard", p.startswith("/assessments"))] %}
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="logo">AI</span><span><b>AIGP</b></span></a>
+    <nav class="menu" aria-label="Main">
+      {% for m in main %}{% if m is string %}{% set title, gic, items, open = groups[m] %}
+      <details class="menu-group"{% if open %} open{% endif %}><summary class="item group-title">{{ icon(gic) }}<span>{{ title }}</span><span class="caret" aria-hidden="true"></span></summary>
+        <div class="submenu">{% for href, label, ic, on in items %}<a class="item sub{% if on %} active{% endif %}" href="{{ href }}">{{ icon(ic) }}<span>{{ label }}</span></a>{% endfor %}</div></details>
+      {% else %}{% set href, label, ic, on = m %}<a class="item{% if on %} active{% endif %}" href="{{ href }}">{{ icon(ic) }}<span>{{ label }}</span></a>{% endif %}{% endfor %}
+    </nav>
+    <div class="side-foot"><a href="/api/docs">API docs</a></div>
+  </aside>
+  <div class="content">
+    <header class="site-banner"><h1>AI Governance Intelligence Platform</h1></header>
+    <main>
+{% else %}
+<main>
+<div class="banner">Scoring outputs are <b>{{ LABEL_SCORING }}</b>. Spectral passes are <b>{{ LABEL_SPECTRAL }}</b>.</div>
+{% endif %}
+{% block body %}{% endblock %}
+</main>
+{% if not export %}</div></div>{% endif %}
+{% if export %}<script>{{ mermaid_js|safe }}</script>{% else %}<script src="/static/mermaid.min.js"></script><script src="/static/app.js"></script>{% endif %}
+<script>if (window.mermaid) { mermaid.initialize({startOnLoad: true, securityLevel: "strict"}); }</script>
+</body></html>

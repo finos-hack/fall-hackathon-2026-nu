@@ -1,0 +1,143 @@
+{
+  "$id": "https://agip.example/patterns/P08-relational-data-store.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "Structured persistent data store.",
+  "metadata": {
+    "approved_by": "architecture-review",
+    "pattern-id": "P08",
+    "related_controls": [
+      "AIGF-MI-012",
+      "CCC.KMS"
+    ],
+    "related_risks": [
+      "AIGF-RI-001"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Stores structured records."
+            },
+            "metadata": {
+              "properties": {
+                "access_control": {
+                  "enum": [
+                    "rbac",
+                    "none"
+                  ]
+                },
+                "data_classification": {
+                  "type": "string"
+                },
+                "encryption_at_rest": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "access_control",
+                "data_classification",
+                "encryption_at_rest"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Data Store"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "data-store"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Data Consumer (connection point)"
+            },
+            "name": {
+              "const": "Data Consumer"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "data-consumer"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Consumer reads and writes records"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "data-store"
+                  },
+                  "source": {
+                    "node": "data-consumer"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "consumer-reads-store"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P08 Relational Data Store",
+  "type": "object"
+}

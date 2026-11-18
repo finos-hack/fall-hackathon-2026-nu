@@ -1,0 +1,153 @@
+{
+  "$id": "https://agip.example/patterns/P15-high-impact-action-approval.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "An agent declares how far its actions reach; high-impact actions pass a human approval step.",
+  "metadata": {
+    "approved_by": "architecture-review",
+    "pattern-id": "P15",
+    "related_controls": [
+      "AIGF-MI-024",
+      "AIGF-MI-018"
+    ],
+    "related_risks": [
+      "AIGF-RI-024"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent whose high-impact actions need approval."
+            },
+            "metadata": {
+              "properties": {
+                "action_approval_path": {
+                  "enum": [
+                    "via-human-approval",
+                    "direct"
+                  ]
+                },
+                "action_capability": {
+                  "enum": [
+                    "read-only",
+                    "reversible-write",
+                    "business-write",
+                    "production-change"
+                  ]
+                }
+              },
+              "required": [
+                "action_approval_path",
+                "action_capability"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Queues high-impact actions for a human decision."
+            },
+            "metadata": {
+              "properties": {
+                "role": {
+                  "const": "human-approval"
+                }
+              },
+              "required": [
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Human Approval Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "human-approval"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent submits high-impact actions for approval"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "human-approval"
+                  },
+                  "source": {
+                    "node": "agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "agent-requests-approval"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P15 High-Impact Action Approval",
+  "type": "object"
+}

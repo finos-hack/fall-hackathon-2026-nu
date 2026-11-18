@@ -1,0 +1,46 @@
+{% extends "base.html" %}{% block title %}Generate CALM - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Generate CALM</h1>
+  <div class="page-actions"><a class="btn" href="/applications/new">Change application or template</a></div>
+  <p class="muted"><b>{{ given.app_name or given.app_id }}</b> <code>{{ given.app_id }}</code> on <b>{{ template.id }}</b>{% if template.title %} ({{ template.title }}){% endif %},
+  chosen by {% if template_choice.source == "decider" %}the Decider{% if template_choice.confidence is number %} (confidence {{ "%.2f"|format(template_choice.confidence) }}){% endif %}{% elif template_choice.source == "user" %}you{% else %}{{ template_choice.source }}{% endif %}.</p></div>
+<ol class="steps"><li class="done">1. Application</li><li class="on">2. Requirements</li><li>3. Assessment</li></ol>
+{% if errors %}<div class="status-box bad"><b>Not generated yet</b><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+{% if guidance %}<b>Guidance</b><ul>{% for g in guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}</div>{% endif %}
+<form method="post" action="/applications/new">
+<input type="hidden" name="template_id" value="{{ template.id }}">
+<input type="hidden" name="template_source" value="{{ template_choice.source }}">
+{% if template_choice.confidence is number %}<input type="hidden" name="template_confidence" value="{{ template_choice.confidence }}">{% endif %}
+<input type="hidden" name="app_id" value="{{ given.app_id or '' }}"><input type="hidden" name="app_name" value="{{ given.app_name or '' }}">
+<input type="hidden" name="purpose" value="{{ given.purpose or '' }}">
+
+{% if questions %}<div class="card">
+  <div class="card-head"><h2>Requirements</h2><span class="muted">Not sure? Pick "describe it" and the Decider maps your sentence to the closest answer.</span></div>
+  <div class="form-grid">
+  {% for q in questions %}
+    <div class="label">{{ loop.index }}. {{ q.label }}{% if q.help %}<span class="help">{{ q.help }}</span>{% endif %}</div>
+    <div class="control">
+    {% if q.type == "number" %}<input name="q__{{ q.id }}" type="number" step="any" required value="{{ given['q__' ~ q.id] or '' }}">
+    {% else %}<div class="choice-list">
+      {% for key, a in q.answers.items() %}<label><input type="radio" name="q__{{ q.id }}" value="{{ key }}"{% if given['q__' ~ q.id] == key %} checked{% endif %}> <span>{{ a.label }}</span></label>{% endfor %}
+      <label><input type="radio" name="q__{{ q.id }}" value=""{% if not given['q__' ~ q.id] %} checked{% endif %}> <span class="muted">Not sure, I will describe it</span></label>
+      <div class="describe"><textarea name="qd__{{ q.id }}" rows="2" placeholder="Describe your case in a sentence">{{ given['qd__' ~ q.id] or '' }}</textarea></div>
+    </div>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+</div>{% endif %}
+
+{% if extra_attributes or extra_options %}<details class="section"{% if not questions %} open{% endif %}><summary>{% if questions %}Advanced: template fields not covered by the questions{% else %}Template fields{% endif %}</summary><div class="body">
+<div class="form-grid">
+{% for a in extra_attributes %}<label class="label" for="v_{{ a.name }}">{{ a.name }}{% if a.required %} *{% endif %}<span class="help"><code>{{ a.target.node }}.{{ a.target.field }}</code></span></label>
+<div class="control">{% if a.type == "enum" %}<select id="v_{{ a.name }}" name="value__{{ a.name }}"><option value="">(infer from the description)</option>{% for v in a.allowed %}<option value="{{ v }}"{% if given['value__' ~ a.name] == v %} selected{% endif %}>{{ v }}</option>{% endfor %}</select>
+{% else %}<input id="v_{{ a.name }}" name="value__{{ a.name }}" value="{{ given['value__' ~ a.name] or '' }}" placeholder="{{ a.type }}{% if a.min is defined %}, min {{ a.min }}{% endif %}">{% endif %}</div>{% endfor %}
+{% for o in extra_options %}<div class="label">{{ o.prompt }}</div><div class="control choice-list">
+<label><input type="radio" name="option__{{ o.unique_id }}" value=""{% if not given['option__' ~ o.unique_id] %} checked{% endif %}> <span class="muted">(infer from the description)</span></label>
+{% for slug, desc in o.choices.items() %}<label><input type="{{ 'radio' if o.type == 'oneOf' else 'checkbox' }}" name="option__{{ o.unique_id }}" value="{{ slug }}"{% if given['option__' ~ o.unique_id] == slug %} checked{% endif %}> <span>{{ desc }}</span></label>{% endfor %}</div>{% endfor %}
+</div></div></details>{% endif %}
+
+<div class="actionbar"><span class="muted">The same published template is reused; only your answers differ. Generation takes a few seconds.</span><span class="spacer"></span>
+<button class="btn primary" type="submit">Generate CALM and assess</button></div>
+</form>
+{% endblock %}

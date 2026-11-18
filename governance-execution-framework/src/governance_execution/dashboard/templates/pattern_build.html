@@ -1,0 +1,44 @@
+{% extends "base.html" %}{% from "_ui.html" import badge %}{% block title %}Build Pattern - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Build Pattern</h1>
+  <p class="muted">A reusable, vendor-neutral building block. Describe it for the agent or edit the spec, save it as DRAFT, then approve to publish it.</p></div>
+{% if errors %}<div class="status-box bad"><b>Problems</b><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% elif saved %}<div class="status-box good"><div class="row-actions"><b>{{ saved.pattern_id }}</b> {{ saved.action }}{% if saved.version %}, v{{ saved.version }}{% endif %}
+  {% if saved.state %}{{ badge("PENDING HUMAN REVIEW" if saved.state in ("DRAFT", "IN_REVIEW") else saved.state) }}{% endif %}
+  {% if saved.state in ("DRAFT", "IN_REVIEW") %}<form method="post" action="/catalogs/patterns/{{ saved.pattern_id }}/approve"><button class="btn primary" type="submit">Approve and publish</button></form>{% endif %}
+  <a href="/catalogs/patterns?focus={{ saved.pattern_id }}">open in catalog</a></div>
+  {% if saved.stale_ras %}<div class="row-actions">Composed from the previous version, so out of date until recomposed:
+  {% for r in saved.stale_ras %}<a class="btn" href="/architectures/new?start={{ r }}">Recompose {{ r }}</a>{% endfor %}</div>{% endif %}</div>
+{% elif drafted %}<div class="status-box">The agent drafted the spec below. Review it, then save.</div>{% endif %}
+<form method="post" action="/patterns/new" class="editor">
+  <div class="card">
+    <h2>1. Describe it <span class="muted">(optional, for the agent)</span></h2>
+    <textarea name="description" rows="2" placeholder="e.g. A remediation tool limited to an allow-list of actions on tagged hosts">{{ description or "" }}</textarea>
+    <div class="actionbar"><span class="muted">{{ ai or "No model configured" }}</span><span class="spacer"></span>
+      <button class="btn" type="submit" name="action" value="draft"{% if not ai %} disabled title="no model configured"{% endif %}>Draft spec with the agent</button></div>
+  </div>
+  <div class="card">
+    <h2>2. Pattern spec <span class="muted">(YAML)</span></h2>
+    <textarea name="spec" rows="24" spellcheck="false">{{ spec_text }}</textarea>
+    <div class="actionbar"><span class="muted">Validated against CALM 1.2, the catalog IDs and the field names already in the library.</span><span class="spacer"></span>
+      <button class="btn primary" type="submit" name="action" value="save">Validate and save as DRAFT</button></div>
+  </div>
+</form>
+<details class="section"><summary>Existing patterns <span class="muted">({{ patterns|length }})</span></summary><div class="body scroll-x">
+<table class="compact clean">{% for p in patterns %}<tr><td><b>{{ p.id }}</b> {{ p.title }}</td><td>v{{ p.version }}</td>
+<td>{{ badge("PENDING HUMAN REVIEW" if p.state in ("DRAFT", "IN_REVIEW") else p.state) }}</td><td><a href="/patterns/new?start={{ p.id }}">edit / copy</a></td></tr>{% endfor %}</table></div></details>
+<details class="section"><summary>Spec format</summary><div class="body"><pre>pattern_id: P20          # next free id is suggested
+slug: remediation-tool   # lowercase-kebab, file P20-remediation-tool.json
+title / description
+nodes:                   # id, type, name, description, and metadata or port: true
+  - id: agent
+    type: ai:agent       # actor, system, service, database, ai:agent, ai:tool, ai:llm, ...
+    metadata:            # field: {enum: [a, b]} | {const: v} | {type: string|number|integer|boolean[, minimum, maximum]}
+      remediation_scope: {enum: [allow-listed, any]}
+  - {id: target-host, type: system, name: Target Host, port: true}   # filled by another component
+relationships:
+  - {id: agent-remediates-host, description: ..., from: agent, to: target-host}
+related_controls: [...]  # catalog ids
+related_risks: [...]</pre>
+<p class="muted">A field name already in the library must keep its exact schema.</p>
+<p class="muted"><b>Controls:</b> {{ controls|join(", ") }}</p><p class="muted"><b>Risks:</b> {{ risks|join(", ") }}</p></div></details>
+{% endblock %}

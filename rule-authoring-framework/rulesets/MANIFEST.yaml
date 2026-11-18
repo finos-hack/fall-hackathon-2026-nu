@@ -1,0 +1,10 @@
+generated_by: rule_authoring.compile
+rulesets:
+  controls.spectral.yaml:
+    rules: 15
+    sha256: d5f3b7755ff65fc66d954c8850c83a6064db87e092b41be6afaf638afd0ba3da
+    version: 2
+  risks.spectral.yaml:
+    rules: 7
+    sha256: 1c9c9c9e52aefb85526666b2e5ea8fffa36ecdbbcd01af324aeaca685b4472d4
+    version: 2

@@ -1,0 +1,9 @@
+version: 1
+label: "illustrative, not approved policy"
+gap_level:   # worst failed-control catalog severity -> Gap_Level
+  critical: critical
+  high: major
+  medium: minor
+  low: minor
+  none: none
+error_controls: INDETERMINATE_INPUT   # ERROR controls are never PASS and never count as none

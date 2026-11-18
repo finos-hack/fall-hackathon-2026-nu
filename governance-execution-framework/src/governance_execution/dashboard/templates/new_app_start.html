@@ -1,0 +1,22 @@
+{% extends "base.html" %}{% block title %}Generate CALM - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Generate CALM</h1>
+  <p class="muted">Describe a new application. Its CALM model is generated from a published reference architecture and then assessed.</p></div>
+<ol class="steps"><li class="on">1. Application</li><li>2. Requirements</li><li>3. Assessment</li></ol>
+{% if errors %}<div class="status-box bad"><b>Cannot continue</b><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+<form method="post" action="/applications/new/template" class="card">
+  <div class="form-grid">
+    <label class="label" for="app_id">Application id<span class="help">lowercase letters, digits and dashes</span></label>
+    <div class="control"><input id="app_id" name="app_id" required pattern="[a-z0-9][a-z0-9-]{1,62}" value="{{ given.app_id or '' }}" placeholder="supplier-payments"></div>
+    <label class="label" for="app_name">Application name</label>
+    <div class="control"><input id="app_name" name="app_name" required value="{{ given.app_name or '' }}" placeholder="Supplier payments"></div>
+    <label class="label" for="template_id">Reference architecture<span class="help">Leave on "choose for me" to let the Decider pick from the description</span></label>
+    <div class="control"><select id="template_id" name="template_id"><option value="">Choose for me from the description</option>
+      {% for t in templates %}<option value="{{ t.id }}"{% if given.template_id == t.id %} selected{% endif %}>{{ t.id }} v{{ t.version }}: {{ t.title }}</option>{% endfor %}</select>
+      {% if templates %}<details class="inline"><summary>About the templates ({{ templates|length }})</summary><ul class="plain">{% for t in templates %}<li><b>{{ t.id }}</b> <span class="muted">{{ t.description }}</span></li>{% endfor %}</ul></details>
+      {% else %}<p class="muted">No PUBLISHED template yet. <a href="/architectures/new">Build a reference architecture</a> first.</p>{% endif %}</div>
+    <label class="label" for="purpose">What does the application do?<span class="help">One or two sentences: business process, users, what the AI agents do</span></label>
+    <div class="control"><textarea id="purpose" name="purpose" rows="3" placeholder="e.g. Agents extract supplier invoices, match them to purchase orders and pay approved invoices.">{{ given.purpose or '' }}</textarea></div>
+  </div>
+  <div class="actionbar"><span class="spacer"></span><button class="btn primary" type="submit">Continue to requirements</button></div>
+</form>
+{% endblock %}

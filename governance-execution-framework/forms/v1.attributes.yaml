@@ -1,0 +1,102 @@
+# Variant V1: Invoice-Lite V1 (compliant)
+template:
+  id: RA03-LITE
+  version: 2
+  status: PUBLISHED
+  sha256: d390167d9920bcb481d3fe773ffc86fdf69e0b3a191a8361c250a29c57b618cf
+app:
+  id: invoice-lite-v1
+  name: Invoice-Lite V1 (compliant)
+attributes:
+- name: INVOICE_INTELLIGENCE_AGENT_AUTONOMY
+  required: true
+  target:
+    node: invoice-intelligence-agent
+    field: autonomy
+  placeholder: (omitted by calm generate)
+  type: enum
+  allowed:
+  - supervised
+  - semi-autonomous
+  - autonomous
+- name: PAYMENT_AGENT_AUTONOMY
+  required: true
+  target:
+    node: payment-agent
+    field: autonomy
+  placeholder: (omitted by calm generate)
+  type: enum
+  allowed:
+  - supervised
+  - semi-autonomous
+  - autonomous
+- name: PAYMENT_AGENT_PAYMENT_APPROVAL_PATH
+  required: true
+  target:
+    node: payment-agent
+    field: payment_approval_path
+  placeholder: (omitted by calm generate)
+  type: enum
+  allowed:
+  - via-human-approval
+  - direct
+- name: PAYMENT_AGENT_PAYMENT_LIMIT
+  required: true
+  target:
+    node: payment-agent
+    field: payment_limit
+  placeholder: -1
+  type: number
+  min: 1
+- name: PAYMENT_AGENT_PRIVILEGE
+  required: true
+  target:
+    node: payment-agent
+    field: privilege
+  placeholder: (omitted by calm generate)
+  type: enum
+  allowed:
+  - read-only
+  - restricted-write
+  - unrestricted-write
+- name: FOUNDATION_MODEL_MODEL_VERSION
+  required: true
+  target:
+    node: foundation-model
+    field: model_version
+  placeholder: (omitted by calm generate)
+  type: enum
+  allowed:
+  - pinned
+  - floating
+- name: INVOICE_DB_DATA_CLASSIFICATION
+  required: true
+  target:
+    node: invoice-db
+    field: data_classification
+  placeholder: '[[ DATA_CLASSIFICATION ]]'
+  type: string
+options:
+- unique_id: opt-approval-path
+  type: oneOf
+  prompt: How do payments reach the Payment API?
+  choices:
+    payment-via-human-approval-service: Payment via Human Approval Service
+    direct-to-payment-api: Direct to Payment API
+  selected: payment-via-human-approval-service
+- unique_id: opt-audit
+  type: anyOf
+  prompt: Is an audit service present?
+  choices:
+    audit-service-present: Audit service present
+    no-audit-service: No audit service
+  selected:
+  - audit-service-present
+values:
+  FOUNDATION_MODEL_MODEL_VERSION: pinned
+  INVOICE_DB_DATA_CLASSIFICATION: supplier-financial
+  INVOICE_INTELLIGENCE_AGENT_AUTONOMY: semi-autonomous
+  PAYMENT_AGENT_AUTONOMY: supervised
+  PAYMENT_AGENT_PAYMENT_APPROVAL_PATH: via-human-approval
+  PAYMENT_AGENT_PAYMENT_LIMIT: 25000
+  PAYMENT_AGENT_PRIVILEGE: restricted-write

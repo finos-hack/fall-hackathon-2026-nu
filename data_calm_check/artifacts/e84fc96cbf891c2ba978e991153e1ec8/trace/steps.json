@@ -1,0 +1,1 @@
+{"steps":[{"error":null,"status":"OK","step":"validate_calm"},{"error":null,"outputs":["remediation:result"],"parallel_group":null,"status":"OK","step":"remediate","unit":"decision_remediation"}]}

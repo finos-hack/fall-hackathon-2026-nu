@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block body %}<div class="page-head"><h1>Registry: {{ kind }}</h1><div class="page-actions"><a class="btn" href="/source-registry">&lsaquo; Source Registry</a></div></div>
+<nav class="tabs" aria-label="Registry kinds">{% for k in kinds %}<a class="tab{% if k == kind %} on{% endif %}" href="/registry/{{ k }}">{{ k }}</a>{% endfor %}</nav>
+<table><tr><th>ID</th><th>Title</th><th>Status</th><th>Version</th><th>Provenance</th></tr>
+{% for r in rows %}<tr><td><a href="/registry/{{ kind }}/{{ r.id }}">{{ r.id }}</a></td><td>{{ r.title or "" }}</td><td>{{ r.status or "" }}</td><td>{{ r.version }}</td><td>{{ r.provenance }}</td></tr>{% else %}<tr><td colspan="5">Nothing registered.</td></tr>{% endfor %}</table>{% endblock %}

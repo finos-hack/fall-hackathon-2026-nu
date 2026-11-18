@@ -1,0 +1,12 @@
+version: 1
+label: "illustrative, not approved policy"
+rows: {gap: [none, minor, major, critical], risk: [Low, Medium, High, Critical]}
+cells:   # cells[gap] is indexed by risk profile level, in the order of rows.risk
+  none:     [APPROVED, APPROVED, APPROVED_WITH_CONDITIONS, RESTRICTED]
+  minor:    [APPROVED, APPROVED_WITH_CONDITIONS, RESTRICTED, RESTRICTED]
+  major:    [APPROVED_WITH_CONDITIONS, RESTRICTED, REJECTED, REJECTED]
+  critical: [RESTRICTED, REJECTED, REJECTED, REJECTED]
+design_only_cap:
+  from: APPROVED
+  to: APPROVED_WITH_CONDITIONS
+  condition: "design approved; build-time and runtime evidence required"

@@ -1,0 +1,50 @@
+{
+  "RA03-LITE.compose.yaml": {
+    "content_hash": "664591ab9d663ea739012c3acc1eaa700129009944a3feb5c839c75f54953459",
+    "inputs_hash": null,
+    "updated": "2026-11-18T17:04:20.300175+00:00",
+    "version": 2
+  },
+  "RA03-LITE.consistency.yaml": {
+    "content_hash": "201ea79cfb9c269649b6e06c7dfa9697b86ac06ea6671dfa8c653cb46b7cece9",
+    "inputs_hash": null,
+    "updated": "2026-11-18T17:04:20.320195+00:00",
+    "version": 2
+  },
+  "RA03-LITE.json": {
+    "content_hash": "d390167d9920bcb481d3fe773ffc86fdf69e0b3a191a8361c250a29c57b618cf",
+    "inputs_hash": null,
+    "updated": "2026-11-18T17:04:20.286206+00:00",
+    "version": 2
+  },
+  "RA03-LITE.questions.yaml": {
+    "content_hash": "8b2f8013d92cb052aab8b483b12f687697f7644f3d7f9412b2aa18e5fd776145",
+    "inputs_hash": null,
+    "updated": "2026-11-18T17:04:20.311532+00:00",
+    "version": 2
+  },
+  "RA05-CYBER-REMEDIATION.compose.yaml": {
+    "content_hash": "e9fbf98b8f7d58cabab9fb80b969ecb8d819bca67d5235bca567ca8c99b88ee0",
+    "inputs_hash": null,
+    "updated": "2026-11-18T12:41:24.435363+00:00",
+    "version": 1
+  },
+  "RA05-CYBER-REMEDIATION.consistency.yaml": {
+    "content_hash": "25054dc5fd95b1e68e4da06d42188828df0574cbe4ba5e84c21b6b857adec3b8",
+    "inputs_hash": null,
+    "updated": "2026-11-18T12:41:24.452235+00:00",
+    "version": 1
+  },
+  "RA05-CYBER-REMEDIATION.json": {
+    "content_hash": "f168b39a0cad9683788e08d84fe44848b6f9a6680378d43c8637de2ffa2f16de",
+    "inputs_hash": null,
+    "updated": "2026-11-18T12:41:24.421392+00:00",
+    "version": 1
+  },
+  "RA05-CYBER-REMEDIATION.questions.yaml": {
+    "content_hash": "3b9789e49e90b882b3ca940682c17ed9bd9337653335f87a6e438fd4e0e7e1ad",
+    "inputs_hash": null,
+    "updated": "2026-11-18T12:41:24.444061+00:00",
+    "version": 1
+  }
+}

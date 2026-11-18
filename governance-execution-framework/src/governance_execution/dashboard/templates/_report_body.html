@@ -1,0 +1,73 @@
+﻿{% from "_ui.html" import ref %}
+{% if partial %}
+<p class="muted">Trace_ID <code>{{ s.trace_id }}</code> | mode {{ s.mode }} | Executor <b>{{ s.executor }}</b> <span class="muted">{{ s.executor_note or "" }}</span> | {{ s.time }}</p>
+<p class="actions"><a class="btn primary" href="/assessments/{{ s.trace_id }}">Open full report</a>
+<a class="btn" href="/assessments/{{ s.trace_id }}/execution">Execution timeline</a>
+<a class="btn" href="/assessments/{{ s.trace_id }}/trace">Traceability</a>
+<a class="btn" href="/assessments/{{ s.trace_id }}/architecture">Architecture</a>
+<a class="btn" href="/assessments/{{ s.trace_id }}/export">Static export</a>
+<button class="btn" type="button" onclick="fetch('/api/replay/{{ s.trace_id }}',{method:'POST'}).then(r=>r.json()).then(j=>alert(JSON.stringify(j)))">Replay</button></p>
+{% endif %}
+{% if not export and (s.status == "WAITING_FOR_HUMAN" or pending) %}<section class="pending-review"><h2>PENDING HUMAN REVIEW</h2>
+{% if pending %}<p>The Decider could not classify these attributes with enough confidence. Choose the value for each and approve; the assessment then resumes.</p>
+<form method="post" action="/api/assessments/{{ s.trace_id }}/approve">
+<table><tr><th>Element</th><th>Attribute</th><th>Raw value</th><th>Value</th><th>Task</th></tr>
+{% for t in pending %}<tr><td>{{ t.context.element_id }}</td><td>{{ t.context.attribute }}</td><td>{{ t.context.raw }}</td>
+<td>{% if t.context.allowed_values %}<select name="value__{{ t.task_id }}">{% for v in t.context.allowed_values %}<option value="{{ v }}">{{ v }}</option>{% endfor %}</select>{% else %}<span class="muted">no value needed</span>{% endif %}</td>
+<td><a href="/review/{{ t.task_id }}">{{ t.task_id }}</a> ({{ t.status }})</td></tr>{% endfor %}</table>
+<p><button class="btn primary" type="submit">Approve and resume assessment</button></p></form>
+{% else %}<p>All review tasks are decided. <form method="post" action="/api/assessments/{{ s.trace_id }}/resume" class="inline-form"><button class="btn primary" type="submit">Resume assessment</button></form></p>{% endif %}
+</section>{% endif %}
+{% set src = (b.versions or {}).source or {} %}
+{% if src.requirements or src.inputs %}<section><h2>Inputs and requirements</h2>
+{% if src.requirements %}<p><b>Requirements</b> <span class="muted">(the answers given; only values mapped to template fields are assessed)</span></p><pre>{{ src.requirements }}</pre>{% endif %}
+{% if src.inputs %}<table><tr><th>Attribute</th><th>Value</th><th>Set by</th></tr>
+{% for k, v in (src.inputs["values"] or {})|dictsort %}{% set p = (src.inputs.inferred or {}).get(k) %}<tr><td>{{ k }}</td><td>{{ v }}</td>
+<td>{% if p and p.source == "option" %}chosen option{% elif p and p.source == "question" %}answer to question <i>{{ p.question }}</i>{% elif p and p.described %}Decider from your description{% if p.confidence is number %} (confidence {{ "%.2f"|format(p.confidence) }}){% endif %}{% elif p %}Decider from requirements{% if p.confidence is number %} (confidence {{ "%.2f"|format(p.confidence) }}){% endif %}{% else %}user{% endif %}</td></tr>{% endfor %}
+{% for k, v in (src.inputs.options or {})|dictsort %}{% set p = (src.inputs.inferred or {}).get(k) %}<tr><td>option {{ k }}</td><td>{{ v if v is string else v|join(", ") }}</td>
+<td>{% if p and p.source == "question" %}answer to question <i>{{ p.question }}</i>{% elif p and p.described %}Decider from your description{% if p.confidence is number %} (confidence {{ "%.2f"|format(p.confidence) }}){% endif %}{% elif p %}Decider from requirements{% if p.confidence is number %} (confidence {{ "%.2f"|format(p.confidence) }}){% endif %}{% else %}user{% endif %}</td></tr>{% endfor %}</table>{% endif %}
+{% if src.generation %}<p class="muted">{% if src.template %}Reference architecture {{ src.template.id }}, chosen by {{ "the Decider from the requirements" if src.template.source == "decider" else src.template.source }}{% if src.template.confidence is number %} (confidence {{ "%.2f"|format(src.template.confidence) }}){% endif %}. {% endif %}Generated in {{ src.generation.trace_id }} ({{ src.generation.status }}) from {{ src.app_model_ref }}.</p>{% endif %}
+</section>{% endif %}
+<section><h2>Decision</h2>
+{% if b.decision %}<span class="decision {{ b.decision.decision }}">{{ b.decision.decision }}</span>
+{% for c in b.decision.conditions %}<p>Condition: {{ c }}</p>{% endfor %}
+<table><tr><th>Gate</th><th>Fired</th><th>Outcome</th></tr>{% for g in b.decision.gates_evaluated %}<tr><td>{{ g.id }}</td><td>{{ g.fired }}{% if g.overridden %} (overridden){% endif %}</td><td>{{ g.outcome or "" }}</td></tr>{% endfor %}</table>
+<p>Matrix cell: {% if b.decision.matrix_cell.evaluated %}gap <b>{{ b.decision.matrix_cell.gap }}</b> x risk <b>{{ b.decision.matrix_cell.risk }}</b> = {{ b.decision.matrix_cell.result }}{% if b.decision.matrix_cell.design_only_cap %} (design-only cap {{ b.decision.matrix_cell.design_only_cap }}){% endif %}{% else %}not evaluated ({{ b.decision.matrix_cell.reason }}){% endif %}</p>
+{% elif b.calm_validation and b.calm_validation.status != "VALID" %}<p class="status BLOCKED">Assessment BLOCKED: CALM validation {{ b.calm_validation.status }}. No decision is made.</p>
+{% else %}<p class="ERROR">Assessment FAILED, no decision: {{ (b.unit_error or {}).error }}</p>{% endif %}</section>
+
+<section><h2>CALM validation</h2><p>Status: <b>{{ b.calm_validation.status if b.calm_validation else "not run" }}</b> <span class="muted">(reported separately from Spectral governance results)</span></p>
+{% if b.calm_validation and b.calm_validation.errors %}<table><tr><th>Code</th><th>Path</th><th>Message</th></tr>{% for e in b.calm_validation.errors %}<tr><td>{{ e.code }}</td><td>{{ e.path }}</td><td>{{ e.message }}</td></tr>{% endfor %}</table>
+<ul>{% for g in b.calm_validation.guidance or [] %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}</section>
+
+{% if b.control_gap %}<section><h2>Control gaps</h2><p>Gap_Level: <b>{{ b.control_gap.gap_level }}</b> (gap rule v{{ b.control_gap.gap_rule_version }}). PASS = {{ LABEL_SPECTRAL }}.</p>
+<table><tr><th>Control</th><th>Title</th><th>Status</th><th>Severity</th><th>Rule_Codes / paths</th><th>Remediation</th></tr>
+{% for c in b.control_gap.controls %}<tr><td>{{ ref('controls', c.control_id, export) }}</td><td>{{ c.title }}</td><td class="{{ c.status }}">{{ c.status }}{% if c.status == "PASS" %} <span class="muted">({{ c.evidence }})</span>{% endif %}</td>
+<td>{{ c.gap_contribution or "" }}</td><td>{% for f in c.findings %}{{ f.rule_code }} @ {{ f.path }}<br>{% else %}{{ c.rule_codes|join(", ") }}{% endfor %}</td><td>{{ c.remediation or "" }}</td></tr>{% endfor %}</table></section>{% endif %}
+
+{% if b.risk_profile %}<section><h2>Risk profile</h2><p>Level <b>{{ b.risk_profile.profile_level }}</b> ({{ b.risk_profile.label }}); scoring v{{ b.risk_profile.scoring_version }}.
+{% if b.risk_profile.unevaluable %}<span class="ERROR">Unevaluable mandatory triggers: {{ b.risk_profile.unevaluable|join("; ") }}</span>{% endif %}</p>
+<table><tr><th>Risk</th><th>Title</th><th>L</th><th>I</th><th>Severity</th><th>Triggered by</th><th>Remediation</th></tr>
+{% for r in b.risk_profile.risks %}<tr><td>{{ ref('risks', r.risk_id, export) }}</td><td>{{ r.title }}</td><td>{{ r.likelihood }}</td><td>{{ r.impact }}</td><td class="sev-{{ r.severity }}">{{ r.severity }}</td><td>{% for f in r.findings %}{{ f.rule_code }} @ {{ f.path }}<br>{% endfor %}</td><td>{{ r.remediation }}</td></tr>
+{% else %}<tr><td colspan="7">No risk triggered.</td></tr>{% endfor %}</table>
+{% include "_matrix.html" %}</section>{% endif %}
+
+<section><h2>Remediation</h2>{% if b.remediation %}<p class="muted">Source: {{ b.remediation.source }}{% if b.remediation.reason %} ({{ b.remediation.reason }}){% endif %}. The remediation agent cannot change the decision or edit CALM.</p>
+{% if b.remediation.summary %}<p>{{ b.remediation.summary }}</p>{% endif %}
+{% if b.remediation.fix_prompt %}<h3>Fix Prompt</h3><pre>{{ b.remediation.fix_prompt }}</pre>{% endif %}
+<h3>Remediation list</h3><ol>{% for i in b.remediation["items"] %}<li>{{ i.text }} [{{ i.id }}]</li>{% else %}<li>Nothing to remediate.</li>{% endfor %}</ol>{% endif %}</section>
+
+<section class="refs"><h2>Catalog references</h2>
+<p><b>Controls Catalog:</b> {% for c in (b.control_gap.controls if b.control_gap else []) %}<span class="chip">{{ ref('controls', c.control_id, export) }}</span>{% else %}<span class="muted">none</span>{% endfor %}</p>
+<p><b>Risk Profile Catalog:</b> {% for r in ((b.risk_profile.risks if b.risk_profile else []) or []) %}<span class="chip">{{ ref('risks', r.risk_id, export) }}</span>{% else %}<span class="muted">none triggered</span>{% endfor %}</p>
+<p><b>CALM reference architecture:</b> {% if ra and ra.id %}<span class="chip">{{ ref('patterns', ra.id, export) }}</span> built from patterns {% for p in ra.patterns %}<span class="chip">{{ ref('patterns', p.id, export) }} v{{ p.version }}</span>{% endfor %}{% else %}<span class="muted">not recorded</span>{% endif %}</p></section>
+
+<section><h2>Facts</h2><p>UNMAPPED attributes (outside the Taxonomy; kept, never guessed):</p>
+<table><tr><th>Element</th><th>Attribute</th><th>Raw value</th><th>JSON path</th><th>Decider label</th></tr>
+{% for f in unmapped %}<tr><td>{{ f.element_id }}</td><td>{{ f.attribute }}</td><td>{{ f.raw }}</td><td>{{ f.json_path }}</td><td>{{ f.decider_label or "" }} {{ f.decider_outcome or "" }}</td></tr>
+{% else %}<tr><td colspan="5">None</td></tr>{% endfor %}</table>
+{% if unknown %}<p class="muted">UNKNOWN (absent) attributes: {% for f in unknown %}{{ f.element_id }}.{{ f.attribute }} {% endfor %}</p>{% endif %}</section>
+
+{% if inferred %}<section><h2>Inferred facts (accepted Decider classifications)</h2><table><tr><th>Element</th><th>Attribute</th><th>Raw</th><th>Normalised</th><th>Confidence</th><th>Classification ref</th></tr>
+{% for f in inferred %}<tr><td>{{ f.element_id }}</td><td>{{ f.attribute }}</td><td>{{ f.raw }}</td><td>{{ f.normalized }}</td><td>{{ f.confidence if f.confidence is not none else "" }}</td><td>{{ f.classification_ref or "" }}</td></tr>{% endfor %}</table></section>{% endif %}
+{% include "_decider.html" %}

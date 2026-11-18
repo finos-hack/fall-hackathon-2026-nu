@@ -1,0 +1,369 @@
+entries:
+  P02:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    - at: '2026-11-18T15:43:01Z'
+      by: dashboard-architect
+      from: PUBLISHED
+      rationale: revised to version 2
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-18T15:43:08Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-18T15:43:08Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-18T15:43:08Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: pattern
+    sha256: 8998d0d680fd529a144e7c8e1e023b049d6020ec510ef8cb346108bcda37d6b1
+    source: dashboard:dashboard-architect
+    state: PUBLISHED
+    version: 2
+  P03:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: 701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P07:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: 16b98a91e733ee26dee37e1144012e942dac6d88625fd4a4619b550cefc6d3ef
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P08:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P11:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P12:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: c363838a8f8c4fa381dc77ad6fca3d0dd48297fb7a605019b3adab7c42f46470
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P13:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P14:
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    kind: pattern
+    sha256: 10b44f611b7a12a3f4ed9776223ac84ca89ab291b2d1296e916a480b4cb95935
+    source: agip-seed-library
+    state: PUBLISHED
+    version: 1
+  P15:
+    history:
+    - at: '2026-11-18T12:33:10Z'
+      by: cyber-remediation-build
+      from: null
+      rationale: new pattern
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-18T12:33:10Z'
+      by: architecture-review
+      from: DRAFT
+      rationale: cyber remediation building block (step C)
+      role: architect
+      to: IN_REVIEW
+    - at: '2026-11-18T12:33:10Z'
+      by: architecture-review
+      from: IN_REVIEW
+      rationale: cyber remediation building block (step C)
+      role: architect
+      to: APPROVED
+    - at: '2026-11-18T12:33:10Z'
+      by: architecture-review
+      from: APPROVED
+      rationale: cyber remediation building block (step C)
+      role: architect
+      to: PUBLISHED
+    kind: pattern
+    sha256: 0e65ebeba0c88e7a66591bc9c8f12881312f975e76263c05afdd315127450f7a
+    source: dashboard:cyber-remediation-build
+    state: PUBLISHED
+    version: 1
+  P16:
+    history:
+    - at: '2026-11-18T12:33:10Z'
+      by: cyber-remediation-build
+      from: null
+      rationale: new pattern
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-18T12:33:10Z'
+      by: architecture-review
+      from: DRAFT
+      rationale: cyber remediation building block (step C)
+      role: architect
+      to: IN_REVIEW
+    - at: '2026-11-18T12:33:10Z'
+      by: architecture-review
+      from: IN_REVIEW
+      rationale: cyber remediation building block (step C)
+      role: architect
+      to: APPROVED
+    - at: '2026-11-18T12:33:10Z'
+      by: architecture-review
+      from: APPROVED
+      rationale: cyber remediation building block (step C)
+      role: architect
+      to: PUBLISHED
+    kind: pattern
+    sha256: 79053f5908acf9a2a2c233bd80335a40d284494648f5120a81def9906dcf1526
+    source: dashboard:cyber-remediation-build
+    state: PUBLISHED
+    version: 1
+  P17:
+    history:
+    - at: '2026-11-18T13:06:39Z'
+      by: dashboard-architect
+      from: null
+      rationale: new pattern
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-18T13:06:43Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-18T13:06:44Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-18T13:06:44Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: pattern
+    sha256: 0adad3eed4f6066f4ccef7230c4916a084acfa5bacd63949091b3719677f34c7
+    source: dashboard:dashboard-architect
+    state: PUBLISHED
+    version: 1
+  RA03-LITE:
+    composed_sha256: d390167d9920bcb481d3fe773ffc86fdf69e0b3a191a8361c250a29c57b618cf
+    history:
+    - at: '2026-01-01T00:00:00Z'
+      by: architecture-review
+      from: null
+      rationale: 'seed: approved before lifecycle registry existed'
+      role: architecture-reviewer
+      to: PUBLISHED
+    - at: '2026-11-18T17:04:20Z'
+      by: architecture-review
+      from: null
+      rationale: new version 2
+      role: composer
+      to: DRAFT
+    - at: '2026-11-18T17:04:20Z'
+      by: architecture-review
+      from: DRAFT
+      rationale: recomposed with P02 v2 (description wording)
+      role: risk_approver
+      to: IN_REVIEW
+    - at: '2026-11-18T17:04:20Z'
+      by: architecture-review
+      from: IN_REVIEW
+      rationale: recomposed with P02 v2 (description wording)
+      role: risk_approver
+      to: APPROVED
+    - at: '2026-11-18T17:04:20Z'
+      by: architecture-review
+      from: APPROVED
+      rationale: recomposed with P02 v2 (description wording)
+      role: risk_approver
+      to: PUBLISHED
+    kind: ra
+    source: composer
+    source_patterns: &id001
+    - id: P02
+      sha256: 8998d0d680fd529a144e7c8e1e023b049d6020ec510ef8cb346108bcda37d6b1
+      version: 2
+    - id: P03
+      sha256: 701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7
+      version: 1
+    - id: P07
+      sha256: 16b98a91e733ee26dee37e1144012e942dac6d88625fd4a4619b550cefc6d3ef
+      version: 1
+    - id: P08
+      sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+      version: 1
+    - id: P11
+      sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+      version: 1
+    - id: P12
+      sha256: c363838a8f8c4fa381dc77ad6fca3d0dd48297fb7a605019b3adab7c42f46470
+      version: 1
+    - id: P13
+      sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+      version: 1
+    - id: P14
+      sha256: 10b44f611b7a12a3f4ed9776223ac84ca89ab291b2d1296e916a480b4cb95935
+      version: 1
+    state: PUBLISHED
+    version: 2
+    versions:
+    - composed_sha256: 6581d0398b0dab5063ead4802b93b00c5a2ea9208e56df6d9d8c2e441c17e4f0
+      source_patterns:
+      - id: P02
+        sha256: 36d59657561a1ca384605bfea3741822f2571a9c83a3542875039984011757f1
+        version: 1
+      - id: P03
+        sha256: 701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7
+        version: 1
+      - id: P07
+        sha256: 16b98a91e733ee26dee37e1144012e942dac6d88625fd4a4619b550cefc6d3ef
+        version: 1
+      - id: P08
+        sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+        version: 1
+      - id: P11
+        sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+        version: 1
+      - id: P12
+        sha256: c363838a8f8c4fa381dc77ad6fca3d0dd48297fb7a605019b3adab7c42f46470
+        version: 1
+      - id: P13
+        sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+        version: 1
+      - id: P14
+        sha256: 10b44f611b7a12a3f4ed9776223ac84ca89ab291b2d1296e916a480b4cb95935
+        version: 1
+      version: 1
+    - composed_sha256: d390167d9920bcb481d3fe773ffc86fdf69e0b3a191a8361c250a29c57b618cf
+      source_patterns: *id001
+      version: 2
+  RA05-CYBER-REMEDIATION:
+    composed_sha256: f168b39a0cad9683788e08d84fe44848b6f9a6680378d43c8637de2ffa2f16de
+    history:
+    - at: '2026-11-18T12:41:24Z'
+      by: cyber-remediation-build
+      from: null
+      rationale: composed
+      role: composer
+      to: DRAFT
+    - at: '2026-11-18T12:41:24Z'
+      by: architecture-review
+      from: DRAFT
+      rationale: cyber remediation reference architecture reviewed (step C)
+      role: risk_approver
+      to: IN_REVIEW
+    - at: '2026-11-18T12:41:24Z'
+      by: architecture-review
+      from: IN_REVIEW
+      rationale: cyber remediation reference architecture reviewed (step C)
+      role: risk_approver
+      to: APPROVED
+    - at: '2026-11-18T12:41:24Z'
+      by: architecture-review
+      from: APPROVED
+      rationale: cyber remediation reference architecture reviewed (step C)
+      role: risk_approver
+      to: PUBLISHED
+    kind: ra
+    source: composer
+    source_patterns: &id002
+    - id: P08
+      sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+      version: 1
+    - id: P11
+      sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+      version: 1
+    - id: P12
+      sha256: c363838a8f8c4fa381dc77ad6fca3d0dd48297fb7a605019b3adab7c42f46470
+      version: 1
+    - id: P14
+      sha256: 10b44f611b7a12a3f4ed9776223ac84ca89ab291b2d1296e916a480b4cb95935
+      version: 1
+    - id: P15
+      sha256: 0e65ebeba0c88e7a66591bc9c8f12881312f975e76263c05afdd315127450f7a
+      version: 1
+    - id: P16
+      sha256: 79053f5908acf9a2a2c233bd80335a40d284494648f5120a81def9906dcf1526
+      version: 1
+    state: PUBLISHED
+    version: 1
+    versions:
+    - composed_sha256: f168b39a0cad9683788e08d84fe44848b6f9a6680378d43c8637de2ffa2f16de
+      source_patterns: *id002
+      version: 1

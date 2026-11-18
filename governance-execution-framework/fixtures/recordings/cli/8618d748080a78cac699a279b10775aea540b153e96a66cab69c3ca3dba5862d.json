@@ -1,0 +1,8 @@
+{
+ "args0": "spectral.cmd",
+ "output": null,
+ "rc": 1,
+ "stderr": "",
+ "stdout": "[\n\t{\n\t\t\"code\": \"ctl-payment-requires-human-approval\",\n\t\t\"path\": [\n\t\t\t\"nodes\",\n\t\t\t\"3\",\n\t\t\t\"metadata\",\n\t\t\t\"payment_approval_path\"\n\t\t],\n\t\t\"message\": \"Payment agent at #/nodes/3/metadata/payment_approval_path does not use the human approval path (AIGF mi-24)\",\n\t\t\"severity\": 0,\n\t\t\"range\": {\n\t\t\t\"start\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1382\n\t\t\t},\n\t\t\t\"end\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1390\n\t\t\t}\n\t\t},\n\t\t\"source\": \"c:/Users/User1/AppData/Local/Temp/agip-spectral-awh2m4xb/app.json\"\n\t},\n\t{\n\t\t\"code\": \"ctl-agent-least-privilege\",\n\t\t\"path\": [\n\t\t\t\"nodes\",\n\t\t\t\"3\",\n\t\t\t\"metadata\",\n\t\t\t\"privilege\"\n\t\t],\n\t\t\"message\": \"Agent at #/nodes/3/metadata/privilege has unrestricted write privilege (AIGF mi-18)\",\n\t\t\"severity\": 0,\n\t\t\"range\": {\n\t\t\t\"start\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1464\n\t\t\t},\n\t\t\t\"end\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1484\n\t\t\t}\n\t\t},\n\t\t\"source\": \"c:/Users/User1/AppData/Local/Temp/agip-spectral-awh2m4xb/app.json\"\n\t}\n]",
+ "sub": "lint"
+}

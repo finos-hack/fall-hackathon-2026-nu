@@ -1,0 +1,146 @@
+{
+  "$id": "https://agip.example/patterns/P11-llm-inference.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "Hosted foundation model used for inference.",
+  "metadata": {
+    "approved_by": "architecture-review",
+    "pattern-id": "P11",
+    "related_controls": [
+      "AIGF-MI-017"
+    ],
+    "related_risks": [
+      "AIGF-RI-005",
+      "AIGF-RI-001"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Large language model used for inference."
+            },
+            "metadata": {
+              "properties": {
+                "guardrails": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                },
+                "model_version": {
+                  "enum": [
+                    "pinned",
+                    "floating"
+                  ]
+                },
+                "sensitive_data_filtering": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "guardrails",
+                "model_version",
+                "sensitive_data_filtering"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Foundation Model"
+            },
+            "node-type": {
+              "const": "ai:llm"
+            },
+            "unique-id": {
+              "const": "foundation-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Model Consumer (connection point)"
+            },
+            "name": {
+              "const": "Model Consumer"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "model-consumer"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Consumer sends prompts to the model"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "foundation-model"
+                  },
+                  "source": {
+                    "node": "model-consumer"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "consumer-calls-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P11 LLM Inference",
+  "type": "object"
+}

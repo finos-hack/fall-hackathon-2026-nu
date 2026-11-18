@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" targetNamespace="http://example.com/spike">
+  <bpmn:process id="spike-process" isExecutable="true">
+    <bpmn:startEvent id="start"/>
+    <bpmn:sequenceFlow id="f1" sourceRef="start" targetRef="ext"/>
+    <bpmn:serviceTask id="ext" name="External" camunda:type="external" camunda:topic="spike-topic"/>
+    <bpmn:sequenceFlow id="f2" sourceRef="ext" targetRef="usr"/>
+    <bpmn:userTask id="usr" name="Approve"/>
+    <bpmn:sequenceFlow id="f3" sourceRef="usr" targetRef="end"/>
+    <bpmn:endEvent id="end"/>
+  </bpmn:process>
+</bpmn:definitions>

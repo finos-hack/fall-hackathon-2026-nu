@@ -1,0 +1,8 @@
+{
+ "args0": "calm",
+ "output": null,
+ "rc": 0,
+ "stderr": "\u001b[32minfo\u001b[39m [file-system-document-loader]:     C:\\Users\\User1\\AppData\\Local\\Temp\\agip-calm-haksgn0h\\arch.json exists, loading as file...\n\u001b[32minfo\u001b[39m [file-system-document-loader]:     C:\\Users\\User1\\AppData\\Local\\Temp\\agip-calm-haksgn0h\\pattern.json exists, loading as file...\n",
+ "stdout": "{\n    \"jsonSchemaValidationOutputs\": [],\n    \"spectralSchemaValidationOutputs\": [],\n    \"hasErrors\": false,\n    \"hasWarnings\": false\n}",
+ "sub": "validate"
+}

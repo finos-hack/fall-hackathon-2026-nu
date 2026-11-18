@@ -1,0 +1,3 @@
+<h2>Risk matrix (5x5)</h2><p class="muted">Severity = likelihood x impact lookup in the Scoring_Profile ({{ LABEL_SCORING }}). Risk profile level: <b>{{ b.risk_profile.profile_level }}</b>. Agent_Approval_Tier (approval path only): {{ b.risk_profile.tier }}.</p>
+<table class="matrix"><tr><th>Likelihood \ Impact</th>{% for i in range(1,6) %}<th>{{ i }}</th>{% endfor %}</tr>
+{% for row in matrix %}<tr><th>{{ row[0].l }}</th>{% for c in row %}<td class="sev-{{ c.severity }}">{{ c.severity }}<br><b>{{ c.risks|join(", ") }}</b></td>{% endfor %}</tr>{% endfor %}</table>

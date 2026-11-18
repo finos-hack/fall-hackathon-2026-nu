@@ -1,0 +1,136 @@
+{
+  "$id": "https://agip.example/patterns/P02-api-gateway.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "Single mediated entry point for external caller.",
+  "metadata": {
+    "approved_by": "dashboard-reviewer",
+    "pattern-id": "P02",
+    "related_controls": [
+      "CCC.VPC"
+    ],
+    "related_risks": [
+      "AIGF-RI-010"
+    ],
+    "status": "APPROVED",
+    "version": 2
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Mediates and authenticates external requests."
+            },
+            "metadata": {
+              "properties": {
+                "exposure": {
+                  "const": "external"
+                },
+                "mediation": {
+                  "const": "gateway"
+                },
+                "role": {
+                  "const": "api-gateway"
+                }
+              },
+              "required": [
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "API Gateway"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "api-gateway"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Client (connection point)"
+            },
+            "name": {
+              "const": "Client"
+            },
+            "node-type": {
+              "const": "actor"
+            },
+            "unique-id": {
+              "const": "client"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Client calls the gateway"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "api-gateway"
+                  },
+                  "source": {
+                    "node": "client"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "client-calls-gateway"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P02 API Gateway",
+  "type": "object"
+}

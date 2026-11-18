@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block body %}<div class="page-head"><h1>{{ kind }}: {{ row.id }}</h1><div class="page-actions"><a class="btn" href="/registry/{{ kind }}">&lsaquo; {{ kind }}</a>{% if lineage %}<a class="btn" href="{{ lineage }}">Source lineage</a>{% endif %}</div></div>
+<table><tr><td>Title</td><td>{{ row.title or "" }}</td></tr><tr><td>Status</td><td>{{ row.status or "" }}</td></tr><tr><td>Version</td><td>{{ row.version }}</td></tr><tr><td>Provenance</td><td>{{ row.provenance }}</td></tr></table>
+<h3>Relationships</h3><ul>{% for r in row.relationships %}<li>{{ r.label }}: {% if r.href %}<a href="{{ r.href }}">{{ r.text }}</a>{% else %}{{ r.text }}{% endif %}</li>{% else %}<li class="muted">none</li>{% endfor %}</ul>
+<h3>Used by assessments</h3><ul>{% for u in used %}<li><a href="/assessments/{{ u.trace }}">{{ u.app or u.trace[:12] }}</a> ({{ u.decision or "none" }}){% if u.recorded %}, ran against v{{ u.recorded }}{% endif %}{% if u.stale %} <b>recommend re-assessment</b> (current v{{ row.current }}){% endif %}</li>{% else %}<li class="muted">no assessment references this entry</li>{% endfor %}</ul>
+<p class="muted">A changed artifact only recommends a new assessment. Existing decisions are never rewritten.</p>
+<h3>Record</h3><pre>{{ raw }}</pre>{% endblock %}

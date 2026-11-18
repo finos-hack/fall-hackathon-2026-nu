@@ -1,0 +1,1 @@
+{"conditions":[],"decision":"RESTRICTED","gates_evaluated":[{"fired":false,"id":"G2-PAYMENT-AUTH","outcome":null,"overridden":false},{"fired":false,"id":"G3-UNEVALUABLE","outcome":null,"overridden":false}],"matrix_cell":{"evaluated":true,"gap":"minor","gates_version":2,"matrix_version":1,"result":"RESTRICTED","risk":"High"},"trace_id":"7b2e64de5d7da99f7ba1f86ed0c741ba"}

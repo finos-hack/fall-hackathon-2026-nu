@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% from "_ui.html" import badge, value, pager %}
+{% block title %}{{ title }} - AIGP Dashboard{% endblock %}
+{% block body %}
+<div class="page-head"><h1>{{ title }}</h1><p class="muted">{{ subtitle }}</p></div>
+{% if tabs %}<nav class="tabs" aria-label="Sections">{% for label, href, on in tabs %}<a class="tab{% if on %} on{% endif %}" href="{{ href }}">{{ label }}</a>{% endfor %}</nav>{% endif %}
+
+<form class="toolbar" method="get" action="{{ pg.path }}">
+  <input type="search" name="q" value="{{ pg.q }}" placeholder="Search..." aria-label="Search">
+  {% for f in pg.filters %}
+  <select name="{{ f.name }}" data-autosubmit aria-label="{{ f.label }}">
+    <option value="">{{ f.label }}: all</option>
+    {% for o in f.options %}<option value="{{ o }}"{% if o == f.value %} selected{% endif %}>{{ o }}</option>{% endfor %}
+  </select>
+  {% endfor %}
+  <button class="btn primary" type="submit">Search</button>
+  <a class="btn" href="{{ pg.path }}">Reset</a>
+  <span class="spacer"></span>
+  <button class="btn" type="button" data-expand-all>Expand all</button>
+  <button class="btn" type="button" data-collapse-all>Collapse all</button>
+</form>
+
+<div class="count muted">{% if pg.total %}Showing {{ pg.start }}-{{ pg.end }} of {{ pg.total }}{% else %}0 results{% endif %}</div>
+
+<div class="table-wrap">
+<table class="grid">
+  <thead><tr><th class="chev"></th>{% for c in columns %}<th>{{ c }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for r in pg.rows %}
+  <tr class="row{% if r.open %} open focus{% endif %}" id="r-{{ r.id }}"{% if r.detail_url %} data-detail-url="{{ r.detail_url }}"{% endif %}>
+    <td class="chev"><button type="button" class="chev-btn" aria-label="Expand or collapse" aria-expanded="{{ 'true' if r.open else 'false' }}"><span class="chevron"></span></button></td>
+    {% for kind, v in r.cells %}<td>{% if kind == "badge" %}{{ badge(v) }}{% elif kind == "mono" %}<code>{{ v }}</code>{% else %}{{ v if v else "" }}{% endif %}</td>{% endfor %}
+  </tr>
+  <tr class="detail"{% if not r.open %} hidden{% endif %}>
+    <td></td>
+    <td colspan="{{ columns|length }}"><div class="detail-body">
+      {% if r.detail_url %}<div class="muted loading">Loading report...</div>
+      {% else %}<dl class="kv">{% for k, v in r.details %}<dt>{{ k }}</dt><dd>{{ value(v) }}</dd>{% endfor %}</dl>{% endif %}
+    </div></td>
+  </tr>
+  {% else %}
+  <tr><td></td><td colspan="{{ columns|length }}" class="empty">{{ (hint|safe) if hint and not pg.q else "Nothing matches the current search and filters." }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{{ pager(pg) }}
+{% endblock %}

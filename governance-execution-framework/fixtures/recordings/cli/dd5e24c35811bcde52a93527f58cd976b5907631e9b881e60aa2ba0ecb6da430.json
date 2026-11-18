@@ -1,0 +1,8 @@
+{
+ "args0": "calm",
+ "output": null,
+ "rc": 1,
+ "stderr": "\u001b[32minfo\u001b[39m [file-system-document-loader]:     C:\\Users\\User1\\AppData\\Local\\Temp\\agip-calm-u1ew0xac\\arch.json exists, loading as file...\n\u001b[32minfo\u001b[39m [file-system-document-loader]:     C:\\Users\\User1\\AppData\\Local\\Temp\\agip-calm-u1ew0xac\\pattern.json exists, loading as file...\n",
+ "stdout": "{\n    \"jsonSchemaValidationOutputs\": [\n        {\n            \"code\": \"json-schema\",\n            \"severity\": \"error\",\n            \"message\": \"must be <= 100000\",\n            \"path\": \"/nodes/payment-agent/metadata/payment_limit\",\n            \"schemaPath\": \"#/properties/nodes/prefixItems/3/properties/metadata/properties/payment_limit/maximum\",\n            \"line_start\": 1,\n            \"line_end\": 1,\n            \"character_start\": 1421,\n            \"character_end\": 1427,\n            \"source\": \"architecture\"\n        }\n    ],\n    \"spectralSchemaValidationOutputs\": [],\n    \"hasErrors\": true,\n    \"hasWarnings\": false\n}",
+ "sub": "validate"
+}

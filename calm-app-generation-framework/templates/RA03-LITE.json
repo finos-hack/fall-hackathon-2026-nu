@@ -1,0 +1,1100 @@
+{
+  "$id": "https://agip.example/templates/RA03-LITE.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "Invoices arrive through a gateway, an agent extracts and checks them, and a payment agent pays approved invoices through a payment tool.",
+  "metadata": {
+    "composer-version": 1,
+    "ra-id": "RA03-LITE",
+    "ra-version": 2,
+    "source-patterns": [
+      {
+        "id": "P02",
+        "sha256": "8998d0d680fd529a144e7c8e1e023b049d6020ec510ef8cb346108bcda37d6b1",
+        "version": 2
+      },
+      {
+        "id": "P03",
+        "sha256": "701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7",
+        "version": 1
+      },
+      {
+        "id": "P07",
+        "sha256": "16b98a91e733ee26dee37e1144012e942dac6d88625fd4a4619b550cefc6d3ef",
+        "version": 1
+      },
+      {
+        "id": "P08",
+        "sha256": "72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93",
+        "version": 1
+      },
+      {
+        "id": "P11",
+        "sha256": "573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980",
+        "version": 1
+      },
+      {
+        "id": "P12",
+        "sha256": "c363838a8f8c4fa381dc77ad6fca3d0dd48297fb7a605019b3adab7c42f46470",
+        "version": 1
+      },
+      {
+        "id": "P13",
+        "sha256": "f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722",
+        "version": 1
+      },
+      {
+        "id": "P14",
+        "sha256": "10b44f611b7a12a3f4ed9776223ac84ca89ab291b2d1296e916a480b4cb95935",
+        "version": 1
+      }
+    ]
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 10,
+      "minItems": 9,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Entry point for supplier invoice submissions."
+            },
+            "metadata": {
+              "properties": {
+                "exposure": {
+                  "const": "external"
+                },
+                "mediation": {
+                  "const": "gateway"
+                },
+                "role": {
+                  "const": "api-gateway"
+                }
+              },
+              "required": [
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "API Gateway"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "api-gateway"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Receives invoices and hands them to the invoice agent."
+            },
+            "metadata": {
+              "properties": {
+                "criticality": {
+                  "const": "high"
+                },
+                "exposure": {
+                  "const": "internal"
+                },
+                "mediation": {
+                  "const": "gateway"
+                },
+                "role": {
+                  "const": "invoice-processing"
+                }
+              },
+              "required": [
+                "criticality",
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Invoice Processing Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "invoice-processing-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Extracts invoice data, matches it to records and proposes payments."
+            },
+            "metadata": {
+              "properties": {
+                "acceptance_testing": {
+                  "const": "completed"
+                },
+                "autonomy": {
+                  "enum": [
+                    "supervised",
+                    "semi-autonomous",
+                    "autonomous"
+                  ]
+                },
+                "credential_storage": {
+                  "const": "vault"
+                },
+                "decision_impact": {
+                  "const": "medium"
+                },
+                "input_filtering": {
+                  "const": "enabled"
+                },
+                "observability": {
+                  "const": "enabled"
+                },
+                "permitted_tools": {
+                  "const": "invoice-db-read"
+                },
+                "privilege": {
+                  "const": "read-only"
+                }
+              },
+              "required": [
+                "acceptance_testing",
+                "autonomy",
+                "credential_storage",
+                "decision_impact",
+                "input_filtering",
+                "observability",
+                "permitted_tools",
+                "privilege"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Invoice Intelligence Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "invoice-intelligence-agent"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Executes approved supplier payments through the payment tool."
+            },
+            "metadata": {
+              "properties": {
+                "acceptance_testing": {
+                  "const": "completed"
+                },
+                "autonomy": {
+                  "enum": [
+                    "supervised",
+                    "semi-autonomous",
+                    "autonomous"
+                  ]
+                },
+                "can_execute_payment": {
+                  "const": true
+                },
+                "credential_storage": {
+                  "const": "vault"
+                },
+                "decision_impact": {
+                  "const": "financial"
+                },
+                "input_filtering": {
+                  "const": "enabled"
+                },
+                "observability": {
+                  "const": "enabled"
+                },
+                "payment_approval_path": {
+                  "enum": [
+                    "via-human-approval",
+                    "direct"
+                  ]
+                },
+                "payment_limit": {
+                  "maximum": 100000,
+                  "minimum": 1,
+                  "type": "number"
+                },
+                "permitted_tools": {
+                  "const": "payment-tool"
+                },
+                "privilege": {
+                  "enum": [
+                    "read-only",
+                    "restricted-write",
+                    "unrestricted-write"
+                  ]
+                }
+              },
+              "required": [
+                "acceptance_testing",
+                "autonomy",
+                "can_execute_payment",
+                "credential_storage",
+                "decision_impact",
+                "input_filtering",
+                "observability",
+                "payment_approval_path",
+                "payment_limit",
+                "permitted_tools",
+                "privilege"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Payment Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "payment-agent"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Language model used by both agents."
+            },
+            "metadata": {
+              "properties": {
+                "guardrails": {
+                  "const": "enabled"
+                },
+                "model_version": {
+                  "enum": [
+                    "pinned",
+                    "floating"
+                  ]
+                },
+                "sensitive_data_filtering": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "guardrails",
+                "model_version",
+                "sensitive_data_filtering"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Foundation Model"
+            },
+            "node-type": {
+              "const": "ai:llm"
+            },
+            "unique-id": {
+              "const": "foundation-model"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Tool that submits payment instructions."
+            },
+            "metadata": {
+              "properties": {
+                "input_validation": {
+                  "const": "enforced"
+                },
+                "mcp_server": {
+                  "const": "governed"
+                }
+              },
+              "required": [
+                "input_validation",
+                "mcp_server"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Payment Tool"
+            },
+            "node-type": {
+              "const": "ai:tool"
+            },
+            "unique-id": {
+              "const": "payment-tool"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "External payment rail (simulated)."
+            },
+            "metadata": {
+              "properties": {
+                "exposure": {
+                  "const": "external"
+                },
+                "mediation": {
+                  "const": "gateway"
+                },
+                "role": {
+                  "const": "payment-api"
+                }
+              },
+              "required": [
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Payment API"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "payment-api"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Finance approver reviews payments before release."
+            },
+            "metadata": {
+              "properties": {
+                "role": {
+                  "const": "human-approval"
+                }
+              },
+              "required": [
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Human Approval Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "human-approval-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Invoices, suppliers and payment history."
+            },
+            "metadata": {
+              "properties": {
+                "access_control": {
+                  "const": "rbac"
+                },
+                "data_classification": {
+                  "type": "string"
+                },
+                "encryption_at_rest": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "access_control",
+                "data_classification",
+                "encryption_at_rest"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Invoice DB"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "invoice-db"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+              "properties": {
+                "description": {
+                  "const": "Records every agent decision and payment."
+                },
+                "metadata": {
+                  "properties": {
+                    "role": {
+                      "const": "audit"
+                    }
+                  },
+                  "required": [
+                    "role"
+                  ],
+                  "type": "object"
+                },
+                "name": {
+                  "const": "Audit Service"
+                },
+                "node-type": {
+                  "const": "service"
+                },
+                "unique-id": {
+                  "const": "audit-service"
+                }
+              },
+              "required": [
+                "description",
+                "metadata",
+                "name",
+                "node-type",
+                "unique-id"
+              ],
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 13,
+      "minItems": 11,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "How do payments reach the Payment API?"
+            },
+            "relationship-type": {
+              "properties": {
+                "options": {
+                  "prefixItems": [
+                    {
+                      "oneOf": [
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "Payment via Human Approval Service"
+                            },
+                            "nodes": {
+                              "const": []
+                            },
+                            "relationships": {
+                              "const": [
+                                "r-payment-agent-requests-approval",
+                                "r-approval-releases-payment"
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "Direct to Payment API"
+                            },
+                            "nodes": {
+                              "const": []
+                            },
+                            "relationships": {
+                              "const": [
+                                "r-tool-calls-payment-api",
+                                "r-payment-api-notifies-approval"
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "unique-id": {
+              "const": "opt-approval-path"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Is an audit service present?"
+            },
+            "relationship-type": {
+              "properties": {
+                "options": {
+                  "prefixItems": [
+                    {
+                      "anyOf": [
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "Audit service present"
+                            },
+                            "nodes": {
+                              "const": [
+                                "audit-service"
+                              ]
+                            },
+                            "relationships": {
+                              "const": [
+                                "r-payment-agent-audited",
+                                "r-invoice-agent-audited"
+                              ]
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/decision",
+                          "properties": {
+                            "description": {
+                              "const": "No audit service"
+                            },
+                            "nodes": {
+                              "const": []
+                            },
+                            "relationships": {
+                              "const": []
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "unique-id": {
+              "const": "opt-audit"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Gateway forwards invoices to the processing service"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "invoice-processing-service"
+                  },
+                  "source": {
+                    "node": "api-gateway"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-gateway-to-invoice-service"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Service hands invoices to the invoice agent"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "invoice-intelligence-agent"
+                  },
+                  "source": {
+                    "node": "invoice-processing-service"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-service-to-invoice-agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Consumer sends prompts to the model"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "foundation-model"
+                  },
+                  "source": {
+                    "node": "invoice-intelligence-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-invoice-agent-to-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Consumer sends prompts to the model"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "foundation-model"
+                  },
+                  "source": {
+                    "node": "payment-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-payment-agent-to-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Consumer reads and writes records"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "invoice-db"
+                  },
+                  "source": {
+                    "node": "invoice-intelligence-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-invoice-agent-to-db"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Invoice agent proposes payments to the payment agent"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "payment-agent"
+                  },
+                  "source": {
+                    "node": "invoice-intelligence-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-invoice-agent-to-payment-agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent invokes the tool"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "payment-tool"
+                  },
+                  "source": {
+                    "node": "payment-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-payment-agent-uses-tool"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Agent submits actions for approval"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "human-approval-service"
+                      },
+                      "source": {
+                        "node": "payment-agent"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-payment-agent-requests-approval"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            },
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Payment tool calls the Payment API directly"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "payment-api"
+                      },
+                      "source": {
+                        "node": "payment-tool"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-tool-calls-payment-api"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Approved payments are released to the Payment API"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "payment-api"
+                      },
+                      "source": {
+                        "node": "human-approval-service"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-approval-releases-payment"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            },
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Payment API reports executed payments to the approval service after the fact"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "human-approval-service"
+                      },
+                      "source": {
+                        "node": "payment-api"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-payment-api-notifies-approval"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Agent decisions are recorded"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "audit-service"
+                      },
+                      "source": {
+                        "node": "payment-agent"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-payment-agent-audited"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+              "properties": {
+                "description": {
+                  "const": "Agent decisions are recorded"
+                },
+                "relationship-type": {
+                  "const": {
+                    "connects": {
+                      "destination": {
+                        "node": "audit-service"
+                      },
+                      "source": {
+                        "node": "invoice-intelligence-agent"
+                      }
+                    }
+                  }
+                },
+                "unique-id": {
+                  "const": "r-invoice-agent-audited"
+                }
+              },
+              "required": [
+                "unique-id",
+                "description",
+                "relationship-type"
+              ],
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "RA03-LITE Invoice-to-Payment Lite",
+  "type": "object"
+}

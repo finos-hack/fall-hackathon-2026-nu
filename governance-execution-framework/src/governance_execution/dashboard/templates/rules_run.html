@@ -1,0 +1,40 @@
+{% extends "base.html" %}{% from "_ui.html" import badge %}{% block title %}Generate Rules run - AIGP Dashboard{% endblock %}{% block body %}
+{% set pending = rows|selectattr("in_catalog")|selectattr("status", "in", ["DRAFT", "IN_REVIEW"])|list %}
+<div class="page-head"><h1>Generate Rules</h1>
+  <div class="page-actions"><a class="btn" href="/rules/new">New upload</a></div>
+  <p class="muted">Run <code>{{ sm.run_id }}</code> · {{ sm.created[:19]|replace("T", " ") }} · {{ sm.model }}{% if sm.reused_model_answers %} · {{ sm.reused_model_answers }} model answer(s) reused{% endif %}</p></div>
+<ol class="steps"><li class="done">1. Upload</li><li class="{{ 'on' if pending else 'done' }}">2. Review and approve ({{ pending|length }} pending)</li><li class="{{ 'done' if compiled and compiled.ok else ('on' if not pending else '') }}">3. Compile rulesets</li></ol>
+{% if sm.problems %}<div class="status-box bad"><b>Input problems</b><ul>{% for p in sm.problems %}<li>{{ p }}</li>{% endfor %}</ul></div>{% endif %}
+
+<div class="card">
+  <div class="card-head"><h2>Draft rules</h2><span class="muted">Files: {% for f in sm.files %}<code>{{ f.file }}</code> {% endfor %}</span></div>
+  <div class="scroll-x"><table class="clean">
+  <tr><th>Item</th><th>Status</th><th>Candidate rule</th><th>Likelihood / impact</th><th>Remediation</th><th></th></tr>
+  {% for r in rows %}<tr>
+    <td><b>{{ r.id }}</b> <span class="muted">v{{ r.version or "-" }}</span><br>{{ r.title }}<br><span class="muted">{{ r.framework }} {{ "risk" if r.catalog == "risks" else ("control" if r.in_catalog else r.kind) }} · {{ r.file }}</span></td>
+    <td>{% if r.in_catalog %}{{ badge("PENDING HUMAN REVIEW" if r.status in ("DRAFT", "IN_REVIEW") else r.status) }}{% else %}{{ badge("none") }}{% endif %}
+      {% if r.unchanged %}<br><span class="muted">unchanged</span>{% elif r.merge %}<br><span class="muted">{{ r.merge }}</span>{% endif %}</td>
+    <td>{% if r.error %}<span class="ERROR">Rejected: {{ r.error }}</span>{% elif r.missing %}<span class="ERROR">No model available and no recording</span>
+      {% elif r.rule %}<code>{{ r.rule[0] }}</code><br>{{ r.rule[1].description }}
+        <details class="inline"><summary class="muted">check</summary><span class="muted">given <code>{{ r.rule[1].given }}</code><br>then <code>{{ r.rule[1].then|tojson }}</code></span></details>
+      {% elif r.inexpressible %}<span class="muted">No rule: {{ r.inexpressible }}</span>{% else %}<span class="muted">no rule</span>{% endif %}</td>
+    <td>{% if r.likelihood is not none and r.catalog == "risks" %}L{{ r.likelihood }} / I{{ r.impact }}
+      {% if r.scoring.source == "decider" %}<br><span class="muted">Decider: {{ r.scoring.likelihood.label }} ({{ r.scoring.likelihood.confidence }}), {{ r.scoring.impact.label }} ({{ r.scoring.impact.confidence }}){% if r.scoring.low_confidence %}, low confidence{% endif %}</span>
+      {% elif r.scoring %}<br><span class="muted">from the LLM</span>{% endif %}{% else %}<span class="muted">n/a</span>{% endif %}</td>
+    <td>{{ r.remediation or "" }}</td>
+    <td>{% if r.in_catalog and r.status in ("DRAFT", "IN_REVIEW") %}<form method="post" action="/catalogs/{{ r.catalog }}/{{ r.id }}/approve" class="inline-form"><input type="hidden" name="next" value="/rules/runs/{{ sm.run_id }}"><button class="btn primary" type="submit">Approve</button></form>
+      {% if r.catalog == "risks" %}<div class="muted">confirms L{{ r.likelihood }} / I{{ r.impact }}</div>{% endif %}
+      {% elif r.in_catalog %}<a href="/catalogs/{{ r.catalog }}?focus={{ r.id }}">open</a>{% endif %}</td>
+  </tr>{% else %}<tr><td colspan="6" class="empty">No items were found in the uploaded files.</td></tr>{% endfor %}
+  </table></div>
+</div>
+
+<div class="card">
+  <div class="card-head"><h2>Compile rulesets</h2>
+    <form method="post" action="/rules/runs/{{ sm.run_id }}/compile" class="inline-form"><button class="btn primary" type="submit">Compile rulesets</button></form></div>
+  <p class="muted">Runs the catalog consistency check and writes the Spectral rulesets from APPROVED entries. Entries still pending review are not compiled; the version goes up only when the rules change.</p>
+  {% if compiled %}{% if compiled.ok %}<div class="scroll-x"><table class="compact clean"><tr><th>Ruleset</th><th>Version</th><th>Rules</th><th>SHA-256</th><th>Not expressible</th></tr>
+  {% for k, c in compiled.rulesets.items() %}<tr><td>{{ k }}.spectral.yaml</td><td>v{{ c.version }}</td><td>{{ c.rules }}</td><td><code>{{ c.sha256 }}</code></td><td>{{ c.unexpressible|join("; ") }}</td></tr>{% endfor %}</table></div>
+  <p class="muted">Compiled {{ compiled.at[:19]|replace("T", " ") }}.</p>{% else %}<div class="status-box bad">Compile failed: {{ compiled.error }}</div>{% endif %}{% endif %}
+</div>
+{% endblock %}

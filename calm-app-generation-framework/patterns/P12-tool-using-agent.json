@@ -1,0 +1,191 @@
+{
+  "$id": "https://agip.example/patterns/P12-tool-using-agent.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "Agent that acts through declared tools.",
+  "metadata": {
+    "approved_by": "architecture-review",
+    "pattern-id": "P12",
+    "related_controls": [
+      "AIGF-MI-018",
+      "AIGF-MI-019",
+      "AIGF-MI-020",
+      "AIGF-MI-023",
+      "AIGF-MI-004",
+      "AIGF-MI-005"
+    ],
+    "related_risks": [
+      "AIGF-RI-010"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent that invokes tools."
+            },
+            "metadata": {
+              "properties": {
+                "acceptance_testing": {
+                  "enum": [
+                    "completed",
+                    "none"
+                  ]
+                },
+                "credential_storage": {
+                  "enum": [
+                    "vault",
+                    "inline"
+                  ]
+                },
+                "input_filtering": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                },
+                "observability": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                },
+                "permitted_tools": {
+                  "type": "string"
+                },
+                "privilege": {
+                  "enum": [
+                    "read-only",
+                    "restricted-write",
+                    "unrestricted-write"
+                  ]
+                }
+              },
+              "required": [
+                "acceptance_testing",
+                "credential_storage",
+                "input_filtering",
+                "observability",
+                "permitted_tools",
+                "privilege"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Tool exposed to the agent."
+            },
+            "metadata": {
+              "properties": {
+                "input_validation": {
+                  "enum": [
+                    "enforced",
+                    "none"
+                  ]
+                },
+                "mcp_server": {
+                  "enum": [
+                    "governed",
+                    "ungoverned"
+                  ]
+                }
+              },
+              "required": [
+                "input_validation",
+                "mcp_server"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Tool"
+            },
+            "node-type": {
+              "const": "ai:tool"
+            },
+            "unique-id": {
+              "const": "tool"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent invokes the tool"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "tool"
+                  },
+                  "source": {
+                    "node": "agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "agent-uses-tool"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P12 Tool-Using Agent",
+  "type": "object"
+}

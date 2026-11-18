@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block title %}Generate Rules - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Generate Rules</h1>
+  <p class="muted">Upload control or risk documents. Each becomes a DRAFT catalog entry with a candidate Spectral rule, pending your review.</p></div>
+<ol class="steps"><li class="on">1. Upload</li><li>2. Review and approve</li><li>3. Compile rulesets</li></ol>
+{% if errors %}<div class="status-box bad"><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+  <form method="post" action="/rules/new" enctype="multipart/form-data" class="card">
+    <h2>Upload documents</h2>
+    <p class="muted">Extraction: Strands agent on {{ model }}, temperature 0.1, with steering. Risk likelihood and impact come from the Strands Decider. An unchanged document is not extracted again.</p>
+    <input type="file" name="files" multiple required accept="{{ supported|join(',') }}">
+    <p class="muted">UTF-8 text, at most {{ max_kb }} KB per file and {{ max_items }} items per run. Extraction takes a few seconds per document.</p>
+    <div class="actionbar"><span class="spacer"></span><button class="btn primary" type="submit">Generate rules</button></div>
+  </form>
+<details class="section" open><summary>Supported input files</summary><div class="body scroll-x">
+<table class="compact clean"><tr><th>Format</th><th>Content</th><th>Catalog ID</th></tr>
+<tr><td><code>.md</code> <code>.markdown</code></td><td>AIGF file named <code>ri-&lt;n&gt;*.md</code> (risk) or <code>mi-&lt;n&gt;*.md</code> (mitigation), with the AIGF front matter</td><td>kept, e.g. <code>AIGF-RI-024</code></td></tr>
+<tr><td><code>.md</code> <code>.markdown</code></td><td>Any control or risk document. Optional YAML front matter: <code>title</code>, <code>type: control | risk | mitigation</code>, <code>id</code>, <code>&lt;framework&gt;_references: [...]</code>. Without it, the first <code># heading</code> is the title.</td><td><code>UPL-&lt;id or title&gt;</code></td></tr>
+<tr><td><code>.yaml</code> <code>.yml</code></td><td>CCC catalog fragment with <code>controls:</code> and/or <code>threats:</code></td><td>kept, e.g. <code>CCC.Core.CN01</code></td></tr></table>
+<p class="muted">PDF and Word files are not supported yet; save them as Markdown.</p></div></details>
+<details class="section"><summary>Example Markdown control</summary><div class="body"><pre>---
+title: Human approval before payment release
+type: control
+id: payment-human-approval
+nist_references: [AC-6]
+---
+# Human approval before payment release
+Every payment proposed by an AI agent must be approved by a named finance approver in the
+Human Approval Service before it is released to the payment rail. Agents must not call the
+Payment API directly.</pre></div></details>
+{% endblock %}

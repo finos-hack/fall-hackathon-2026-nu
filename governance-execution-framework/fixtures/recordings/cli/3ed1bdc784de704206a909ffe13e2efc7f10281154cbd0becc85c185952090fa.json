@@ -1,0 +1,8 @@
+{
+ "args0": "spectral.cmd",
+ "output": null,
+ "rc": 0,
+ "stderr": "",
+ "stdout": "6.17.1\n",
+ "sub": "--version"
+}

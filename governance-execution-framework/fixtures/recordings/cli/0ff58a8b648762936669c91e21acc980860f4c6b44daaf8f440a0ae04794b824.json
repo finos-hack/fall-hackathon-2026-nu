@@ -1,0 +1,8 @@
+{
+ "args0": "spectral.cmd",
+ "output": null,
+ "rc": 1,
+ "stderr": "",
+ "stdout": "[\n\t{\n\t\t\"code\": \"risk-payment-bypasses-approval\",\n\t\t\"path\": [\n\t\t\t\"nodes\",\n\t\t\t\"3\",\n\t\t\t\"metadata\",\n\t\t\t\"payment_approval_path\"\n\t\t],\n\t\t\"message\": \"Agent at #/nodes/3/metadata/payment_approval_path reaches the Payment API directly (AIGF ri-24)\",\n\t\t\"severity\": 0,\n\t\t\"range\": {\n\t\t\t\"start\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1382\n\t\t\t},\n\t\t\t\"end\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1390\n\t\t\t}\n\t\t},\n\t\t\"source\": \"c:/Users/User1/AppData/Local/Temp/agip-spectral-ymjtw90i/app.json\"\n\t}\n]",
+ "sub": "lint"
+}

@@ -1,0 +1,3138 @@
+{
+  "commit": "00bb0a8ffb8c6894968d25e46e0bbe03f14c3919",
+  "errors": [],
+  "items": [
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN01",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-002"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH06",
+          "CCC.MARefArc.TH07"
+        ]
+      },
+      "title": "Data Filtering From External Knowledge Bases"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN02",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-003"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH10",
+          "CCC.MARefArc.TH11",
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH13",
+          "CCC.MARefArc.TH14",
+          "CCC.MARefArc.TH15"
+        ]
+      },
+      "title": "User, Application, and Model Firewalling"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN03",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-005"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH16",
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH19",
+          "CCC.MARefArc.TH23",
+          "CCC.MARefArc.TH25"
+        ]
+      },
+      "title": "System Acceptance Testing"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN04",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-006"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH03",
+          "CCC.MARefArc.TH04",
+          "CCC.MARefArc.TH05",
+          "CCC.MARefArc.TH06",
+          "CCC.MARefArc.TH07",
+          "CCC.MARefArc.TH16",
+          "CCC.MARefArc.TH22",
+          "CCC.MARefArc.TH23",
+          "CCC.MARefArc.TH25",
+          "CCC.MARefArc.TH26"
+        ]
+      },
+      "title": "Data Quality and Classification"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN05",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-007"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH15",
+          "CCC.MARefArc.TH20",
+          "CCC.MARefArc.TH21",
+          "CCC.MARefArc.TH25",
+          "CCC.MARefArc.TH26"
+        ]
+      },
+      "title": "Legal and Contractual Frameworks for AI Systems"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN06",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-008"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH10"
+        ]
+      },
+      "title": "Quality of Service and DDoS Prevention"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN07",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-010"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH19"
+        ]
+      },
+      "title": "AI Model Version Pinning"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN08",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-012"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH06",
+          "CCC.MARefArc.TH07",
+          "CCC.MARefArc.TH20",
+          "CCC.MARefArc.TH21"
+        ]
+      },
+      "title": "Role-Based Access Control for AI Data"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN09",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-014"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH03",
+          "CCC.MARefArc.TH04",
+          "CCC.MARefArc.TH05",
+          "CCC.MARefArc.TH25"
+        ]
+      },
+      "title": "Encryption of AI Data at Rest"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN10",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-017"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH10",
+          "CCC.MARefArc.TH11",
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH13",
+          "CCC.MARefArc.TH14",
+          "CCC.MARefArc.TH15"
+        ]
+      },
+      "title": "AI Firewall Implementation and Management"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN11",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-018"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH14",
+          "CCC.MARefArc.TH27"
+        ]
+      },
+      "title": "Agent Authority Least Privilege Framework"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN12",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-019"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH11",
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH13",
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH28"
+        ]
+      },
+      "title": "Tool Chain Validation and Sanitization"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN13",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-020"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH20",
+          "CCC.MARefArc.TH21",
+          "CCC.MARefArc.TH29"
+        ]
+      },
+      "title": "MCP Server Security Governance"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN14",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-022"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH30",
+          "CCC.MARefArc.TH31"
+        ]
+      },
+      "title": "Multi-Agent Isolation and Segmentation"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "PREV",
+      "id": "CCC.MARefArc.CN15",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-PREV-023"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH29",
+          "CCC.MARefArc.TH32"
+        ]
+      },
+      "title": "Agentic System Credential Protection Framework"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN16",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-001"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02"
+        ]
+      },
+      "title": "AI Data Leakage Prevention and Detection"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN17",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-004"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH10",
+          "CCC.MARefArc.TH14",
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH19",
+          "CCC.MARefArc.TH22"
+        ]
+      },
+      "title": "AI System Observability"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN18",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-009"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH10"
+        ]
+      },
+      "title": "AI System Alerting and Denial of Wallet Monitoring"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN19",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-011"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH15",
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH19",
+          "CCC.MARefArc.TH23"
+        ]
+      },
+      "title": "Human Feedback Loop for AI Systems"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN20",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-013"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH15",
+          "CCC.MARefArc.TH16",
+          "CCC.MARefArc.TH24",
+          "CCC.MARefArc.TH25"
+        ]
+      },
+      "title": "Citations and Source Traceability for AI-Generated Information"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN21",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-015"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH16",
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH19",
+          "CCC.MARefArc.TH22",
+          "CCC.MARefArc.TH23"
+        ]
+      },
+      "title": "Automated Evaluation Using LLM-as-a-Judge"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN22",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-016"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH03",
+          "CCC.MARefArc.TH04",
+          "CCC.MARefArc.TH05",
+          "CCC.MARefArc.TH25"
+        ]
+      },
+      "title": "Preserving Source Data Access Controls in AI Systems"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "DET",
+      "id": "CCC.MARefArc.CN23",
+      "kind": "control",
+      "path": "catalogs/ai-ml/multi-agent-refarch/controls.yaml",
+      "references": {
+        "finos-air": [
+          "AIR-DET-021"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH25",
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH28"
+        ]
+      },
+      "title": "Agent Decision Audit and Explainability"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "information-leakage",
+      "id": "CCC.MARefArc.TH01",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-RC-001-01",
+          "AIR-RC-001-02",
+          "AIR-RC-001-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN01",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN05",
+          "CCC.MARefArc.CN08",
+          "CCC.MARefArc.CN13",
+          "CCC.MARefArc.CN16",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Model memorization leaks sensitive data across sessions"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "information-leakage",
+      "id": "CCC.MARefArc.TH02",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-RC-001-03",
+          "AIR-RC-001-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN01",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN05",
+          "CCC.MARefArc.CN08",
+          "CCC.MARefArc.CN13",
+          "CCC.MARefArc.CN16",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Hosted-provider data-handling exposure"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "information-leakage",
+      "id": "CCC.MARefArc.TH03",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-002-01",
+          "AIR-SEC-002-02"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP13"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN09",
+          "CCC.MARefArc.CN22"
+        ]
+      },
+      "title": "Embedding inversion and membership inference on the vector store"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "information-leakage",
+      "id": "CCC.MARefArc.TH04",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-002-03"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP13"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN09",
+          "CCC.MARefArc.CN22"
+        ]
+      },
+      "title": "Embedding-store poisoning degrades retrieved context"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "information-leakage",
+      "id": "CCC.MARefArc.TH05",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-002-04",
+          "AIR-SEC-002-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP13"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN09",
+          "CCC.MARefArc.CN22"
+        ]
+      },
+      "title": "Vector-store access-control, encryption, and audit gaps"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "data-poisoning",
+      "id": "CCC.MARefArc.TH06",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-009-01",
+          "AIR-SEC-009-03",
+          "AIR-SEC-009-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN01",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN08"
+        ]
+      },
+      "title": "Foundation-model training and fine-tuning data poisoning"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "data-poisoning",
+      "id": "CCC.MARefArc.TH07",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-009-02"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP11"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN01",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN08"
+        ]
+      },
+      "title": "Adaptive-learning and continuous-learning exploitation"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "model-availability",
+      "id": "CCC.MARefArc.TH08",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-007-01"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP06",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN06",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN18"
+        ]
+      },
+      "title": "Denial of Wallet via token-expensive or unthrottled agentic calls"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "model-availability",
+      "id": "CCC.MARefArc.TH09",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-007-02"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14",
+          "CCC.MARefArc.CP15"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN06",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN18"
+        ]
+      },
+      "title": "Technology service provider outage or degradation"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "model-availability",
+      "id": "CCC.MARefArc.TH10",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-007-03"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP15"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN06",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN18"
+        ]
+      },
+      "title": "VRAM exhaustion on model-serving infrastructure"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "prompt-injection",
+      "id": "CCC.MARefArc.TH11",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-010-01"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP01",
+          "CCC.MARefArc.CP05",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN12"
+        ]
+      },
+      "title": "Direct prompt injection overrides guardrails"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "prompt-injection",
+      "id": "CCC.MARefArc.TH12",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-010-02"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP08",
+          "CCC.MARefArc.CP09",
+          "CCC.MARefArc.CP12",
+          "CCC.MARefArc.CP13"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN12"
+        ]
+      },
+      "title": "Indirect prompt injection via retrieved or processed content"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "prompt-injection",
+      "id": "CCC.MARefArc.TH13",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-010-03"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN12"
+        ]
+      },
+      "title": "Model profiling and system-prompt extraction"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "operational",
+      "id": "CCC.MARefArc.TH14",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-018"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP03",
+          "CCC.MARefArc.CP06"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN11",
+          "CCC.MARefArc.CN17"
+        ]
+      },
+      "title": "Model overreach and scope creep beyond validated use"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "operational",
+      "id": "CCC.MARefArc.TH15",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-020"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP02",
+          "CCC.MARefArc.CP16",
+          "CCC.MARefArc.CP22"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN02",
+          "CCC.MARefArc.CN05",
+          "CCC.MARefArc.CN10",
+          "CCC.MARefArc.CN19",
+          "CCC.MARefArc.CN20"
+        ]
+      },
+      "title": "Reputational harm from offensive or misleading outputs"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "output-integrity",
+      "id": "CCC.MARefArc.TH16",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-004-01",
+          "AIR-OP-004-02",
+          "AIR-OP-004-03",
+          "AIR-OP-004-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP02",
+          "CCC.MARefArc.CP16",
+          "CCC.MARefArc.CP22"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN03",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN20",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Confident hallucination and fabricated facts"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "output-integrity",
+      "id": "CCC.MARefArc.TH17",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-006-01",
+          "AIR-OP-006-02",
+          "AIR-OP-006-03",
+          "AIR-OP-006-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14",
+          "CCC.MARefArc.CP15",
+          "CCC.MARefArc.CP20"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN03",
+          "CCC.MARefArc.CN07",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN19",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Non-deterministic and non-reproducible outputs"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "output-integrity",
+      "id": "CCC.MARefArc.TH18",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-014-01",
+          "AIR-OP-014-02",
+          "AIR-OP-014-03",
+          "AIR-OP-014-04",
+          "AIR-OP-014-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP12",
+          "CCC.MARefArc.CP13",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN03",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN19",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "RAG grounding failures"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "model-integrity",
+      "id": "CCC.MARefArc.TH19",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-005-01",
+          "AIR-OP-005-02",
+          "AIR-OP-005-03",
+          "AIR-OP-005-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN03",
+          "CCC.MARefArc.CN07",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN19",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Silent model version, prompt, and deployment drift"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "model-integrity",
+      "id": "CCC.MARefArc.TH20",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-008-01",
+          "AIR-SEC-008-02",
+          "AIR-SEC-008-03"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN05",
+          "CCC.MARefArc.CN08",
+          "CCC.MARefArc.CN13"
+        ]
+      },
+      "title": "Model supply-chain tampering"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "model-integrity",
+      "id": "CCC.MARefArc.TH21",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-008-04",
+          "AIR-SEC-008-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP14",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN05",
+          "CCC.MARefArc.CN08",
+          "CCC.MARefArc.CN13"
+        ]
+      },
+      "title": "Backdoor triggers and safety-mechanism disablement"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "data-quality",
+      "id": "CCC.MARefArc.TH22",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-019-01",
+          "AIR-OP-019-02",
+          "AIR-OP-019-03"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP12",
+          "CCC.MARefArc.CP13",
+          "CCC.MARefArc.CP14"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN17",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Poor-quality, drifting, and bias-amplifying data"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "fairness",
+      "id": "CCC.MARefArc.TH23",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-016-01",
+          "AIR-OP-016-02",
+          "AIR-OP-016-03",
+          "AIR-OP-016-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP12",
+          "CCC.MARefArc.CP14",
+          "CCC.MARefArc.CP20",
+          "CCC.MARefArc.CP21"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN03",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN19",
+          "CCC.MARefArc.CN21"
+        ]
+      },
+      "title": "Discriminatory outputs from bias"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "governance-compliance",
+      "id": "CCC.MARefArc.TH24",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-017"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP21",
+          "CCC.MARefArc.CP23",
+          "CCC.MARefArc.CP25"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN20"
+        ]
+      },
+      "title": "Lack of explainability and traceable rationale"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "governance-compliance",
+      "id": "CCC.MARefArc.TH25",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-RC-022-01",
+          "AIR-RC-022-02",
+          "AIR-RC-022-03",
+          "AIR-RC-022-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP02",
+          "CCC.MARefArc.CP05",
+          "CCC.MARefArc.CP21"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN03",
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN05",
+          "CCC.MARefArc.CN09",
+          "CCC.MARefArc.CN20",
+          "CCC.MARefArc.CN22",
+          "CCC.MARefArc.CN23"
+        ]
+      },
+      "title": "Non-compliant outputs and model-risk-management gaps"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "governance-compliance",
+      "id": "CCC.MARefArc.TH26",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-RC-023-01",
+          "AIR-RC-023-02",
+          "AIR-RC-023-03"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP01",
+          "CCC.MARefArc.CP05",
+          "CCC.MARefArc.CP16"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN04",
+          "CCC.MARefArc.CN05"
+        ]
+      },
+      "title": "Intellectual-property leakage and licensing violations"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agentic-security",
+      "id": "CCC.MARefArc.TH27",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-024-01",
+          "AIR-SEC-024-02",
+          "AIR-SEC-024-03",
+          "AIR-SEC-024-04"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP07",
+          "CCC.MARefArc.CP08",
+          "CCC.MARefArc.CP19"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN11",
+          "CCC.MARefArc.CN12",
+          "CCC.MARefArc.CN14",
+          "CCC.MARefArc.CN15",
+          "CCC.MARefArc.CN23"
+        ]
+      },
+      "title": "Authorization bypass and tool-chain privilege escalation"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agentic-security",
+      "id": "CCC.MARefArc.TH28",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-025-01",
+          "AIR-SEC-025-02",
+          "AIR-SEC-025-03",
+          "AIR-SEC-025-04",
+          "AIR-SEC-025-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP07",
+          "CCC.MARefArc.CP08",
+          "CCC.MARefArc.CP19"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN12",
+          "CCC.MARefArc.CN23"
+        ]
+      },
+      "title": "Tool selection, parameter, and sequencing manipulation"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agentic-security",
+      "id": "CCC.MARefArc.TH29",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-026-01",
+          "AIR-SEC-026-02",
+          "AIR-SEC-026-03",
+          "AIR-SEC-026-04",
+          "AIR-SEC-026-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP08",
+          "CCC.MARefArc.CP17",
+          "CCC.MARefArc.CP19"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN13",
+          "CCC.MARefArc.CN15"
+        ]
+      },
+      "title": "MCP supply-chain compromise"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agentic-security",
+      "id": "CCC.MARefArc.TH30",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-027-01",
+          "AIR-SEC-027-02",
+          "AIR-SEC-027-03",
+          "AIR-SEC-027-04",
+          "AIR-SEC-027-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP07",
+          "CCC.MARefArc.CP09",
+          "CCC.MARefArc.CP11"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN14"
+        ]
+      },
+      "title": "Agent memory and state poisoning"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agentic-security",
+      "id": "CCC.MARefArc.TH31",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-OP-028-01",
+          "AIR-OP-028-02",
+          "AIR-OP-028-03",
+          "AIR-OP-028-04",
+          "AIR-OP-028-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP03",
+          "CCC.MARefArc.CP06"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN14"
+        ]
+      },
+      "title": "Multi-agent collaboration compromise"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agentic-security",
+      "id": "CCC.MARefArc.TH32",
+      "kind": "threat",
+      "path": "catalogs/ai-ml/multi-agent-refarch/threats.yaml",
+      "references": {
+        "air-vec": [
+          "AIR-SEC-029-01",
+          "AIR-SEC-029-02",
+          "AIR-SEC-029-03",
+          "AIR-SEC-029-04",
+          "AIR-SEC-029-05"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.MARefArc.CP07",
+          "CCC.MARefArc.CP08",
+          "CCC.MARefArc.CP10",
+          "CCC.MARefArc.CP12"
+        ],
+        "controls": [
+          "CCC.MARefArc.CN15"
+        ]
+      },
+      "title": "Credential harvesting via agent tools and storage"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "user-interaction",
+      "id": "CCC.MARefArc.CP01",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH11",
+          "CCC.MARefArc.TH26"
+        ]
+      },
+      "title": "User-facing application surface"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "user-interaction",
+      "id": "CCC.MARefArc.CP02",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH15",
+          "CCC.MARefArc.TH16",
+          "CCC.MARefArc.TH25"
+        ]
+      },
+      "title": "Human-in-the-loop output review"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent-gateway",
+      "id": "CCC.MARefArc.CP03",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH14",
+          "CCC.MARefArc.TH31"
+        ]
+      },
+      "title": "Agent registry and lifecycle management"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent-gateway",
+      "id": "CCC.MARefArc.CP04",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {},
+      "title": "Agent request routing"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent-gateway",
+      "id": "CCC.MARefArc.CP05",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH11",
+          "CCC.MARefArc.TH25",
+          "CCC.MARefArc.TH26"
+        ]
+      },
+      "title": "Agent-ingress zero-trust guardrails"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent",
+      "id": "CCC.MARefArc.CP06",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH14",
+          "CCC.MARefArc.TH31"
+        ]
+      },
+      "title": "Agent collaboration and orchestration patterns"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent",
+      "id": "CCC.MARefArc.CP07",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH28",
+          "CCC.MARefArc.TH30",
+          "CCC.MARefArc.TH32"
+        ]
+      },
+      "title": "Unified sandboxed agent runtime"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent",
+      "id": "CCC.MARefArc.CP08",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH28",
+          "CCC.MARefArc.TH29",
+          "CCC.MARefArc.TH32"
+        ]
+      },
+      "title": "Built-in trusted tools"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent",
+      "id": "CCC.MARefArc.CP09",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH30"
+        ]
+      },
+      "title": "Agent memory"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent",
+      "id": "CCC.MARefArc.CP10",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH32"
+        ]
+      },
+      "title": "Sandboxed workspace file system"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "agent",
+      "id": "CCC.MARefArc.CP11",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH07",
+          "CCC.MARefArc.TH30"
+        ]
+      },
+      "title": "Adaptive learning"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "knowledge",
+      "id": "CCC.MARefArc.CP12",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH22",
+          "CCC.MARefArc.TH23",
+          "CCC.MARefArc.TH32"
+        ]
+      },
+      "title": "Authoritative knowledge source bases"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "knowledge",
+      "id": "CCC.MARefArc.CP13",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH03",
+          "CCC.MARefArc.TH04",
+          "CCC.MARefArc.TH05",
+          "CCC.MARefArc.TH12",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH22"
+        ]
+      },
+      "title": "Vector-based semantic retrieval"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "llm",
+      "id": "CCC.MARefArc.CP14",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH06",
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH19",
+          "CCC.MARefArc.TH20",
+          "CCC.MARefArc.TH21",
+          "CCC.MARefArc.TH22",
+          "CCC.MARefArc.TH23"
+        ]
+      },
+      "title": "Approved-model registry and lifecycle"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "llm",
+      "id": "CCC.MARefArc.CP15",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH09",
+          "CCC.MARefArc.TH10",
+          "CCC.MARefArc.TH17"
+        ]
+      },
+      "title": "LLM inference gateway routing"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "llm",
+      "id": "CCC.MARefArc.CP16",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH01",
+          "CCC.MARefArc.TH02",
+          "CCC.MARefArc.TH08",
+          "CCC.MARefArc.TH11",
+          "CCC.MARefArc.TH13",
+          "CCC.MARefArc.TH15",
+          "CCC.MARefArc.TH16",
+          "CCC.MARefArc.TH18",
+          "CCC.MARefArc.TH21",
+          "CCC.MARefArc.TH26"
+        ]
+      },
+      "title": "Model-interaction zero-trust guardrails"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "mcp",
+      "id": "CCC.MARefArc.CP17",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH29"
+        ]
+      },
+      "title": "Approved MCP server registry and lifecycle"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "mcp",
+      "id": "CCC.MARefArc.CP18",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {},
+      "title": "MCP connection gateway routing"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "mcp",
+      "id": "CCC.MARefArc.CP19",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH27",
+          "CCC.MARefArc.TH28",
+          "CCC.MARefArc.TH29"
+        ]
+      },
+      "title": "MCP-interaction zero-trust guardrails"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "evaluation",
+      "id": "CCC.MARefArc.CP20",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH17",
+          "CCC.MARefArc.TH23"
+        ]
+      },
+      "title": "Feedback engine"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "evaluation",
+      "id": "CCC.MARefArc.CP21",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH23",
+          "CCC.MARefArc.TH24",
+          "CCC.MARefArc.TH25"
+        ]
+      },
+      "title": "Human supervision and oversight"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "evaluation",
+      "id": "CCC.MARefArc.CP22",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH15",
+          "CCC.MARefArc.TH16"
+        ]
+      },
+      "title": "Runtime protection"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "observability",
+      "id": "CCC.MARefArc.CP23",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH24"
+        ]
+      },
+      "title": "Cross-layer telemetry collection"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "observability",
+      "id": "CCC.MARefArc.CP24",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {},
+      "title": "Anomaly detection"
+    },
+    {
+      "catalog": "ai-ml/multi-agent-refarch",
+      "framework": "CCC",
+      "group": "observability",
+      "id": "CCC.MARefArc.CP25",
+      "kind": "capability",
+      "path": "catalogs/ai-ml/multi-agent-refarch/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.MARefArc.TH24"
+        ]
+      },
+      "title": "Signal correlation"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CN01",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "CEK-03",
+          "CEK-04",
+          "IVS-03",
+          "IVS-07"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH02"
+        ]
+      },
+      "title": "Encrypt Data for Transmission"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CN02",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "CEK-03",
+          "CEK-04",
+          "DSP-17",
+          "UEM-08"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Encrypt Data for Storage"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.CN03",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "IAM-14"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Implement Multi-factor Authentication (MFA) for Access"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CN04",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "LOG-08"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Log All Access and Changes"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.CN05",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "DSP-01",
+          "DSP-07",
+          "DSP-08",
+          "DSP-10",
+          "DSP-17"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Prevent Access from Untrusted Entities"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CN06",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "DSP-19"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH03"
+        ]
+      },
+      "title": "Restrict Deployments to Trust Perimeter"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CN07",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "LOG-05",
+          "SEF-05"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH15"
+        ]
+      },
+      "title": "Alert on Unusual Enumeration Activity"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CN08",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "BCR-08",
+          "BCR-10",
+          "BCR-11"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH06"
+        ]
+      },
+      "title": "Replicate Data to Multiple Locations"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CN09",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "LOG-02",
+          "LOG-04",
+          "LOG-09"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH07",
+          "CCC.Core.TH09",
+          "CCC.Core.TH16"
+        ]
+      },
+      "title": "Ensure Integrity of Access Logs"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CN10",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "DSP-10",
+          "DSP-19"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH04"
+        ]
+      },
+      "title": "Restrict Data Replication to Trust Perimeter"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CN11",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {
+        "CCM": [
+          "CEK-08",
+          "CEK-10",
+          "CEK-12"
+        ]
+      },
+      "relations": {
+        "threats": [
+          "CCC.Core.TH18"
+        ]
+      },
+      "title": "Protect Encryption Keys"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CN13",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH18"
+        ]
+      },
+      "title": "Minimize Lifetime of Encryption and Authentication Certificates"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CN14",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH06"
+        ]
+      },
+      "title": "Maintain Recent Backups"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.CN15",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Enforce Transaction Rate Limits"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CN16",
+      "kind": "control",
+      "path": "catalogs/core/core/controls.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01",
+          "CCC.Core.TH06",
+          "CCC.Core.TH07",
+          "CCC.Core.TH16"
+        ]
+      },
+      "title": "Alert on Changes to Protective Configuration"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.TH01",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1027",
+          "T1048",
+          "T1078",
+          "T1098",
+          "T1203",
+          "T1484",
+          "T1485",
+          "T1537",
+          "T1546",
+          "T1548",
+          "T1565",
+          "T1567"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP05",
+          "CCC.Core.CP06",
+          "CCC.Core.CP23",
+          "CCC.Core.CP29",
+          "CCC.Core.CP33"
+        ],
+        "controls": [
+          "CCC.Core.CN02",
+          "CCC.Core.CN03",
+          "CCC.Core.CN04",
+          "CCC.Core.CN05",
+          "CCC.Core.CN16"
+        ]
+      },
+      "title": "Access is Granted to Unauthorized Users"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.TH02",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1040",
+          "T1557"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP01",
+          "CCC.Core.CP08",
+          "CCC.Core.CP14"
+        ],
+        "controls": [
+          "CCC.Core.CN01"
+        ]
+      },
+      "title": "Data is Intercepted in Transit"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.TH03",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1040",
+          "T1105",
+          "T1110",
+          "T1557",
+          "T1583"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP08",
+          "CCC.Core.CP22"
+        ],
+        "controls": [
+          "CCC.Core.CN06"
+        ]
+      },
+      "title": "Deployment Region Network is Untrusted"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.TH04",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP08",
+          "CCC.Core.CP21"
+        ],
+        "controls": [
+          "CCC.Core.CN10"
+        ]
+      },
+      "title": "Data is Replicated to Untrusted or External Locations"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.TH05",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1485",
+          "T1490",
+          "T1491",
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP08",
+          "CCC.Core.CP12",
+          "CCC.Core.CP21"
+        ]
+      },
+      "title": "Interference with Replication Processes"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.TH06",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1485",
+          "T1490",
+          "T1491",
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP11",
+          "CCC.Core.CP18",
+          "CCC.Core.CP32",
+          "CCC.Core.CP34"
+        ],
+        "controls": [
+          "CCC.Core.CN08",
+          "CCC.Core.CN14",
+          "CCC.Core.CN16"
+        ]
+      },
+      "title": "Data is Lost or Corrupted"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH07",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1027",
+          "T1070",
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP03",
+          "CCC.Core.CP10"
+        ],
+        "controls": [
+          "CCC.Core.CN09",
+          "CCC.Core.CN16"
+        ]
+      },
+      "title": "Logs are Tampered With or Deleted"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH08",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1070",
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP09",
+          "CCC.Core.CP15"
+        ]
+      },
+      "title": "Runtime Metrics are Manipulated"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH09",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1003",
+          "T1007",
+          "T1018",
+          "T1033",
+          "T1046",
+          "T1057",
+          "T1069",
+          "T1070",
+          "T1082",
+          "T1120",
+          "T1124",
+          "T1497",
+          "T1518"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP03",
+          "CCC.Core.CP10"
+        ],
+        "controls": [
+          "CCC.Core.CN09"
+        ]
+      },
+      "title": "Runtime Logs are Read by Unauthorized Entities"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH10",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1049",
+          "T1057",
+          "T1083"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP07",
+          "CCC.Core.CP17"
+        ]
+      },
+      "title": "State-change Events are Read by Unauthorized Entities"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH11",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1001.001",
+          "T1205"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP07",
+          "CCC.Core.CP17"
+        ]
+      },
+      "title": "Publications are Incorrectly Triggered"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.TH12",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1496",
+          "T1498",
+          "T1499"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP04",
+          "CCC.Core.CP16",
+          "CCC.Core.CP19",
+          "CCC.Core.CP24",
+          "CCC.Core.CP25",
+          "CCC.Core.CP26",
+          "CCC.Core.CP31"
+        ],
+        "controls": [
+          "CCC.Core.CN15"
+        ]
+      },
+      "title": "Resource Constraints are Exhausted"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.TH13",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP20"
+        ]
+      },
+      "title": "Resource Tags are Manipulated"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.TH14",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1027",
+          "T1485",
+          "T1489",
+          "T1562.010",
+          "T1565"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP18"
+        ]
+      },
+      "title": "Older Resource Versions are Used"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.TH15",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1580"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP14",
+          "CCC.Core.CP27",
+          "CCC.Core.CP28"
+        ],
+        "controls": [
+          "CCC.Core.CN07"
+        ]
+      },
+      "title": "Automated Enumeration and Reconnaissance by Non-human Entities"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH16",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1562"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP07",
+          "CCC.Core.CP09",
+          "CCC.Core.CP10"
+        ],
+        "controls": [
+          "CCC.Core.CN09",
+          "CCC.Core.CN16"
+        ]
+      },
+      "title": "Publications are Disabled"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.TH17",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "CCMv4": [
+          "IVS-09"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP14",
+          "CCC.Core.CP23",
+          "CCC.Core.CP30",
+          "CCC.Core.CP33"
+        ]
+      },
+      "title": "Responses are Generated for Unauthorized Requests"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.TH18",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {
+        "MITRE-ATT&CK": [
+          "T1555.006"
+        ]
+      },
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP01",
+          "CCC.Core.CP02",
+          "CCC.Core.CP35"
+        ],
+        "controls": [
+          "CCC.Core.CN11",
+          "CCC.Core.CN13"
+        ]
+      },
+      "title": "Encryption Key is Misused"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.TH19",
+      "kind": "threat",
+      "path": "catalogs/core/core/threats.yaml",
+      "references": {},
+      "relations": {
+        "capabilities": [
+          "CCC.Core.CP09"
+        ]
+      },
+      "title": "Metrics are Read by Unauthorized Entities"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CP01",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH02",
+          "CCC.Core.TH18"
+        ]
+      },
+      "title": "Encryption in Transit Enabled by Default"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CP02",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH18"
+        ]
+      },
+      "title": "Encryption at Rest Enabled by Default"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CP03",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH07",
+          "CCC.Core.TH09"
+        ]
+      },
+      "title": "Access Log Publication"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.CP04",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Transaction Rate Limits"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.CP05",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Signed URLs"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.CP06",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Access Control"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CP07",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH10",
+          "CCC.Core.TH11",
+          "CCC.Core.TH16"
+        ]
+      },
+      "title": "Event Publication"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP08",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH02",
+          "CCC.Core.TH03",
+          "CCC.Core.TH04",
+          "CCC.Core.TH05"
+        ]
+      },
+      "title": "Data Replication"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CP09",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH08",
+          "CCC.Core.TH16",
+          "CCC.Core.TH19"
+        ]
+      },
+      "title": "Metrics Publication"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CP10",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH07",
+          "CCC.Core.TH09",
+          "CCC.Core.TH16"
+        ]
+      },
+      "title": "Log Publication"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP11",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH06"
+        ]
+      },
+      "title": "Backup"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP12",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH05"
+        ]
+      },
+      "title": "Recovery"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP14",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH02",
+          "CCC.Core.TH15",
+          "CCC.Core.TH17"
+        ]
+      },
+      "title": "API Access"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.CP15",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH08"
+        ]
+      },
+      "title": "Cost Management"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.CP16",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Budgeting"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Observability",
+      "id": "CCC.Core.CP17",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH10",
+          "CCC.Core.TH11"
+        ]
+      },
+      "title": "Alerting"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP18",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH06",
+          "CCC.Core.TH14"
+        ]
+      },
+      "title": "Resource Versioning"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP19",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Child Resource Scaling"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Resource",
+      "id": "CCC.Core.CP20",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH13"
+        ]
+      },
+      "title": "Resource Tagging"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP21",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH04",
+          "CCC.Core.TH05"
+        ]
+      },
+      "title": "Resource Replication"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP22",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH03"
+        ]
+      },
+      "title": "Location Lock-In"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.CP23",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01",
+          "CCC.Core.TH17"
+        ]
+      },
+      "title": "Network Access Rules"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP24",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Core Processing Units"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP25",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Random Access Memory Allocation"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP26",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Persistent Storage"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP27",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH15"
+        ]
+      },
+      "title": "Configurable Network Ports"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP28",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH15"
+        ]
+      },
+      "title": "Command-line Interface"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Ingestion",
+      "id": "CCC.Core.CP29",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01"
+        ]
+      },
+      "title": "Active Ingestion"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Ingestion",
+      "id": "CCC.Core.CP30",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH17"
+        ]
+      },
+      "title": "Passive Ingestion"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Compute",
+      "id": "CCC.Core.CP31",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH12"
+        ]
+      },
+      "title": "Elastic Scaling"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP32",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH06"
+        ]
+      },
+      "title": "Deletion Protection"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Access",
+      "id": "CCC.Core.CP33",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH01",
+          "CCC.Core.TH17"
+        ]
+      },
+      "title": "Public Access Restriction"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Data",
+      "id": "CCC.Core.CP34",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH06"
+        ]
+      },
+      "title": "Data Lifecycle Policy"
+    },
+    {
+      "catalog": "core/core",
+      "framework": "CCC",
+      "group": "Encryption",
+      "id": "CCC.Core.CP35",
+      "kind": "capability",
+      "path": "catalogs/core/core/capabilities.yaml",
+      "references": {},
+      "relations": {
+        "threats": [
+          "CCC.Core.TH18"
+        ]
+      },
+      "title": "Customer-Managed Encryption Keys"
+    }
+  ],
+  "source": "ccc"
+}

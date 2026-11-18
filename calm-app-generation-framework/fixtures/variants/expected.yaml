@@ -1,0 +1,32 @@
+# Expected golden results for the Invoice-Lite variants (Req 26.1). Inputs: governance-execution-framework/forms/v*.attributes.yaml;
+# generated App_Models: invoice-lite-v*.json in this folder (written by the golden tests' refresh helper).
+# Labels: scoring is "illustrative, not approved policy"; Spectral passes are "design-level evidence only".
+v1:
+  calm: VALID
+  status: COMPLETED
+  decision: APPROVED_WITH_CONDITIONS
+  gap_level: none
+  profile_level: Low
+  failed_controls: []
+  triggered_risks: []
+  unmapped_facts: ["invoice-db.data_classification"]
+v2:
+  calm: VALID
+  status: COMPLETED
+  decision: REJECTED
+  gate: G2-PAYMENT-AUTH
+  failed_controls: [AIGF-MI-018, AIGF-MI-024]
+  triggered_risks: [AIGF-RI-024]
+v3:
+  calm: VALID
+  status: COMPLETED
+  decision: RESTRICTED
+  gap_level: minor
+  profile_level: High
+  failed_controls: [AIGF-MI-021]
+  triggered_risks: [AIGF-RI-018, AIGF-RI-022]
+v4:
+  calm: INVALID
+  status: BLOCKED        # assessment status; an invalid CALM gets no decision
+  decision: null
+  calm_error_path: /nodes/payment-agent/metadata/payment_limit

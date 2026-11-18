@@ -1,0 +1,5 @@
+# Option -> attribute consistency for RA05-CYBER-REMEDIATION.
+ra_id: RA05-CYBER-REMEDIATION
+rules:
+  - {option: opt-approval-path, choice: actions-require-human-approval, requires: {REMEDIATION_AGENT_ACTION_APPROVAL_PATH: via-human-approval}}
+  - {option: opt-approval-path, choice: actions-are-applied-directly, requires: {REMEDIATION_AGENT_ACTION_APPROVAL_PATH: direct}}

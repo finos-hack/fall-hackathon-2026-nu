@@ -7,7 +7,7 @@ The sign-off is the human contributor's certification under the [Developer Certi
 Every commit message must end with a trailer that matches the commit author exactly:
 
 ```text
-Signed-off-by: Ada Lovelace <ada@example.com>
+Signed-off-by: Manoj Kumar S <manojaiconf26@gmail.com>
 ```
 
 1. Read the configured identity:

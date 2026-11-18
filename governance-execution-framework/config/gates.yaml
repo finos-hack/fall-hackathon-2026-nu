@@ -1,0 +1,8 @@
+version: 2
+label: "illustrative, not approved policy"
+# Evaluated in order; the first gate that fires wins and overrides the Decision_Matrix.
+# Invalid CALM is not a gate: it sets the assessment status to BLOCKED and no decision is made (task 23.7).
+# Precedence: G2 (payment authorisation) overrides G3 (unevaluable mandatory trigger).
+order:
+  - {id: G2-PAYMENT-AUTH, when: {control_status: {AIGF-MI-024: FAIL}}, outcome: REJECTED}
+  - {id: G3-UNEVALUABLE,  when: {mandatory_trigger: UNEVALUABLE}, outcome: INDETERMINATE}

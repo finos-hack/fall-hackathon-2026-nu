@@ -1,0 +1,7 @@
+<h2>Decider (advisory)</h2><p class="muted">The Decider only classifies UNMAPPED attributes with no deterministic check. Its scores are not calibrated probabilities and never set a severity or a decision.</p>
+{% if decider_unavailable %}<div class="banner">The Decider was unavailable for {{ decider_unavailable|length }} question(s):
+<ul>{% for c in decider_unavailable %}<li>{{ c.question.id }}: {{ c.error }}</li>{% endfor %}</ul></div>{% endif %}
+<table><tr><th>Question</th><th>Answer</th><th>Confidence</th><th>Outcome</th><th>Cache</th><th>Latency ms</th><th>Input_Hash</th></tr>
+{% for c in decider_calls %}<tr><td>{{ c.question.id }}</td><td>{{ c.answer.choice if c.answer else "" }}</td><td>{{ c.confidence if c.confidence is not none else "" }}</td>
+<td>{{ c.outcome }}{% if c.error %} ({{ c.error }}){% endif %}</td><td>{{ "hit" if c.cache_hit else "" }}</td><td>{{ c.latency_ms }}</td><td class="muted">{{ c.input_hash[:12] }}</td></tr>
+{% else %}<tr><td colspan="7">No Decider calls.</td></tr>{% endfor %}</table>

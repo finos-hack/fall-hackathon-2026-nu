@@ -1,0 +1,8 @@
+{
+ "args0": "spectral.cmd",
+ "output": null,
+ "rc": 1,
+ "stderr": "",
+ "stdout": "[\n\t{\n\t\t\"code\": \"risk-no-audit-trail\",\n\t\t\"path\": [\n\t\t\t\"nodes\"\n\t\t],\n\t\t\"message\": \"No node with metadata.role 'audit' found (AIGF ri-22)\",\n\t\t\"severity\": 0,\n\t\t\"range\": {\n\t\t\t\"start\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 73\n\t\t\t},\n\t\t\t\"end\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 2704\n\t\t\t}\n\t\t},\n\t\t\"source\": \"c:/Users/User1/AppData/Local/Temp/agip-spectral-04608ppz/app.json\"\n\t},\n\t{\n\t\t\"code\": \"risk-agent-autonomous-execution\",\n\t\t\"path\": [\n\t\t\t\"nodes\",\n\t\t\t\"3\",\n\t\t\t\"metadata\",\n\t\t\t\"autonomy\"\n\t\t],\n\t\t\"message\": \"Agent at #/nodes/3/metadata/autonomy is autonomous (AIGF ri-18)\",\n\t\t\"severity\": 0,\n\t\t\"range\": {\n\t\t\t\"start\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1193\n\t\t\t},\n\t\t\t\"end\": {\n\t\t\t\t\"line\": 0,\n\t\t\t\t\"character\": 1205\n\t\t\t}\n\t\t},\n\t\t\"source\": \"c:/Users/User1/AppData/Local/Temp/agip-spectral-04608ppz/app.json\"\n\t}\n]",
+ "sub": "lint"
+}

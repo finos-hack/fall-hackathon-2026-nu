@@ -6,6 +6,8 @@ This file lists the maintainers of this repository.
 
 | GitHub Username | Name | Organization | Email (Optional) |
 |----------------|------|--------------|-------|
+| sridevi-infosec | Sridevi P | | sridevi.infosec@gmail.com |
+| manojaiconf26 | Manoj Kumar S | | manojaiconf26@gmail.com |
 
 For information about maintainer responsibilities and resources, see the [FINOS Maintainers Cheatsheet](https://community.finos.org/docs/finos-maintainers-cheatsheet).
 

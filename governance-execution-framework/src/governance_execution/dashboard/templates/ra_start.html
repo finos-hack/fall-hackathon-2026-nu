@@ -1,0 +1,25 @@
+{% extends "base.html" %}{% from "_ui.html" import badge %}{% block title %}Build Reference Architecture - AIGP Dashboard{% endblock %}{% block body %}
+<div class="page-head"><h1>Build Reference Architecture</h1>
+  {% if ras %}<div class="page-actions"><span class="muted">Edit existing:</span>{% for r in ras %}<a class="btn" href="/architectures/new?start={{ r }}">{{ r }}</a>{% endfor %}</div>{% endif %}
+  <p class="muted">The Strands agent composes the RA from published patterns only; the CALM Composer and <code>calm validate</code> check each draft. You review it before anything is saved or published.</p></div>
+<ol class="steps"><li class="on">1. Describe</li><li>2. Review and save</li><li>3. Approve and publish</li></ol>
+{% if errors %}<div class="status-box bad"><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+<form method="post" action="/architectures/generate">
+  <div class="card">
+    <div class="form-grid">
+      <label class="label" for="ra_id">RA id<span class="help">upper case, starts with RA</span></label>
+      <div class="control"><input id="ra_id" name="ra_id" required pattern="RA[0-9A-Za-z][0-9A-Za-z-]{1,40}" placeholder="RA06-CLAIMS" value="{{ (given or {}).ra_id or '' }}"></div>
+      <label class="label" for="description">What should the architecture support?<span class="help">Components, data, the AI agents' actions, and the design choices each application makes</span></label>
+      <div class="control"><textarea id="description" name="description" rows="4" required placeholder="e.g. An AI agent investigates security alerts from an alert store, uses a hosted language model, and applies remediation to production hosts. Each remediation can require analyst approval, and every decision can be recorded in an audit trail.">{{ (given or {}).description or '' }}</textarea></div>
+    </div>
+    <div class="actionbar"><span class="muted">About 20 seconds; up to 4 compose-and-fix rounds.</span><span class="spacer"></span>
+      <button class="btn primary" type="submit">Generate with the agent</button></div>
+  </div>
+  <details class="section"><summary>Limit to selected patterns <span class="muted">(default: all published)</span></summary><div class="body scroll-x">
+  <table class="compact clean"><tr><th></th><th>Pattern</th><th>Version</th><th>State</th></tr>
+  {% for p in patterns %}<tr><td><input type="checkbox" name="patterns" value="{{ p.id }}" aria-label="use {{ p.id }}"{% if p.state not in ("APPROVED", "PUBLISHED") %} disabled{% endif %}{% if p.id in ((given or {}).patterns or []) %} checked{% endif %}></td>
+  <td><b>{{ p.id }}</b> {{ p.title }}<br><span class="muted">{{ p.description }}</span></td><td>v{{ p.version }}</td>
+  <td>{{ badge("PENDING HUMAN REVIEW" if p.state in ("DRAFT", "IN_REVIEW") else p.state) }}</td></tr>{% endfor %}</table>
+  <p class="muted">Missing a building block? <a href="/patterns/new">Build a pattern</a> first.</p></div></details>
+</form>
+{% endblock %}

@@ -1,0 +1,1 @@
+{"conditions":[],"decision":"REJECTED","gates_evaluated":[{"fired":true,"id":"G2-PAYMENT-AUTH","outcome":"REJECTED","overridden":false},{"fired":false,"id":"G3-UNEVALUABLE","outcome":null,"overridden":false}],"matrix_cell":{"evaluated":false,"gates_version":2,"matrix_version":1,"reason":"gate G2-PAYMENT-AUTH fired"},"trace_id":"8b6cbd5c74cad5a7a702c7569e292062"}

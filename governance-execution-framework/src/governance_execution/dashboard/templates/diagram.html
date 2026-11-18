@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block body %}
+<div class="page-head"><h1>{{ title }}</h1><div class="page-actions"><a class="btn" href="/assessments/{{ s.trace_id }}">&lsaquo; Report</a></div><p class="muted">Executor {{ s.executor }} {{ s.executor_note or "" }}</p></div>
+<div class="card"><pre class="mermaid">{{ diagram }}</pre></div>{% endblock %}
