@@ -1,7 +1,6 @@
 {% extends "base.html" %}{% block title %}Assessment {{ s.trace_id[:12] }}{% endblock %}{% block body %}
 <div class="page-head"><h1>Assessment: {{ s.app_id or s.trace_id }}</h1>
 {% if not export %}<div class="page-actions"><a class="btn" href="/assessments">&lsaquo; All assessments</a>
-  <button class="btn" type="button" onclick="fetch('/api/replay/{{ s.trace_id }}',{method:'POST'}).then(r=>r.json()).then(j=>alert(j.identical ? 'Replay identical to the original' : 'Replay differs: ' + JSON.stringify(j.differences)))">Replay</button>
   <a class="btn" href="/assessments/{{ s.trace_id }}/export">Export</a></div>{% endif %}
 <p class="muted">Trace <code>{{ s.trace_id }}</code> · mode {{ s.mode }} · executor <b>{{ s.executor }}</b> {{ s.executor_note or "" }} · {{ s.time }}</p></div>
 {% if not export %}<nav class="tabs" aria-label="Assessment views"><a class="tab on" href="/assessments/{{ s.trace_id }}">Report</a>

@@ -1,0 +1,12 @@
+questions:
+- id: foundation_model_model_version
+  label: What is the model version of the Foundation Model?
+  answers:
+    pinned:
+      label: Pinned
+      set:
+        FOUNDATION_MODEL_MODEL_VERSION: pinned
+    floating:
+      label: Floating
+      set:
+        FOUNDATION_MODEL_MODEL_VERSION: floating

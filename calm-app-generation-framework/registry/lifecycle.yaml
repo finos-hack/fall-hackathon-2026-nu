@@ -220,6 +220,99 @@ entries:
     source: dashboard:dashboard-architect
     state: PUBLISHED
     version: 1
+  P18:
+    history:
+    - at: '2026-11-19T15:16:35Z'
+      by: dashboard-architect
+      from: null
+      rationale: new pattern
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-19T15:16:56Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T15:16:57Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T15:16:57Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: pattern
+    sha256: ca48b3e8710e0690d51fca7c6258bbe5431a0e89544344718574eec1cf2633cf
+    source: dashboard:dashboard-architect
+    state: PUBLISHED
+    version: 1
+  P19:
+    history:
+    - at: '2026-11-19T17:37:15Z'
+      by: dashboard-architect
+      from: null
+      rationale: new pattern
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-19T17:37:20Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T17:37:21Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T17:37:21Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: pattern
+    sha256: f94cae2156fa282e3493b4c3205b68a81601ca9b8836cef53b3ac063469dc9e7
+    source: dashboard:dashboard-architect
+    state: PUBLISHED
+    version: 1
+  P20:
+    history:
+    - at: '2026-11-19T17:44:01Z'
+      by: dashboard-architect
+      from: null
+      rationale: new pattern
+      role: pattern-author
+      to: DRAFT
+    - at: '2026-11-19T17:44:07Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T17:44:07Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T17:44:08Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: pattern
+    sha256: fde800fd3e74992ef6e44c9f4f8af78e7a35e4556ae564b8ee178b33c8e90b07
+    source: dashboard:dashboard-architect
+    state: PUBLISHED
+    version: 1
   RA03-LITE:
     composed_sha256: d390167d9920bcb481d3fe773ffc86fdf69e0b3a191a8361c250a29c57b618cf
     history:
@@ -366,4 +459,190 @@ entries:
     versions:
     - composed_sha256: f168b39a0cad9683788e08d84fe44848b6f9a6680378d43c8637de2ffa2f16de
       source_patterns: *id002
+      version: 1
+  RA06-COMPLAINTS:
+    composed_sha256: 17c43b3c8517a55b044e1cafb6564990fbf99a1fdf7f39af9e0eac35c8113967
+    history:
+    - at: '2026-11-19T15:44:35Z'
+      by: dashboard-architect
+      from: null
+      rationale: composed
+      role: composer
+      to: DRAFT
+    - at: '2026-11-19T15:44:38Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T15:44:38Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T15:44:38Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    - at: '2026-11-19T16:08:48Z'
+      by: dashboard-architect
+      from: null
+      rationale: new version 2
+      role: composer
+      to: DRAFT
+    - at: '2026-11-19T16:08:52Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T16:08:52Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T16:08:52Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    - at: '2026-11-19T16:12:06Z'
+      by: dashboard-architect
+      from: null
+      rationale: new version 3
+      role: composer
+      to: DRAFT
+    - at: '2026-11-19T16:12:10Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T16:12:10Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T16:12:10Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: ra
+    source: composer
+    source_patterns: &id003
+    - id: P03
+      sha256: 701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7
+      version: 1
+    - id: P08
+      sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+      version: 1
+    - id: P11
+      sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+      version: 1
+    - id: P13
+      sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+      version: 1
+    - id: P18
+      sha256: ca48b3e8710e0690d51fca7c6258bbe5431a0e89544344718574eec1cf2633cf
+      version: 1
+    state: PUBLISHED
+    version: 3
+    versions:
+    - composed_sha256: e238e93cbd2c8b12f1dfa49552ccce84a3c9a7a435032c5e7a03d3b7c6a53043
+      source_patterns:
+      - id: P08
+        sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+        version: 1
+      - id: P11
+        sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+        version: 1
+      - id: P13
+        sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+        version: 1
+      - id: P15
+        sha256: 0e65ebeba0c88e7a66591bc9c8f12881312f975e76263c05afdd315127450f7a
+        version: 1
+      - id: P18
+        sha256: ca48b3e8710e0690d51fca7c6258bbe5431a0e89544344718574eec1cf2633cf
+        version: 1
+      version: 1
+    - composed_sha256: 4530b49a9537f5908b131065ba031533e6c096ae7aba63a126e887cc16fc75ff
+      source_patterns:
+      - id: P03
+        sha256: 701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7
+        version: 1
+      - id: P08
+        sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+        version: 1
+      - id: P11
+        sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+        version: 1
+      - id: P13
+        sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+        version: 1
+      - id: P18
+        sha256: ca48b3e8710e0690d51fca7c6258bbe5431a0e89544344718574eec1cf2633cf
+        version: 1
+      version: 2
+    - composed_sha256: 17c43b3c8517a55b044e1cafb6564990fbf99a1fdf7f39af9e0eac35c8113967
+      source_patterns: *id003
+      version: 3
+  RA07-CLAIMS-ZDZA:
+    composed_sha256: 35b6672e3178b7633aa8a5287e07d3266a27dd1f2d31d428b49424c321b329c2
+    history:
+    - at: '2026-11-19T17:38:31Z'
+      by: dashboard-architect
+      from: null
+      rationale: composed
+      role: composer
+      to: DRAFT
+    - at: '2026-11-19T17:38:33Z'
+      by: dashboard-reviewer
+      from: DRAFT
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: IN_REVIEW
+    - at: '2026-11-19T17:38:33Z'
+      by: dashboard-reviewer
+      from: IN_REVIEW
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: APPROVED
+    - at: '2026-11-19T17:38:34Z'
+      by: dashboard-reviewer
+      from: APPROVED
+      rationale: approved in dashboard (MVP, no role check)
+      role: governance_admin
+      to: PUBLISHED
+    kind: ra
+    source: composer
+    source_patterns: &id004
+    - id: P03
+      sha256: 701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7
+      version: 1
+    - id: P08
+      sha256: 72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93
+      version: 1
+    - id: P11
+      sha256: 573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980
+      version: 1
+    - id: P13
+      sha256: f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722
+      version: 1
+    - id: P19
+      sha256: f94cae2156fa282e3493b4c3205b68a81601ca9b8836cef53b3ac063469dc9e7
+      version: 1
+    state: PUBLISHED
+    version: 1
+    versions:
+    - composed_sha256: 35b6672e3178b7633aa8a5287e07d3266a27dd1f2d31d428b49424c321b329c2
+      source_patterns: *id004
       version: 1

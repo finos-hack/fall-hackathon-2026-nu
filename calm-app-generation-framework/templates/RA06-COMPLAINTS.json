@@ -1,0 +1,411 @@
+{
+  "$id": "https://agip.example/templates/RA06-COMPLAINTS.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "An AI agent reads customer complaint history from a data store, uses a hosted language model to draft replies, and a case handler reviews each reply in a human approval service before it is sent. Every agent decision is recorded in a separate audit service.",
+  "metadata": {
+    "composer-version": 1,
+    "ra-id": "RA06-COMPLAINTS",
+    "ra-version": 3,
+    "source-patterns": [
+      {
+        "id": "P03",
+        "sha256": "701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7",
+        "version": 1
+      },
+      {
+        "id": "P08",
+        "sha256": "72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93",
+        "version": 1
+      },
+      {
+        "id": "P11",
+        "sha256": "573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980",
+        "version": 1
+      },
+      {
+        "id": "P13",
+        "sha256": "f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722",
+        "version": 1
+      },
+      {
+        "id": "P18",
+        "sha256": "ca48b3e8710e0690d51fca7c6258bbe5431a0e89544344718574eec1cf2633cf",
+        "version": 1
+      }
+    ]
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 5,
+      "minItems": 5,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent that drafts replies to customer complaints, reads case history from a data store, and has observability enabled."
+            },
+            "metadata": {
+              "properties": {
+                "action_capability": {
+                  "const": "read-only"
+                },
+                "autonomy": {
+                  "const": "supervised"
+                },
+                "can_execute_payment": {
+                  "type": "boolean"
+                },
+                "observability": {
+                  "const": "enabled"
+                },
+                "payment_approval_path": {
+                  "enum": [
+                    "via-human-approval",
+                    "direct"
+                  ]
+                },
+                "payment_limit": {
+                  "maximum": 100000,
+                  "minimum": 1,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "action_capability",
+                "autonomy",
+                "can_execute_payment",
+                "observability",
+                "payment_approval_path",
+                "payment_limit"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Complaint Resolution Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "complaint-resolution-agent"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Structured persistent data store containing customer complaint history."
+            },
+            "metadata": {
+              "properties": {
+                "access_control": {
+                  "const": "rbac"
+                },
+                "data_classification": {
+                  "type": "string"
+                },
+                "encryption_at_rest": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "access_control",
+                "data_classification",
+                "encryption_at_rest"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Case History Database"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "case-history-database"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Hosted language model used by the complaint resolution agent to draft replies."
+            },
+            "metadata": {
+              "properties": {
+                "guardrails": {
+                  "const": "enabled"
+                },
+                "model_version": {
+                  "enum": [
+                    "pinned",
+                    "floating"
+                  ]
+                },
+                "sensitive_data_filtering": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "guardrails",
+                "model_version",
+                "sensitive_data_filtering"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Foundation Model"
+            },
+            "node-type": {
+              "const": "ai:llm"
+            },
+            "unique-id": {
+              "const": "foundation-model"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Service where a case handler reviews each drafted reply before it is sent."
+            },
+            "metadata": {
+              "properties": {
+                "role": {
+                  "const": "human-approval"
+                }
+              },
+              "required": [
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Human Approval Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "human-approval-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Application service that records every agent decision."
+            },
+            "metadata": {
+              "properties": {
+                "criticality": {
+                  "const": "medium"
+                },
+                "exposure": {
+                  "const": "internal"
+                },
+                "mediation": {
+                  "const": "none"
+                },
+                "role": {
+                  "const": "audit"
+                }
+              },
+              "required": [
+                "criticality",
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Audit Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "audit-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Complaint resolution agent reads customer complaint history from the case history database."
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "case-history-database"
+                  },
+                  "source": {
+                    "node": "complaint-resolution-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-reads-case-history"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Complaint resolution agent uses the foundation model to draft replies."
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "foundation-model"
+                  },
+                  "source": {
+                    "node": "complaint-resolution-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-calls-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Complaint resolution agent sends drafted replies to the human approval service for review."
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "human-approval-service"
+                  },
+                  "source": {
+                    "node": "complaint-resolution-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-requests-approval"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Complaint resolution agent records every decision in the audit service."
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "audit-service"
+                  },
+                  "source": {
+                    "node": "complaint-resolution-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-audited"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "RA06-COMPLAINTS Customer Complaint Resolution",
+  "type": "object"
+}

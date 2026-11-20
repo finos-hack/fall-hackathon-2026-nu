@@ -1,20 +1,20 @@
 {
   "MANIFEST.yaml": {
-    "content_hash": "575857dca7f2911fa06ff9e1d094903a3f98d1f23a9c43e5e3882de7c1dbea75",
+    "content_hash": "e56b195a9ca264c2c3e4b9fa50caf35cb65d9fd60fc5a598d782e0a33c994fcd",
     "inputs_hash": null,
-    "updated": "2026-11-18T12:46:10.477019+00:00",
-    "version": 1
+    "updated": "2026-11-19T17:36:44.345164+00:00",
+    "version": 4
   },
   "controls.spectral.yaml": {
-    "content_hash": "e403662f120ca71986aef558d898dedd67eb730e205171c8d3ac2ccabf5fb036",
+    "content_hash": "d3d341b0c511948169e52b1714a3a50a197d8ac78988203a63e178033f85345d",
     "inputs_hash": null,
-    "updated": "2026-11-18T12:46:10.439963+00:00",
-    "version": 2
+    "updated": "2026-11-19T17:43:30.343376+00:00",
+    "version": 5
   },
   "risks.spectral.yaml": {
-    "content_hash": "6b1916ab5afa4bb47cb848f0f4627581583dd7a2c7d8ee16d22ad498bc36c929",
+    "content_hash": "5217b06098524d011c005539a304e43aad7e07c7ad814829118a7ff630e35140",
     "inputs_hash": null,
-    "updated": "2026-11-18T12:46:10.456662+00:00",
-    "version": 2
+    "updated": "2026-11-19T17:43:30.373517+00:00",
+    "version": 4
   }
 }

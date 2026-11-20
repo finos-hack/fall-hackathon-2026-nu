@@ -1,0 +1,170 @@
+{
+  "$id": "https://agip.example/patterns/P19-ai-claims-settlement-agent.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "An AI claims settlement agent that reads insurance claims from a claims data store, runs supervised, has observability enabled, and proposes claim payouts.",
+  "metadata": {
+    "approved_by": "dashboard-reviewer",
+    "pattern-id": "P19",
+    "related_controls": [
+      "AIGF-MI-004",
+      "AIGF-MI-024",
+      "UPL-claims-data-classified"
+    ],
+    "related_risks": [
+      "UPL-unapproved-claim-payout"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Stores insurance claims data for processing."
+            },
+            "metadata": {
+              "properties": {
+                "data_classification": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "data_classification"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Claims Data Store"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "claims-data-store"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent that processes insurance claims and proposes settlements."
+            },
+            "metadata": {
+              "properties": {
+                "action_capability": {
+                  "enum": [
+                    "read-only",
+                    "reversible-write",
+                    "business-write",
+                    "production-change"
+                  ]
+                },
+                "autonomy": {
+                  "enum": [
+                    "supervised",
+                    "semi-autonomous",
+                    "autonomous"
+                  ]
+                },
+                "observability": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                },
+                "privilege": {
+                  "enum": [
+                    "read-only",
+                    "restricted-write",
+                    "unrestricted-write"
+                  ]
+                }
+              },
+              "required": [
+                "action_capability",
+                "autonomy",
+                "observability",
+                "privilege"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Claims Settlement Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "ai-agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent reads claims data from the claims data store"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "claims-data-store"
+                  },
+                  "source": {
+                    "node": "ai-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "agent-reads-claims"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P19 AI Claims Settlement Agent",
+  "type": "object"
+}

@@ -1,0 +1,39 @@
+questions:
+- id: complaint_resolution_agent_can_execute_payment
+  label: Is the can execute payment of the Complaint Resolution Agent enabled?
+  answers:
+    yes-value:
+      label: 'Yes'
+      set:
+        COMPLAINT_RESOLUTION_AGENT_CAN_EXECUTE_PAYMENT: true
+    no-value:
+      label: 'No'
+      set:
+        COMPLAINT_RESOLUTION_AGENT_CAN_EXECUTE_PAYMENT: false
+- id: complaint_resolution_agent_payment_approval_path
+  label: What is the payment approval path of the Complaint Resolution Agent?
+  answers:
+    via-human-approval:
+      label: Via human approval
+      set:
+        COMPLAINT_RESOLUTION_AGENT_PAYMENT_APPROVAL_PATH: via-human-approval
+    direct:
+      label: Direct
+      set:
+        COMPLAINT_RESOLUTION_AGENT_PAYMENT_APPROVAL_PATH: direct
+- id: complaint_resolution_agent_payment_limit
+  label: What is the payment limit of the Complaint Resolution Agent?
+  help: A number (minimum 1).
+  type: number
+  attribute: COMPLAINT_RESOLUTION_AGENT_PAYMENT_LIMIT
+- id: foundation_model_model_version
+  label: What is the model version of the Foundation Model?
+  answers:
+    pinned:
+      label: Pinned
+      set:
+        FOUNDATION_MODEL_MODEL_VERSION: pinned
+    floating:
+      label: Floating
+      set:
+        FOUNDATION_MODEL_MODEL_VERSION: floating

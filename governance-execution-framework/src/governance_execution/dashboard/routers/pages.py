@@ -50,6 +50,7 @@ def report_context(request: Request, trace: str) -> dict:
             "arch": data.architecture_mermaid(b) if b.get("app_model") else "",
             "flow": data.flow_mermaid(b, s["executor"] or "?"),
             "pending": pending_tasks(request, trace),
+            "reassess": data.reassessable(s), "supersedes": s["supersedes"], "superseded_by": _store(request).superseded_by(trace),
             "kinds": _store(request).kinds(trace)}
 
 

@@ -1,12 +1,11 @@
-﻿{% from "_ui.html" import ref %}
+{% from "_ui.html" import ref %}
 {% if partial %}
 <p class="muted">Trace_ID <code>{{ s.trace_id }}</code> | mode {{ s.mode }} | Executor <b>{{ s.executor }}</b> <span class="muted">{{ s.executor_note or "" }}</span> | {{ s.time }}</p>
 <p class="actions"><a class="btn primary" href="/assessments/{{ s.trace_id }}">Open full report</a>
 <a class="btn" href="/assessments/{{ s.trace_id }}/execution">Execution timeline</a>
 <a class="btn" href="/assessments/{{ s.trace_id }}/trace">Traceability</a>
 <a class="btn" href="/assessments/{{ s.trace_id }}/architecture">Architecture</a>
-<a class="btn" href="/assessments/{{ s.trace_id }}/export">Static export</a>
-<button class="btn" type="button" onclick="fetch('/api/replay/{{ s.trace_id }}',{method:'POST'}).then(r=>r.json()).then(j=>alert(JSON.stringify(j)))">Replay</button></p>
+<a class="btn" href="/assessments/{{ s.trace_id }}/export">Static export</a></p>
 {% endif %}
 {% if not export and (s.status == "WAITING_FOR_HUMAN" or pending) %}<section class="pending-review"><h2>PENDING HUMAN REVIEW</h2>
 {% if pending %}<p>The Decider could not classify these attributes with enough confidence. Choose the value for each and approve; the assessment then resumes.</p>
@@ -29,6 +28,7 @@
 {% if src.generation %}<p class="muted">{% if src.template %}Reference architecture {{ src.template.id }}, chosen by {{ "the Decider from the requirements" if src.template.source == "decider" else src.template.source }}{% if src.template.confidence is number %} (confidence {{ "%.2f"|format(src.template.confidence) }}){% endif %}. {% endif %}Generated in {{ src.generation.trace_id }} ({{ src.generation.status }}) from {{ src.app_model_ref }}.</p>{% endif %}
 </section>{% endif %}
 <section><h2>Decision</h2>
+{% if supersedes %}<p class="muted">Re-assessment of <a href="/assessments/{{ supersedes }}">{{ supersedes[:12] }}</a>.</p>{% endif %}{% if superseded_by %}<p class="muted">Re-assessed in {% for t in superseded_by %}<a href="/assessments/{{ t }}">{{ t[:12] }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
 {% if b.decision %}<span class="decision {{ b.decision.decision }}">{{ b.decision.decision }}</span>
 {% for c in b.decision.conditions %}<p>Condition: {{ c }}</p>{% endfor %}
 <table><tr><th>Gate</th><th>Fired</th><th>Outcome</th></tr>{% for g in b.decision.gates_evaluated %}<tr><td>{{ g.id }}</td><td>{{ g.fired }}{% if g.overridden %} (overridden){% endif %}</td><td>{{ g.outcome or "" }}</td></tr>{% endfor %}</table>
@@ -55,7 +55,8 @@
 <section><h2>Remediation</h2>{% if b.remediation %}<p class="muted">Source: {{ b.remediation.source }}{% if b.remediation.reason %} ({{ b.remediation.reason }}){% endif %}. The remediation agent cannot change the decision or edit CALM.</p>
 {% if b.remediation.summary %}<p>{{ b.remediation.summary }}</p>{% endif %}
 {% if b.remediation.fix_prompt %}<h3>Fix Prompt</h3><pre>{{ b.remediation.fix_prompt }}</pre>{% endif %}
-<h3>Remediation list</h3><ol>{% for i in b.remediation["items"] %}<li>{{ i.text }} [{{ i.id }}]</li>{% else %}<li>Nothing to remediate.</li>{% endfor %}</ol>{% endif %}</section>
+<h3>Remediation list</h3><ol>{% for i in b.remediation["items"] %}<li>{{ i.text }} [{{ i.id }}]</li>{% else %}<li>Nothing to remediate.</li>{% endfor %}</ol>{% endif %}
+{% if reassess and not export %}<p class="actions"><a class="btn primary" href="/assessments/{{ s.trace_id }}/reassess">Fix and re-assess</a> <span class="muted">Upload a corrected CALM model to run a new assessment.</span></p>{% endif %}</section>
 
 <section class="refs"><h2>Catalog references</h2>
 <p><b>Controls Catalog:</b> {% for c in (b.control_gap.controls if b.control_gap else []) %}<span class="chip">{{ ref('controls', c.control_id, export) }}</span>{% else %}<span class="muted">none</span>{% endfor %}</p>

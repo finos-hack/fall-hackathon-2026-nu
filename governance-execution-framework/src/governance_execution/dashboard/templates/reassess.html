@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% block title %}Re-assess {{ s.trace_id[:12] }}{% endblock %}{% block body %}
+<div class="page-head"><h1>Re-assess: {{ s.app_id or s.trace_id }}</h1>
+  <p class="muted">Upload the corrected CALM model. It runs through the full assessment (CALM validation, Spectral rules, gaps, risks, decision) as a new run. The original run stays as it is.</p>
+  <div class="page-actions"><a class="btn" href="/assessments/{{ s.trace_id }}">&lsaquo; Back to report</a></div></div>
+<p>Original run <code>{{ s.trace_id }}</code>: status <b>{{ s.status }}</b>{% if s.decision %}, decision <b>{{ s.decision }}</b>{% endif %}.
+{% if model_url %}<a href="{{ model_url }}">Download the assessed CALM model</a> to use as a starting point.{% endif %}</p>
+<div id="reassess-msg" class="status-box bad" role="alert" hidden></div>
+<form id="reassess-form" class="card">
+  <div class="form-grid">
+    <label class="label" for="model">Corrected CALM model<span class="help">JSON or YAML, up to 1 MB</span></label>
+    <div class="control"><input id="model" type="file" accept=".json,.yaml,.yml,application/json" required></div>
+    <label class="label" for="mode">Mode</label>
+    <div class="control"><select id="mode">{% for m in modes %}<option value="{{ m }}"{% if (s.mode or "no-llm") == m %} selected{% endif %}>{{ m }}</option>{% endfor %}</select></div>
+  </div>
+  <div class="actionbar"><span class="spacer"></span><button id="go" class="btn primary" type="submit">Upload and re-assess</button></div>
+</form>
+<script>
+document.getElementById("reassess-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  var msg = document.getElementById("reassess-msg"), go = document.getElementById("go");
+  var f = document.getElementById("model").files[0];
+  if (!f) { return; }
+  msg.hidden = true; go.disabled = true; go.textContent = "Assessing...";
+  try {
+    var r = await fetch("/assessments/{{ s.trace_id }}/reassess?mode=" + encodeURIComponent(document.getElementById("mode").value),
+                        {method: "POST", body: await f.text()});
+    var j = await r.json().catch(function () { return {}; });
+    if (r.ok) { window.location.href = j.report; return; }
+    msg.textContent = typeof j.detail === "string" ? j.detail : "Re-assessment failed (HTTP " + r.status + ").";
+  } catch (err) { msg.textContent = "Re-assessment failed: " + err; }
+  msg.hidden = false; go.disabled = false; go.textContent = "Upload and re-assess";
+});
+</script>
+{% endblock %}

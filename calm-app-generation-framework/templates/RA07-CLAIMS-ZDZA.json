@@ -1,0 +1,398 @@
+{
+  "$id": "https://agip.example/templates/RA07-CLAIMS-ZDZA.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "An AI agent reads insurance claims from a claims data store, uses a hosted language model to assess them, and proposes payouts. A claims adjuster approves each payout in a human approval service before it is released. Every agent decision is recorded in a separate audit service.",
+  "metadata": {
+    "composer-version": 1,
+    "ra-id": "RA07-CLAIMS-ZDZA",
+    "ra-version": 1,
+    "source-patterns": [
+      {
+        "id": "P03",
+        "sha256": "701011f1d217a1c6f5ca5c4535a037ece2bf01b2c0965481b2b8a4ed084237b7",
+        "version": 1
+      },
+      {
+        "id": "P08",
+        "sha256": "72b894f6a4fccbeb0d3cb746208e9607529565df5bb4e549fa70163f161e0a93",
+        "version": 1
+      },
+      {
+        "id": "P11",
+        "sha256": "573f8e99a6ab55b81808435efe376a85d874c50486e176ff45d20986ff182980",
+        "version": 1
+      },
+      {
+        "id": "P13",
+        "sha256": "f3a7ae71447a1987b55929b7f8d537dc2c487dae2630894194273f0524d86722",
+        "version": 1
+      },
+      {
+        "id": "P19",
+        "sha256": "f94cae2156fa282e3493b4c3205b68a81601ca9b8836cef53b3ac063469dc9e7",
+        "version": 1
+      }
+    ]
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 5,
+      "minItems": 5,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Structured persistent data store containing insurance claims."
+            },
+            "metadata": {
+              "properties": {
+                "access_control": {
+                  "const": "rbac"
+                },
+                "data_classification": {
+                  "type": "string"
+                },
+                "encryption_at_rest": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "access_control",
+                "data_classification",
+                "encryption_at_rest"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Claims Data Store"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "claims-data-store"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent that reads insurance claims, assesses them using a foundation model, and proposes payouts."
+            },
+            "metadata": {
+              "properties": {
+                "action_capability": {
+                  "const": "read-only"
+                },
+                "autonomy": {
+                  "const": "supervised"
+                },
+                "observability": {
+                  "const": "enabled"
+                },
+                "privilege": {
+                  "const": "read-only"
+                }
+              },
+              "required": [
+                "action_capability",
+                "autonomy",
+                "observability",
+                "privilege"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Claims Settlement Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "claims-settlement-agent"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Hosted language model used by the claims settlement agent for assessment."
+            },
+            "metadata": {
+              "properties": {
+                "guardrails": {
+                  "const": "enabled"
+                },
+                "model_version": {
+                  "enum": [
+                    "pinned",
+                    "floating"
+                  ]
+                },
+                "sensitive_data_filtering": {
+                  "const": "enabled"
+                }
+              },
+              "required": [
+                "guardrails",
+                "model_version",
+                "sensitive_data_filtering"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Foundation Model"
+            },
+            "node-type": {
+              "const": "ai:llm"
+            },
+            "unique-id": {
+              "const": "foundation-model"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Service where claims adjusters review and approve proposed payouts."
+            },
+            "metadata": {
+              "properties": {
+                "role": {
+                  "const": "human-approval"
+                }
+              },
+              "required": [
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Human Approval Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "human-approval-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Application service that records every agent decision for audit purposes."
+            },
+            "metadata": {
+              "properties": {
+                "criticality": {
+                  "const": "high"
+                },
+                "exposure": {
+                  "const": "internal"
+                },
+                "mediation": {
+                  "const": "none"
+                },
+                "role": {
+                  "const": "audit"
+                }
+              },
+              "required": [
+                "criticality",
+                "exposure",
+                "mediation",
+                "role"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Audit Service"
+            },
+            "node-type": {
+              "const": "service"
+            },
+            "unique-id": {
+              "const": "audit-service"
+            }
+          },
+          "required": [
+            "description",
+            "metadata",
+            "name",
+            "node-type",
+            "unique-id"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Claims settlement agent reads insurance claims from the claims data store"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "claims-data-store"
+                  },
+                  "source": {
+                    "node": "claims-settlement-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-reads-claims"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Claims settlement agent uses the foundation model for claim assessment"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "foundation-model"
+                  },
+                  "source": {
+                    "node": "claims-settlement-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-calls-model"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Claims settlement agent requests approval for proposed payouts from human approval service"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "human-approval-service"
+                  },
+                  "source": {
+                    "node": "claims-settlement-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-requests-approval"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Claims settlement agent sends decision records to audit service"
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "audit-service"
+                  },
+                  "source": {
+                    "node": "claims-settlement-agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "r-agent-audited"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "AI-Powered Insurance Claims Processing",
+  "type": "object"
+}

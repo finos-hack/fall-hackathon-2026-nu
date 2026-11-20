@@ -73,7 +73,9 @@ def _uid(defn: dict[str, Any]) -> Optional[str]:
 
 
 def _find(patterns: dict[str, Any], ref: str, kind: str) -> tuple[str, dict[str, Any]]:
-    """Resolve ``<pattern>/<unique-id>`` to ``(pattern id, definition)``. Raises KeyError if the pattern is not selected or lacks the item."""
+    """Resolve ``<pattern>/<unique-id>`` to ``(pattern id, definition)``. Raises KeyError if the reference is not a string, the pattern is not selected or lacks the item."""
+    if not isinstance(ref, str):
+        raise KeyError(f"{ref!r}: a {kind[:-1]} reference must be one '<pattern>/<unique-id>' string")
     pid, _, local = ref.partition("/")
     if pid not in patterns:
         raise KeyError(f"{ref}: pattern {pid} not selected")
@@ -209,6 +211,10 @@ def compose(patterns: dict[str, dict[str, Any]], spec: dict[str, Any]) -> Compos
         cid = comp["id"]
         if cid in nodes:
             res.errors.append(f"component {cid} defined twice")
+            continue
+        if not isinstance(comp.get("from"), list) or not comp["from"]:
+            res.errors.append(f"component {cid}: 'from' must list at least one '<pattern>/<node>'; "
+                              "a component with no pattern node has no node-type")
             continue
         try:
             parts = [_find(selected, ref, "nodes") for ref in comp["from"]]

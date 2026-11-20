@@ -1,0 +1,82 @@
+ra_id: RA06-COMPLAINTS
+version: 3
+title: RA06-COMPLAINTS Customer Complaint Resolution
+description: An AI agent reads customer complaint history from a data store, uses a hosted language model to draft replies,
+  and a case handler reviews each reply in a human approval service before it is sent. Every agent decision is recorded in
+  a separate audit service.
+patterns:
+- P03
+- P08
+- P11
+- P13
+- P18
+components:
+- id: complaint-resolution-agent
+  from:
+  - P18/agent
+  - P13/agent
+  name: Complaint Resolution Agent
+  description: AI agent that drafts replies to customer complaints, reads case history from a data store, and has observability
+    enabled.
+  bind:
+    action_capability: read-only
+    autonomy: supervised
+    observability: enabled
+- id: case-history-database
+  from:
+  - P08/data-store
+  - P18/case-history-database
+  name: Case History Database
+  description: Structured persistent data store containing customer complaint history.
+  bind:
+    access_control: rbac
+    encryption_at_rest: enabled
+- id: foundation-model
+  from:
+  - P11/foundation-model
+  name: Foundation Model
+  description: Hosted language model used by the complaint resolution agent to draft replies.
+  bind:
+    guardrails: enabled
+    sensitive_data_filtering: enabled
+- id: human-approval-service
+  from:
+  - P13/human-approval
+  name: Human Approval Service
+  description: Service where a case handler reviews each drafted reply before it is sent.
+- id: audit-service
+  from:
+  - P03/app-service
+  name: Audit Service
+  description: Application service that records every agent decision.
+  bind:
+    role: audit
+    exposure: internal
+    mediation: none
+    criticality: medium
+relationships:
+- id: r-agent-reads-case-history
+  from: P18/agent-reads-case-history
+  map:
+    agent: complaint-resolution-agent
+    case-history-database: case-history-database
+  description: Complaint resolution agent reads customer complaint history from the case history database.
+- id: r-agent-calls-model
+  from: P11/consumer-calls-model
+  map:
+    model-consumer: complaint-resolution-agent
+    foundation-model: foundation-model
+  description: Complaint resolution agent uses the foundation model to draft replies.
+- id: r-agent-requests-approval
+  from: P13/agent-requests-approval
+  map:
+    agent: complaint-resolution-agent
+    human-approval: human-approval-service
+  description: Complaint resolution agent sends drafted replies to the human approval service for review.
+- id: r-agent-audited
+  from: P03/caller-calls-service
+  map:
+    caller: complaint-resolution-agent
+    app-service: audit-service
+  description: Complaint resolution agent records every decision in the audit service.
+options: []

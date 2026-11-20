@@ -16,7 +16,7 @@ from agip_shared.settings import Settings, get_settings
 from ..store.repository import MemoryRepository
 from ..store.sink import ArtifactSink
 from .data import ReportStore
-from .routers import api, architecture, mvp, pages, rules
+from .routers import api, architecture, mvp, pages, reassess, rules
 
 HERE = Path(__file__).resolve().parent
 CATALOGS = HERE.parents[3] / "rule-authoring-framework" / "catalogs"
@@ -57,6 +57,7 @@ def create_app(settings: Optional[Settings] = None, data_dir: Optional[Path] = N
     app.include_router(rules.router)
     app.include_router(architecture.router)
     app.include_router(pages.router)
+    app.include_router(reassess.router)
     app.include_router(api.router)
     return app
 

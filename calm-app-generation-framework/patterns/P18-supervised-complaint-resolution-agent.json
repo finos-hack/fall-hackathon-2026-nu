@@ -1,0 +1,150 @@
+{
+  "$id": "https://agip.example/patterns/P18-supervised-complaint-resolution-agent.json",
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "description": "An AI agent that drafts replies to customer complaints, runs supervised, reads case history from a data store, and has observability enabled.",
+  "metadata": {
+    "approved_by": "dashboard-reviewer",
+    "pattern-id": "P18",
+    "related_controls": [
+      "AIGF-MI-004",
+      "AIGF-MI-024",
+      "UPL-customer-response-supervised"
+    ],
+    "related_risks": [
+      "UPL-customer-misinformation"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  "properties": {
+    "nodes": {
+      "maxItems": 2,
+      "minItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "AI agent that drafts replies to customer complaints based on case history."
+            },
+            "metadata": {
+              "properties": {
+                "action_capability": {
+                  "enum": [
+                    "read-only",
+                    "reversible-write",
+                    "business-write",
+                    "production-change"
+                  ]
+                },
+                "autonomy": {
+                  "enum": [
+                    "supervised",
+                    "semi-autonomous",
+                    "autonomous"
+                  ]
+                },
+                "observability": {
+                  "enum": [
+                    "enabled",
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "action_capability",
+                "autonomy",
+                "observability"
+              ],
+              "type": "object"
+            },
+            "name": {
+              "const": "Complaint Resolution Agent"
+            },
+            "node-type": {
+              "const": "ai:agent"
+            },
+            "unique-id": {
+              "const": "agent"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description",
+            "metadata"
+          ],
+          "type": "object"
+        },
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/node",
+          "properties": {
+            "description": {
+              "const": "Stores historical customer complaint data for the agent to reference."
+            },
+            "name": {
+              "const": "Case History Database"
+            },
+            "node-type": {
+              "const": "database"
+            },
+            "unique-id": {
+              "const": "case-history-database"
+            }
+          },
+          "required": [
+            "unique-id",
+            "node-type",
+            "name",
+            "description"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "relationships": {
+      "maxItems": 1,
+      "minItems": 1,
+      "prefixItems": [
+        {
+          "$ref": "https://calm.finos.org/release/1.2/meta/core.json#/defs/relationship",
+          "properties": {
+            "description": {
+              "const": "Agent reads case history from the database to inform its responses."
+            },
+            "relationship-type": {
+              "const": {
+                "connects": {
+                  "destination": {
+                    "node": "case-history-database"
+                  },
+                  "source": {
+                    "node": "agent"
+                  }
+                }
+              }
+            },
+            "unique-id": {
+              "const": "agent-reads-case-history"
+            }
+          },
+          "required": [
+            "unique-id",
+            "description",
+            "relationship-type"
+          ],
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "title": "P18 Supervised Complaint Resolution Agent",
+  "type": "object"
+}

@@ -2,7 +2,7 @@
 # CALM metadata (vocabulary in controls.catalog.yaml). Severity is NOT stored here: it is computed from
 # likelihood x impact through governance-execution-framework/config/scoring_profile.yaml ("illustrative, not approved policy").
 catalog: risks
-version: 2
+version: 4
 label: illustrative, not approved policy
 items:
 - risk_id: AIGF-RI-018
@@ -349,3 +349,186 @@ items:
                   properties:
                     role:
                       const: audit
+- title: Incorrect or misleading customer reply
+  version: 1
+  status: APPROVED
+  source:
+    framework: UPL
+    id: customer-misinformation
+    path: upload/customer-misinformation-risk.md
+  references: []
+  spectral_rules:
+    risk-upl-customer-misinformation:
+      description: Ensure that agents have human oversight for customer replies to
+        prevent incorrect or misleading statements.
+      message: '{{path}}: Ensure that agents have human oversight for customer replies
+        to prevent incorrect or misleading statements.'
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: action_approval_path
+        function: enumeration
+        functionOptions:
+          values:
+          - via-human-approval
+  extraction:
+    input_hash: 753e158f4be9440af46169e52d6ce3d7ba8c610b53e8dd2f23b3a709336e9674
+    prompt_version: v1
+  scoring:
+    impact:
+      confidence: 0.429
+      expected: 3.465
+      label: Major
+      probabilities:
+        Major: 0.2823
+        Minor: 0.1311
+        Moderate: 0.2282
+        Negligible: 0.1006
+        Severe: 0.2577
+      score: 4
+    input_hash: 88028492f54ca27354e7f2d3a93e411b414921d104304e32461cc4d7d66a3468
+    likelihood:
+      confidence: 0.439
+      expected: 3.298
+      label: Likely
+      probabilities:
+        Almost certain: 0.1849
+        Likely: 0.3064
+        Possible: 0.2571
+        Rare: 0.1265
+        Unlikely: 0.125
+      score: 4
+    llm:
+      impact: 4
+      likelihood: 3
+    low_confidence:
+    - likelihood
+    - impact
+    model: strands-decider-2B-qwen3.5-v1-2610
+    source: decider
+    threshold: 0.5
+  risk_id: UPL-customer-misinformation
+  dimension: Human Oversight
+  likelihood: 4
+  impact: 4
+  mandatory_trigger: false
+  rule_codes:
+  - risk-upl-customer-misinformation
+  remediation: Implement a human-in-the-loop review process for agent responses to
+    customers to ensure accuracy and compliance before sending replies.
+  confirmation:
+    likelihood: 4
+    impact: 4
+    by: dashboard-reviewer
+    role: approver
+    at: '2026-11-19T15:14:47.728386+00:00'
+    note: confirmed at approval
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T15:14:47.728386+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T15:14:47.728386+00:00'
+    version: 1
+  approved_by: dashboard-reviewer
+  approved_at: '2026-11-19T15:14:47.728386+00:00'
+- title: Unapproved claim payout
+  version: 1
+  status: APPROVED
+  source:
+    framework: UPL
+    id: unapproved-claim-payout
+    path: upload/unapproved-claim-payout.md
+  references: []
+  spectral_rules:
+    risk-upl-unapproved-claim-payout:
+      description: Ensures that AI agents settling insurance claims require human
+        approval before releasing payouts.
+      message: '{{path}}: Ensures that AI agents settling insurance claims require
+        human approval before releasing payouts.'
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: payment_approval_path
+        function: enumeration
+        functionOptions:
+          values:
+          - via-human-approval
+  extraction:
+    input_hash: a6443580bf4add2abf8405ea4eb06489ca98212e69e8d96933c71926df440037
+    prompt_version: v1
+  scoring:
+    impact:
+      confidence: 0.441
+      expected: 3.647
+      label: Severe
+      probabilities:
+        Major: 0.2985
+        Minor: 0.1168
+        Moderate: 0.1884
+        Negligible: 0.0817
+        Severe: 0.3146
+      score: 5
+    input_hash: 42c2889b8453d3389197af2eef1ca92570b0991b25957523a1bb2eb42fc6b439
+    likelihood:
+      confidence: 0.433
+      expected: 3.287
+      label: Likely
+      probabilities:
+        Almost certain: 0.1868
+        Likely: 0.301
+        Possible: 0.2558
+        Rare: 0.1312
+        Unlikely: 0.1252
+      score: 4
+    llm:
+      impact: 5
+      likelihood: 4
+    low_confidence:
+    - likelihood
+    - impact
+    model: strands-decider-2B-qwen3.5-v1-2610
+    source: decider
+    threshold: 0.5
+  risk_id: UPL-unapproved-claim-payout
+  dimension: Human Oversight
+  likelihood: 4
+  impact: 5
+  mandatory_trigger: false
+  rule_codes:
+  - risk-upl-unapproved-claim-payout
+  remediation: Ensure that every AI agent responsible for settling insurance claims
+    has the metadata field `payment_approval_path` set to `via-human-approval` to
+    require human oversight before any payout is released.
+  confirmation:
+    likelihood: 4
+    impact: 5
+    by: dashboard-reviewer
+    role: approver
+    at: '2026-11-19T17:36:38.791120+00:00'
+    note: confirmed at approval
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T17:36:38.791120+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T17:36:38.791120+00:00'
+    version: 1
+  approved_by: dashboard-reviewer
+  approved_at: '2026-11-19T17:36:38.791120+00:00'

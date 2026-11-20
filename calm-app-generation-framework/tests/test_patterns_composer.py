@@ -145,3 +145,15 @@ def test_publish_template():
     assert rec["status"] == "PUBLISHED" and s.items[("ra_template", "RA03-LITE")]
     with pytest.raises(pl.PatternRejected):
         pl.publish_template(text, Validator("ERROR"), s)
+
+
+def test_component_without_pattern_node_and_list_reference_are_errors():
+    """An empty 'from' would give a node with no node-type (a leftover placeholder at generation); a list where one
+    reference is expected must be an error the RA agent can fix, not a crash."""
+    pats = pl.load_patterns()
+    spec = copy.deepcopy(SPEC)
+    spec["components"].append({"id": "audit-x", "from": [], "name": "Audit", "description": "no pattern node"})
+    spec["relationships"].append({"id": "r-bad", "from": ["P12/a", "P12/b"], "map": {}})
+    errs = composer.compose(pats, spec).errors
+    assert any("audit-x" in e and "at least one" in e for e in errs)
+    assert any("reference must be one" in e for e in errs)

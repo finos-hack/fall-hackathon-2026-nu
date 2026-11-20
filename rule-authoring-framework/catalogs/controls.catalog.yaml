@@ -21,7 +21,7 @@
 #     AIGF-MI-017 (one definition).
 #   - AIGF-MI-024 (human-in-the-loop approval gate) is new for the MVP; the draft repo had no control for it.
 catalog: controls
-version: 2
+version: 5
 label: illustrative, not approved policy
 items:
 - control_id: AIGF-MI-024
@@ -776,3 +776,124 @@ items:
         function: pattern
         functionOptions:
           match: ^completed$
+- title: Customer communication agents must be supervised
+  version: 2
+  status: APPROVED
+  source:
+    framework: UPL
+    id: customer-response-supervised
+    path: upload/customer-response-supervised.md
+  references:
+  - framework: nist_references
+    id: AC-6
+  spectral_rules:
+    ctl-upl-customer-response-supervised:
+      description: Ensures customer communication agents run in supervised mode
+      message: '{{path}}: Ensures customer communication agents run in supervised
+        mode'
+      severity: error
+      given: $.nodes[?(@['node-type']=='ai:agent')].metadata
+      then:
+        field: autonomy
+        function: enumeration
+        functionOptions:
+          values:
+          - supervised
+  extraction:
+    input_hash: 90a9a51bd263a481f0ec3c2eb1e832b85fdb59740f7e1c14158f43fa17b289ee
+    prompt_version: v1
+  control_id: UPL-customer-response-supervised
+  configurations:
+  - id: CFG-CTL-UPL-CUSTOMER-RESPONSE-SUPERVISED
+    mandatory: false
+    severity: medium
+    rule_codes:
+    - ctl-upl-customer-response-supervised
+    remediation: Ensure every AI agent that drafts or sends replies to customers has
+      the metadata field `autonomy` set to `supervised`. Implement a process where
+      a named case handler reviews each reply before it is sent.
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T15:14:44.369667+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T15:14:44.369667+00:00'
+    version: 1
+  - from: DRAFT
+    to: IN_REVIEW
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T15:15:54.757269+00:00'
+    version: 2
+  - from: IN_REVIEW
+    to: APPROVED
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T15:15:54.757269+00:00'
+    version: 2
+  approved_by: dashboard-reviewer
+  approved_at: '2026-11-19T15:15:54.757269+00:00'
+- title: Claims data must be classified as confidential
+  version: 1
+  status: APPROVED
+  source:
+    framework: UPL
+    id: claims-data-classified
+    path: upload/claims-data-classified.md
+  references:
+  - framework: nist_references
+    id: RA-2
+  spectral_rules:
+    ctl-upl-claims-data-classified:
+      description: Ensures that every database node holding claims data is classified
+        as confidential.
+      message: '{{path}}: Ensures that every database node holding claims data is
+        classified as confidential.'
+      severity: error
+      given: $.nodes[?(@['node-type']=='database')].metadata
+      then:
+        field: data_classification
+        function: enumeration
+        functionOptions:
+          values:
+          - confidential
+  extraction:
+    input_hash: 6f07a6d8de8c966cbde16365832f7e64801594f422bbfc9609e5e163929474e7
+    prompt_version: v1
+  control_id: UPL-claims-data-classified
+  configurations:
+  - id: CFG-CTL-UPL-CLAIMS-DATA-CLASSIFIED
+    mandatory: false
+    severity: medium
+    rule_codes:
+    - ctl-upl-claims-data-classified
+    remediation: Ensure that every database node holding claims data has the metadata
+      field `data_classification` set to `confidential` to appropriately classify
+      and protect this sensitive information.
+  history:
+  - from: DRAFT
+    to: IN_REVIEW
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T17:36:35.196469+00:00'
+    version: 1
+  - from: IN_REVIEW
+    to: APPROVED
+    by: dashboard-reviewer
+    role: approver
+    rationale: legacy approve
+    at: '2026-11-19T17:36:35.196469+00:00'
+    version: 1
+  approved_by: dashboard-reviewer
+  approved_at: '2026-11-19T17:36:35.196469+00:00'

@@ -22,5 +22,23 @@
     "inputs_hash": null,
     "updated": "2026-11-18T13:06:39.603161+00:00",
     "version": 1
+  },
+  "P18-supervised-complaint-resolution-agent.json": {
+    "content_hash": "0c9c6f50b4be2a933c1d2397417d98de1e6140f93cf291836a136ec3b83552cd",
+    "inputs_hash": null,
+    "updated": "2026-11-19T15:16:35.089047+00:00",
+    "version": 1
+  },
+  "P19-ai-claims-settlement-agent.json": {
+    "content_hash": "96fd38c6403b2a9cfc0663c4bf7a2a4d3867488120979223933b1e10a6f7c78d",
+    "inputs_hash": null,
+    "updated": "2026-11-19T17:37:15.429929+00:00",
+    "version": 1
+  },
+  "P20-ai-claims-settlement-agent.json": {
+    "content_hash": "6db8c3cfb10b2057e5f1ae52a8ab033ff912bc2af2394022f79bfe963b55efb2",
+    "inputs_hash": null,
+    "updated": "2026-11-19T17:44:01.887679+00:00",
+    "version": 1
   }
 }

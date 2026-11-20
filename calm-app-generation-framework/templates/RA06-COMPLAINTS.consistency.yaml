@@ -1,0 +1,3 @@
+# Attributes that must follow a chosen option (optional).
+rules: []
+#  - {option: option-id, choice: choice-slug, requires: {ATTRIBUTE_NAME: value}}

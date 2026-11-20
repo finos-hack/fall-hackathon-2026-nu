@@ -1,0 +1,83 @@
+ra_id: RA07-CLAIMS-ZDZA
+version: 1
+title: AI-Powered Insurance Claims Processing
+description: An AI agent reads insurance claims from a claims data store, uses a hosted language model to assess them, and
+  proposes payouts. A claims adjuster approves each payout in a human approval service before it is released. Every agent
+  decision is recorded in a separate audit service.
+patterns:
+- P03
+- P08
+- P11
+- P13
+- P19
+components:
+- id: claims-data-store
+  from:
+  - P08/data-store
+  - P19/claims-data-store
+  name: Claims Data Store
+  description: Structured persistent data store containing insurance claims.
+  bind:
+    access_control: rbac
+    encryption_at_rest: enabled
+- id: claims-settlement-agent
+  from:
+  - P19/ai-agent
+  name: Claims Settlement Agent
+  description: AI agent that reads insurance claims, assesses them using a foundation model, and proposes payouts.
+  bind:
+    action_capability: read-only
+    autonomy: supervised
+    observability: enabled
+    privilege: read-only
+- id: foundation-model
+  from:
+  - P11/foundation-model
+  name: Foundation Model
+  description: Hosted language model used by the claims settlement agent for assessment.
+  bind:
+    guardrails: enabled
+    sensitive_data_filtering: enabled
+- id: human-approval-service
+  from:
+  - P13/human-approval
+  name: Human Approval Service
+  description: Service where claims adjusters review and approve proposed payouts.
+  bind:
+    role: human-approval
+- id: audit-service
+  from:
+  - P03/app-service
+  name: Audit Service
+  description: Application service that records every agent decision for audit purposes.
+  bind:
+    role: audit
+    exposure: internal
+    mediation: none
+    criticality: high
+relationships:
+- id: r-agent-reads-claims
+  from: P19/agent-reads-claims
+  map:
+    ai-agent: claims-settlement-agent
+    claims-data-store: claims-data-store
+  description: Claims settlement agent reads insurance claims from the claims data store
+- id: r-agent-calls-model
+  from: P11/consumer-calls-model
+  map:
+    model-consumer: claims-settlement-agent
+    foundation-model: foundation-model
+  description: Claims settlement agent uses the foundation model for claim assessment
+- id: r-agent-requests-approval
+  from: P13/agent-requests-approval
+  map:
+    agent: claims-settlement-agent
+    human-approval: human-approval-service
+  description: Claims settlement agent requests approval for proposed payouts from human approval service
+- id: r-agent-audited
+  from: P03/caller-calls-service
+  map:
+    caller: claims-settlement-agent
+    app-service: audit-service
+  description: Claims settlement agent sends decision records to audit service
+options: []

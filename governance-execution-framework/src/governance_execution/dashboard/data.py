@@ -17,6 +17,13 @@ _TRACE = re.compile(r"^[0-9a-f]{32}$")
 RANK = {"critical": 4, "Critical": 4, "high": 3, "High": 3, "medium": 2, "Medium": 2, "low": 1, "Low": 1}
 
 
+REASSESS_DECISIONS = ("REJECTED", "RESTRICTED", "INDETERMINATE")
+
+def reassessable(s: dict[str, Any]) -> bool:
+    """True when an assessment summary is unsuccessful and a corrected model can be submitted: BLOCKED or FAILED, or COMPLETED with a REJECTED, RESTRICTED or INDETERMINATE decision."""
+    return s.get("status") in ("BLOCKED", "FAILED") or (s.get("status") == "COMPLETED" and s.get("decision") in REASSESS_DECISIONS)
+
+
 class ReportStore:
     """Read-only view over persisted assessment artifacts.
 
@@ -55,8 +62,13 @@ class ReportStore:
         mtime = (self.files.root / trace / "versions").stat().st_mtime
         return {"trace_id": trace, "app_id": (v.get("source") or {}).get("app_id"), "decision": v.get("decision"),
                 "status": v.get("assessment_status") or v.get("status"), "validation_status": v.get("validation_status"), "executor": v.get("executor"), "executor_note": v.get("executor_note"),
-                "mode": v.get("mode"), "replay_of": (v.get("source") or {}).get("replay_of"),
+                "mode": v.get("mode"), "replay_of": (v.get("source") or {}).get("replay_of"), "supersedes": (v.get("source") or {}).get("supersedes"),
                 "time": datetime.fromtimestamp(mtime, timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"), "_mtime": mtime}
+
+    def superseded_by(self, trace: str) -> list[str]:
+        """Ids of the assessments that re-assess ``trace`` with a corrected model, newest first."""
+        found = [s for s in (self.summary(t) for t in self.traces()) if s["supersedes"] == trace]
+        return [s["trace_id"] for s in sorted(found, key=lambda s: -s["_mtime"])]
 
     def assessments(self) -> list[dict[str, Any]]:
         """Return summaries of all assessments, newest first."""
