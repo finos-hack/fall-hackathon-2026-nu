@@ -9,3 +9,22 @@ _out/
 .tools/
 node_modules/
 .DS_Store
+# demo media and run output
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mov
+*.log
+.playwright-cli/
+demo-live/output/
+# generated assessment data: keep only the live-demo fallback traces
+data_calm_check/artifacts/*
+!data_calm_check/artifacts/07535ba2584ebe86f70d3d5cf0effd6c/
+!data_calm_check/artifacts/32c63301226d2066bed11db36fadd4e5/
+!data_calm_check/artifacts/9fcbef7c3616205c73ef72348436e47a/
+data_calm_check/llm-records/
+data_calm_check/rule-runs/
+data_calm_check/replay-rulesets/
+
+.DS_Store
