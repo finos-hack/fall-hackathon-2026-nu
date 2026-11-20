@@ -10,7 +10,7 @@ _out/
 node_modules/
 .DS_Store
 # demo media and run output
-*.png
+#*.png
 *.jpg
 *.jpeg
 *.gif
